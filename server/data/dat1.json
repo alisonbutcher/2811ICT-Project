@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "user": "Julie",
+      "email": "julie@email.com"
+    },
+    {
+      "user": "super",
+      "email": "admin@admin.me"
+    }
+  ],
+  "groups": [
+    {
+      "group_name": "users",
+      "members": [
+        "Julie",
+        "super"
+      ],
+      "admins": [
+        "super"
+      ],
+      "channels": [
+        "channel 1"
+      ]
+    }
+  ],
+  "channels": [
+    {}
+  ]
+}

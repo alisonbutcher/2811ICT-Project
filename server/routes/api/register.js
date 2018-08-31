@@ -7,12 +7,13 @@ module.exports = (app, fs) => {
 
         let uname = req.query.username;
 
-        fs.readFile('authdata.json', 'utf-8', (err, data) => {
+        fs.readFile('data.json', 'utf-8', (err, data) => {
             if (err) {
                 console.log(err);
             } else {
                 userObj = JSON.parse(data);
                 for (let i = 0; i < userObj.length; i++) {
+                    console.log(userObj);
                     if (userObj[i].name == uname) {
                         isUser = 1;
                     }
@@ -25,11 +26,13 @@ module.exports = (app, fs) => {
                 // Add User
                 userObj.push({'name':uname});
                 let newdata = JSON.stringify(userObj);
-                fs.writeFile('authdata.json', newdata, 'utf-8', (err) => {
+                console.log(newdata);
+                fs.writeFile('data.json', newdata, 'utf-8', (err) => {
                     if (err) throw err;
-                    res.send({'username':uname,'success':true});
+                    res.send("test");
+
                 })
             }
         })
     })
-}
+};

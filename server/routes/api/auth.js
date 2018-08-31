@@ -3,7 +3,7 @@ module.exports = function(app,fs) {
         let uname = req.query.username;
         let userObj;
 
-        fs.readFile('authdata.json', 'utf-8', (err, data) => {
+        fs.readFile('data.json', 'utf-8', (err, data) => {
             if (err) {
                 console.log(err);
                 res.send({'username': '', 'success': false});
