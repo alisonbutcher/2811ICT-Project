@@ -1,5 +1,26 @@
 // manages the data (currently a json file)
-module.exports = function (fs) {
+module.exports = function (fs, filename) {
+
+    obj = {};
+    this.getGroups = () => {
+
+    };
+
+    function readJSON() {
+        fs.readFile('./data/data.json', 'utf-8', (err, data) => {
+            if (err) {
+                console.log(err);
+            }
+            return data;
+        });
+    }
+
+    function writeJSON() {
+        fs.writeFile('./data/data.json', )
+    }
+
+
+    let obj = {};
 
     let jUsers;
     let jGroups;

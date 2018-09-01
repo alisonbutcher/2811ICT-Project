@@ -5,29 +5,25 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GroupsComponent } from './groups/groups.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule } from "@angular/forms"; // to create bindings
 
 import { HttpClientModule} from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
-import { ChannelsComponent } from './channels/channels.component';
-import { ChatComponent } from './chat/chat.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GroupsComponent,
-    LoginComponent,
     UserComponent,
-    ChannelsComponent,
-    ChatComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-	  FontAwesomeModule
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

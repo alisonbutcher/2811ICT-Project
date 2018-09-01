@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GroupsService} from "../groups.service";
+import { GroupsService} from '../groups.service';
 
 @Component({
   selector: 'app-groups',
@@ -15,7 +15,6 @@ export class GroupsComponent implements OnInit {
   ngOnInit() {
     this.getGroups();
   }
-
   getGroups() {
     this._groupsService.getGroups().subscribe(
       data => { this.groups = data; },
@@ -23,7 +22,6 @@ export class GroupsComponent implements OnInit {
       () => console.log('done loading groups')
     );
   }
-
   createGroup(name) {
     let group = {
       groupname: name
@@ -38,7 +36,6 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
-
   updateGroup(group) {
     this._groupsService.updateGroup(group).subscribe(
       data => {
@@ -50,7 +47,6 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
-
   deleteGroup(group) {
     this._groupsService.deleteGroup(group).subscribe(
       data => {
@@ -62,5 +58,6 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
+
 }
 

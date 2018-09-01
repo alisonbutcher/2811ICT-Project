@@ -22,6 +22,7 @@ export class GroupsService {
     let body = JSON.stringify(group);
     return this.http.post('http://localhost:3000/api/group/', body, httpOptions);
   }
+  //update currently is not being used
   updateGroup(group) {
     let body = JSON.stringify(group);
     return this.http.put('http://localhost:3000/api/group/' + group.groupname, body, httpOptions);

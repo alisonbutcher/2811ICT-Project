@@ -1,16 +1,13 @@
 <div style="text-align:center">
+
   <h2>Groups</h2>
   <ul>
     <li *ngFor="let group of groups">{{group.groupname}}
-      <button (click)="deleteGroup(group)" class="btn btn-success">Delete Group</button><
-      /li>
+      <button (click)="deleteGroup(group)" class="btn btn-success">Delete Group</button></li>
   </ul>
 </div>
 
-<hr>
-
-<h2>Groups</h2>
-Create New Group <br>
+<h1>Create new group</h1>
 <div class="container">
   <div class="form-group">
     <div class="row">
@@ -25,8 +22,7 @@ Create New Group <br>
 
   <div class="form-group">
     <div class="col-lg-12">
-      <button (click)="createGroup(group_name)" class="btn btn-success">Create New Group</button>
-
+      <button (click)="createGroup(group_name)" class="btn btn-success">Create</button>
     </div>
   </div>
 </div>
