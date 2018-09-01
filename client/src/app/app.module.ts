@@ -5,7 +5,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GroupsComponent } from './groups/groups.component';
-import { FormsModule } from "@angular/forms"; // to create bindings
+import { FormsModule } from '@angular/forms'; // to create bindings
 
 import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user/user.component';
