@@ -1,1 +1,1 @@
-{"users":[{"id":1,"name":"Alison","email":"alison@griffith"}],"groups":[{"id":1,"name":"sadfsadf"}],"channels":[{"id":1,"name":"sadf"}],"user_group":[],"user_channel":[],"group_channel":[],"roles":[]}
+{"users":[{"id":1,"name":"Alison","email":"alison@griffith"}],"groups":[],"channels":[{"id":1,"name":"sadf"}],"user_group":[],"user_channel":[],"group_channel":[],"roles":[]}
