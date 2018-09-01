@@ -28,7 +28,7 @@ export class GroupsService {
     return this.http.put('http://localhost:3000/api/group/' + group.groupname, body, httpOptions);
   }
   deleteGroup(group) {
-    return this.http.delete('http://localhost:3000/api/group/' + group.groupname);
+    return this.http.delete('http://localhost:3000/api/group/' + group.id);
   }
 }
 

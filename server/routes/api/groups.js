@@ -19,8 +19,13 @@ module.exports = (app, fs) => {
 
     // Add group via post
     app.post('/api/group', (req, res) => {
-        console.log('new group');
-        let newGroup = {"groupname": req.body.groupname};
+        // calculate the next ID
+        let id = 1;
+        if (obj.groups.length > 0) {
+            let maximum = Math.max.apply(Math, obj.groups.map(function (f) { return f.id; }));
+            id = maximum + 1;
+        }
+        let newGroup = {"id": id, "name": req.body.name};
         console.log(req.body);
         obj.groups.push(newGroup);
         res.send(newGroup);
@@ -30,19 +35,19 @@ module.exports = (app, fs) => {
     });
 
     // Update groups via put (not working because cant id which record to change... add id to groups)
-    app.put('/api/group/:groupname', function (req, res) {
+    app.put('/api/group/:groupid', function (req, res) {
         console.log('update group');
-        let g = obj.groups.find(x => x.groupname == groupname);
-        g.groupname = req.body.groupname;
+        let g = obj.groups.find(x => x.id == groupid);
+        g.groupid = req.body.groupid;
         res.send(g);
     });
 
-    app.delete('/api/group/:groupname', function (req, res) {
+    app.delete('/api/group/:groupid', function (req, res) {
         console.log('delete group');
-        let groupn = req.params.groupname;
-        console.log(groupn);
+        let groupid = req.params.groupid;
+        console.log(groupid);
         // let g = students.find(x => x.id == id);
-        obj.groups = obj.groups.filter(x => x.groupname != groupn);
+        obj.groups = obj.groups.filter(x => x.id != groupid);
         res.send(obj.groups);
         console.log(obj.groups);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{

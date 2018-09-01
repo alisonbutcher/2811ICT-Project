@@ -1,13 +1,15 @@
 <div style="text-align:center">
 
   <h2>Groups</h2>
-  <ul>
-    <li *ngFor="let group of groups">{{group.groupname}}
-      <button (click)="deleteGroup(group)" class="btn btn-success">Delete Group</button></li>
-  </ul>
+  <table>
+    <tr><th>Group ID</th><th>Group Name</th></tr>
+    <tr *ngFor="let group of groups">
+      <td>{{group.id}}</td><td>{{group.name}}</td>
+      <td><button (click)="deleteGroup(group)" class="btn btn-success btn-small">Delete</button></td>
+    </tr></table>
 </div>
 
-<h1>Create new group</h1>
+<h2>Create new group</h2>
 <div class="container">
   <div class="form-group">
     <div class="row">

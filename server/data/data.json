@@ -1,1 +1,1 @@
-{"users":[{"name":"super","email":"admin@super.com"},{"name":"John"},{"name":"jason"},{"name":"sdsfds"},{"name":"sdsfdsd"}],"groups":[{"groupname":"test18"},{"groupname":"l"},{"groupname":"te"}]}
+{"users":[{"id":1,"name":"Alison","email":"alison@griffith"}],"groups":[{"id":1,"name":"sadfsadf"}],"channels":[{"id":1,"name":"sadf"}],"user_group":[],"user_channel":[],"group_channel":[],"roles":[]}

@@ -9,11 +9,11 @@ module.exports = (app, fs) => {
         }
     });
 
-    app.get('/api/user')
+    app.get('/api/channel')
 
     // Get User via get
-    app.get('/api/user', (req, res) => {
-        res.send(obj.users);
+    app.get('/api/channel', (req, res) => {
+        res.send(obj.channels);
     });
 
     // app.get('/user', function(req,res){
@@ -21,18 +21,18 @@ module.exports = (app, fs) => {
     // });
 
     // Add User via post
-    app.post('/api/user', (req, res) => {
+    app.post('/api/channel', (req, res) => {
         
         // calculate the next ID
         let id = 1;
-        if (obj.users.length > 0) {
-            let maximum = Math.max.apply(Math, obj.users.map(function (f) { return f.id; }));
+        if (obj.channels.length > 0) {
+            let maximum = Math.max.apply(Math, obj.channels.map(function (f) { return f.id; }));
             id = maximum + 1;
             console.log(id);
         }
-        let newUser = {"id": id, "name": req.body.name, "email": req.body.email};
-        obj.users.push(newUser);
-        res.send(newUser);
+        let newChannel = {"id": id, "name": req.body.name};
+        obj.channels.push(newChannel);
+        res.send(newChannel);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })
@@ -46,19 +46,17 @@ module.exports = (app, fs) => {
     //     res.send(g);
     // });
 
-    app.delete('/api/user/:username', function (req, res) {
+    app.delete('/api/channel/:channelname', function (req, res) {
         console.log('delete user');
-        let usern = req.params.username;
-        console.log(usern);
+        let chan = req.params.channelname;
+        console.log(chan);
         // let g = students.find(x => x.id == id);
-        obj.users = obj.users.filter(x => x.name != usern);
-        res.send(obj.users);
-        console.log(obj.users);
+        obj.channels = obj.channels.filter(x => x.name != chan);
+        res.send(obj.channels);
+        console.log(obj.channels);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })
     });
-
-
 };
 

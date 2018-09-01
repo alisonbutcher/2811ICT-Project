@@ -10,13 +10,15 @@ import { FormsModule } from '@angular/forms'; // to create bindings
 import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
+import { ChannelsComponent } from './channels/channels.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GroupsComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    ChannelsComponent
   ],
   imports: [
     BrowserModule,

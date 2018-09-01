@@ -8,7 +8,7 @@ import { GroupsService} from '../groups.service';
 })
 export class GroupsComponent implements OnInit {
   public groups;
-  public groupname;
+  public name;
 
   constructor(private _groupsService: GroupsService) { }
 
@@ -24,8 +24,8 @@ export class GroupsComponent implements OnInit {
   }
   createGroup(name) {
     let group = {
-      groupname: name
-    };
+      name: name
+    }
     this._groupsService.createGroup(group).subscribe(
       data => {
         this.getGroups();
@@ -48,6 +48,7 @@ export class GroupsComponent implements OnInit {
     );
   }
   deleteGroup(group) {
+    console.log("delete group: " + group.id);
     this._groupsService.deleteGroup(group).subscribe(
       data => {
         this.getGroups();
@@ -58,6 +59,5 @@ export class GroupsComponent implements OnInit {
       }
     );
   }
-
 }
 

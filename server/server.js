@@ -25,6 +25,7 @@ require('./routes/api/register.js')(app,fs);
 require('./routes/api/users.js')(app,fs);
 require('./routes/api/groups.js')(app,fs);
 require('./routes/api/login.js')(app,fs);
+require('./routes/api/channel.js')(app,fs);
 
 // Http server
 require('./listen.js')(http);

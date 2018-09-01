@@ -27,7 +27,6 @@ export class UserComponent implements OnInit {
       name: name,
       email: email
     }
-    // console.log('Email:' + email);
     console.log('log:' + user);
     this._userService.createUser(user).subscribe(
       data => {
@@ -57,7 +56,7 @@ export class UserComponent implements OnInit {
         return true;
       },
       error => {
-        console.error('Error deleting group');
+        console.error('Error deleting user');
       }
     );
   }
