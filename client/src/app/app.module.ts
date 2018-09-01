@@ -8,11 +8,19 @@ import { GroupsComponent } from './groups/groups.component';
 import { FormsModule } from "@angular/forms";
 
 import { HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { ChannelsComponent } from './channels/channels.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GroupsComponent
+    GroupsComponent,
+    LoginComponent,
+    UserComponent,
+    ChannelsComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
