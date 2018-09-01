@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../user.service";
+import { UserService } from '../user.service';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,6 +8,7 @@ import { UserService } from "../user.service";
 export class UserComponent implements OnInit {
   public users;
   public username;
+  public useremail;
 
   constructor(private _userService: UserService) { }
 
@@ -21,10 +22,13 @@ export class UserComponent implements OnInit {
       () => console.log('done loading users')
     );
   }
-  createUser(name) {
+  createUser(name, email) {
     let user = {
-      name: name
-    };
+      name: name,
+      email: email
+    }
+    // console.log('Email:' + email);
+    console.log('log:' + user);
     this._userService.createUser(user).subscribe(
       data => {
         this.getUsers();
@@ -33,7 +37,7 @@ export class UserComponent implements OnInit {
       error => {
         console.error(error);
       }
-    );
+    )
   }
   updateUser(user) {
     this._userService.updateUser(user).subscribe(
