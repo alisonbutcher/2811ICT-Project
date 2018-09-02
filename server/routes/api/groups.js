@@ -34,6 +34,7 @@ module.exports = (app, fs) => {
         })
     });
 
+    
     // Update groups via put 
     app.put('/api/group/:id', function (req, res) {
         let gid = req.params.id;
@@ -44,7 +45,6 @@ module.exports = (app, fs) => {
             group.name = req.body.name;
             group.description = req.body.description;
             obj.groups.push(group);
-            console.log("groups.js sending this data to file" + obj.groups);
             res.send(group);
             fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) => {
                 if (err) throw err;
@@ -62,6 +62,9 @@ module.exports = (app, fs) => {
             if (err) throw err;
         })
     });
+
+
+    // TODO: Extra Methods for: Add user to group, Add channel to group
 
 
 };
