@@ -12,6 +12,9 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ChannelsComponent } from './channels/channels.component';
 import { RolesComponent } from './roles/roles.component';
+import { GroupUsersComponent } from './group-users/group-users.component';
+import { GroupChannelsComponent } from './group-channels/group-channels.component';
+import { ChannelUsersComponent } from './channel-users/channel-users.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { RolesComponent } from './roles/roles.component';
     UserComponent,
     LoginComponent,
     ChannelsComponent,
-    RolesComponent
+    RolesComponent,
+    GroupUsersComponent,
+    GroupChannelsComponent,
+    ChannelUsersComponent
   ],
   imports: [
     BrowserModule,
