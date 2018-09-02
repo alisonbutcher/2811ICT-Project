@@ -15,17 +15,17 @@
       <tr *ngFor="let channel of channels">
         <td><input type="checkbox"></td>
         <td>{{channel.id}}</td>
-        <td>{{channel.name}}</td>
-        <td>Descripton here...</td>
+        <td><input class="form-control" type="text" [(ngModel)]="channel.name" value="{{channel.name}}"></td>
+        <td><input class="form-control" type="text" [(ngModel)]="channel.description" value="{{channel.description}}"></td>
         <td><button (click)="deleteChannel(channel)" class="btn btn-danger btn-sm">Delete</button></td>
         <td><button (click)="updateChannel(channel)" class="btn btn-sm btn-primary">Update</button></td>
       </tr>
       <tr>
           <td colspan="2">Add new channel:</td>
           <td><input type="text" name="channel-name" [(ngModel)]="channel_name" class="form-control"></td>
-          <td>Description here...</td>
+          <td><input type="text" name="channel-description" [(ngModel)]="channel_description" class="form-control"></td>
           <td>.</td>
-          <td><button (click)="createChannel(channel_name)" class="btn btn-sm btn-success">Add</button></td>
+          <td><button (click)="createChannel(channel_name, channel_description)" class="btn btn-sm btn-success">Add</button></td>
       </tr>
 
     </tbody></table>

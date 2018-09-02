@@ -17,16 +17,16 @@ export class ChannelsService {
     getChannels() {
       return this.http.get('http://localhost:3000/api/channel');
     }
-  
+
     createChannel(channel) {
       // console.log(user);
       let body = JSON.stringify(channel);
       return this.http.post('http://localhost:3000/api/channel/', body, httpOptions);
     }
-    // update currently is not being used
+
     updateChannel(channel) {
-      let body = JSON.stringify(channel);
-      return this.http.put('http://localhost:3000/api/channel/' + channel.name, body, httpOptions);
+      const body = JSON.stringify(channel);
+      return this.http.put('http://localhost:3000/api/channel/' + channel.id, body, httpOptions);
     }
     deleteChannel(channel) {
       return this.http.delete('http://localhost:3000/api/channel/' + channel.name);

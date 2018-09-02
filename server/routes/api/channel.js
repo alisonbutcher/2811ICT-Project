@@ -30,7 +30,7 @@ module.exports = (app, fs) => {
             id = maximum + 1;
             console.log(id);
         }
-        let newChannel = {"id": id, "name": req.body.name};
+        let newChannel = {"id": id, "name": req.body.name, "description": req.body.description};
         obj.channels.push(newChannel);
         res.send(newChannel);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
@@ -38,13 +38,32 @@ module.exports = (app, fs) => {
         })
     });
 
-    // Update groups via put (not working because cant id which record to change... add id to groups)
-    // app.put('/api/group/:groupname', function (req, res) {
-    //     console.log('update group');
-    //     let g = obj.groups.find(x => x.groupname == groupname);
-    //     g.groupname = req.body.groupname;
-    //     res.send(g);
-    // });
+    app.put('/api/group/:groupname', function (req, res) {
+        console.log('update channel');
+        let g = obj.groups.find(x => x.groupname == groupname);
+        g.groupname = req.body.groupname;
+        res.send(g);
+    });
+
+    app.put('/api/channel/:id', function (req, res) {
+        let chid = req.params.id;
+        let channel = obj.channels.find(x => x.id == chid);
+        if (channel != null) {
+            obj.channels = obj.channels.filter(x => x.id != chid)
+            channel.id = req.params.id;
+            channel.name = req.body.name;
+            channel.description = req.body.description;
+            obj.channels.push(channel);
+            console.log("channel.js sending this data to file" + obj.channels);
+            res.send(channel);
+            fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) => {
+                if (err) throw err;
+            })
+        } else {
+            // return not found
+            res.send("Channel Not Found");
+        }
+    });
 
     app.delete('/api/channel/:channelname', function (req, res) {
         console.log('delete user');

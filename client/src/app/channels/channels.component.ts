@@ -24,9 +24,10 @@ export class ChannelsComponent implements OnInit {
     );
   }
 
-  createChannel(name) {
+  createChannel(name, description) {
     let channel = {
-      name: name
+      name: name,
+      description: description
     }
     console.log('log:' + channel);
     this._channelsService.createChannel(channel).subscribe(
@@ -41,6 +42,7 @@ export class ChannelsComponent implements OnInit {
   }
 
   updateChannel(channel) {
+    console.log('Update Channel in component called: ' + channel);
     this._channelsService.updateChannel(channel).subscribe(
       data => {
         this.getChannels();
@@ -51,7 +53,8 @@ export class ChannelsComponent implements OnInit {
       }
     );
   }
-  
+
+
   deleteChannel(channel) {
     this._channelsService.deleteChannel(channel).subscribe(
       data => {
