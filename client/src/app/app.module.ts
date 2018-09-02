@@ -11,6 +11,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { ChannelsComponent } from './channels/channels.component';
+import { RolesComponent } from './roles/roles.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ChannelsComponent } from './channels/channels.component';
     GroupsComponent,
     UserComponent,
     LoginComponent,
-    ChannelsComponent
+    ChannelsComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,
