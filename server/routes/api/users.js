@@ -17,7 +17,8 @@ module.exports = (app, fs) => {
     });
 
     // app.get('/user', function(req,res){
-    //     res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
+    //     console.log(path.join(__dirname__, '../../../client/dist/client/index.html'));
+    //     res.sendFile(path.join(__dirname, '../../../client/dist/client/index.html'))
     // });
 
     // Add User via post
@@ -38,22 +39,30 @@ module.exports = (app, fs) => {
         })
     });
 
-    // Update groups via put (not working because cant id which record to change... add id to groups)
-    // app.put('/api/group/:groupname', function (req, res) {
-    //     console.log('update group');
-    //     let g = obj.groups.find(x => x.groupname == groupname);
-    //     g.groupname = req.body.groupname;
-    //     res.send(g);
-    // });
+    // Update groups via put 
+    app.put('/api/user/:id', function (req, res) {
+        let uid = req.params.id;
+        let user = obj.users.find(x => x.id == uid);
+        if (user != null) {
+            obj.users = obj.users.filter(x => x.id != uid)
+            user.id = req.params.id;
+            user.name = req.body.name;
+            user.email = req.body.email;
+            obj.users.push(user);
+            console.log(obj.users);
+            res.send(user);
+            fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) => {
+                if (err) throw err;
+            })
+        } else {
+            // return not found
+            res.send("User Not Found");
+        }
+    });
 
-    app.delete('/api/user/:username', function (req, res) {
-        console.log('delete user');
-        let usern = req.params.username;
-        console.log(usern);
-        // let g = students.find(x => x.id == id);
-        obj.users = obj.users.filter(x => x.name != usern);
+    app.delete('/api/user/:id', function (req, res) {
+        obj.users = obj.users.filter(x => x.id != req.params.id);
         res.send(obj.users);
-        console.log(obj.users);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })

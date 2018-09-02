@@ -34,20 +34,6 @@ export class LoginComponent implements OnInit {
         }
       }
     );
-
-
-    // Check is user in database
-    // if (()) {
-
-    // sessionStorage.setItem("username", "xxx");
-
-
-    // this.router.navigateByUrl('/userdata');
-    //
-    // } else {
-    //   alert('Username and/or password incorrect');
-    // }
-
   }
 }
 

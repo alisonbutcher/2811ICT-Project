@@ -38,14 +38,20 @@ export class UserComponent implements OnInit {
       }
     )
   }
-  updateUser(user) {
+  updateUser(id, name, email) {
+    const user = {
+      id: id,
+      name: name,
+      email: email
+    }
+    console.log('Update User in component called: ' + user);
     this._userService.updateUser(user).subscribe(
       data => {
         this.getUsers();
         return true;
       },
       error => {
-        console.error('Error saving user');
+        console.error('Error updating user');
       }
     );
   }

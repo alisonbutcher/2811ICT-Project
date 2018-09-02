@@ -20,16 +20,18 @@ export class UserService {
 
   createUser(user) {
     // console.log(user);
-    let body = JSON.stringify(user);
+    const body = JSON.stringify(user);
     return this.http.post('http://localhost:3000/api/user/', body, httpOptions);
   }
   // update currently is not being used
   updateUser(user) {
-    let body = JSON.stringify(user);
-    return this.http.put('http://localhost:3000/api/user/' + user.name, body, httpOptions);
+    const body = JSON.stringify(user);
+    console.log('Update User Service Called' + user);
+    return this.http.put('http://localhost:3000/api/user/' + user.id, body, httpOptions);
   }
   deleteUser(user) {
-    return this.http.delete('http://localhost:3000/api/user/' + user.name);
+    console.log('In user service, delete user: ' + user.id);
+    return this.http.delete('http://localhost:3000/api/user/' + user.id);
   }
 }
 
