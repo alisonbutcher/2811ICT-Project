@@ -25,7 +25,7 @@ module.exports = (app, fs) => {
             let maximum = Math.max.apply(Math, obj.groups.map(function (f) { return f.id; }));
             id = maximum + 1;
         }
-        let newGroup = {"id": id, "name": req.body.name};
+        let newGroup = {"id": id, "name": req.body.name, "description": req.body.description};
         console.log(req.body);
         obj.groups.push(newGroup);
         res.send(newGroup);
@@ -34,22 +34,30 @@ module.exports = (app, fs) => {
         })
     });
 
-    // Update groups via put (not working because cant id which record to change... add id to groups)
-    app.put('/api/group/:groupid', function (req, res) {
-        console.log('update group');
-        let g = obj.groups.find(x => x.id == groupid);
-        g.groupid = req.body.groupid;
-        res.send(g);
+    // Update groups via put 
+    app.put('/api/group/:id', function (req, res) {
+        let gid = req.params.id;
+        let group = obj.groups.find(x => x.id == gid);
+        if (group != null) {
+            obj.groups = obj.groups.filter(x => x.id != gid)
+            group.id = req.params.id;
+            group.name = req.body.name;
+            group.description = req.body.description;
+            obj.groups.push(group);
+            console.log("groups.js sending this data to file" + obj.groups);
+            res.send(group);
+            fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) => {
+                if (err) throw err;
+            })
+        } else {
+            // return not found
+            res.send("Group Not Found");
+        }
     });
 
-    app.delete('/api/group/:groupid', function (req, res) {
-        console.log('delete group');
-        let groupid = req.params.groupid;
-        console.log(groupid);
-        // let g = students.find(x => x.id == id);
-        obj.groups = obj.groups.filter(x => x.id != groupid);
+    app.delete('/api/group/:id', function (req, res) {
+        obj.groups = obj.groups.filter(x => x.id != req.params.id);
         res.send(obj.groups);
-        console.log(obj.groups);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })

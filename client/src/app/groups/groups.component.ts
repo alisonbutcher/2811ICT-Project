@@ -22,9 +22,10 @@ export class GroupsComponent implements OnInit {
       () => console.log('done loading groups')
     );
   }
-  createGroup(name) {
-    let group = {
-      name: name
+  createGroup(name, description) {
+    const group = {
+      name: name,
+      description: description
     }
     this._groupsService.createGroup(group).subscribe(
       data => {
@@ -48,7 +49,6 @@ export class GroupsComponent implements OnInit {
     );
   }
   deleteGroup(group) {
-    console.log("delete group: " + group.id);
     this._groupsService.deleteGroup(group).subscribe(
       data => {
         this.getGroups();

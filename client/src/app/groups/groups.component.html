@@ -8,24 +8,24 @@
         <th>Group Name</th>
         <th>Group Description</th>
         <th>Delete</th>
-        <th>Update</th>
+        <th>Update / Add</th>
       </tr>
       </thead>
       <tbody>
     <tr *ngFor="let group of groups">
       <td><input type="checkbox"></td>
       <td>{{group.id}}</td>
-      <td>{{group.name}}</td>
-      <td>Description to go here...</td>
+      <td><input class="form-control" type="text" [(ngModel)]="group.name" value="{{group.name}}"></td>
+      <td><input class="form-control" type="text" [(ngModel)]="group.description" value="{{group.description}}"></td>
       <td><button (click)="deleteGroup(group)" class="btn btn-danger btn-sm">Delete</button></td>
-      <td>update...</td>
+      <td><button (click)="updateGroup(group)" class="btn btn-primary btn-sm">Update</button></td>
     </tr>
     <tr>
         <td colspan="2">Add new group:</td>
         <td><input type="text" name="group-name" [(ngModel)]="group_name" class="form-control"></td>
-        <td>Description will go here...</td>
+        <td><input type="text" name="group-description" [(ngModel)]="group_description" class="form-control"></td>
         <td>.</td>
-        <td><button (click)="createGroup(group_name)" class="btn btn-success btn-sm">Add</button></td>
+        <td><button (click)="createGroup(group_name, group_description)" class="btn btn-success btn-sm">Add</button></td>
     </tr>
   </tbody>
   </table>

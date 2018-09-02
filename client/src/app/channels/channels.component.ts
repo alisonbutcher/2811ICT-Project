@@ -25,7 +25,7 @@ export class ChannelsComponent implements OnInit {
   }
 
   createChannel(name, description) {
-    let channel = {
+    const channel = {
       name: name,
       description: description
     }

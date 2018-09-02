@@ -39,7 +39,6 @@ export class RolesComponent implements OnInit {
     )
   }
   updateRole(role) {
-    console.log('Update User in component called: ' + role);
     this._rolesService.updateRole(role).subscribe(
       data => {
         this.getRoles();

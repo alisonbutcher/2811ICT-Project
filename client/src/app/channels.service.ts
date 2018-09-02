@@ -29,6 +29,6 @@ export class ChannelsService {
       return this.http.put('http://localhost:3000/api/channel/' + channel.id, body, httpOptions);
     }
     deleteChannel(channel) {
-      return this.http.delete('http://localhost:3000/api/channel/' + channel.name);
+      return this.http.delete('http://localhost:3000/api/channel/' + channel.id);
     }
 }

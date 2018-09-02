@@ -65,14 +65,9 @@ module.exports = (app, fs) => {
         }
     });
 
-    app.delete('/api/channel/:channelname', function (req, res) {
-        console.log('delete user');
-        let chan = req.params.channelname;
-        console.log(chan);
-        // let g = students.find(x => x.id == id);
-        obj.channels = obj.channels.filter(x => x.name != chan);
+    app.delete('/api/channel/:id', function (req, res) {
+        obj.channels = obj.channels.filter(x => x.id != req.params.id);
         res.send(obj.channels);
-        console.log(obj.channels);
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })
