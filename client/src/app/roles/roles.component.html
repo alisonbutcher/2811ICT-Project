@@ -1,49 +1,34 @@
 <div style="text-align:center">
     <h2>Roles</h2>
-    <table class="table">
-      <thead class="thead-dark">
+    <table class="table table-striped">
+      <thead class="thead-light">
         <tr>
           <th scope="col">Role ID</th>
           <th scope="col">Role Name</th>
           <th scope="col">Role Description</th>
           <th>Delete</th>
-          <th>Update</th>
+          <th>Update / Add</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let role of roles">
           <td>{{role.id}}</td>
           <td><input type="text" [(ngModel)]="role.name" value="{{role.name}}"></td>
-          <td>
-            <button (click)="deleteRole(role)" class="btn btn-danger btn-sm">Delete</button></td>
+          <td><input type="text" [(ngModel)]="role.description" value="{{role.description}}"></td>
+          <td><button (click)="deleteRole(role)" class="btn btn-danger btn-sm">Delete</button></td>
           <td><button (click)="updateRole(role)" class="btn btn-sm btn-success">Update</button></td>
         </tr>
+        <td>Add role:</td>
+        <td>
+          <input type="text" placeholder='' name="role-name" [(ngModel)]="role_name" class="form-control">
+        </td>
+        <td>
+          <input type="text" placeholder='' name="role-description" [(ngModel)]="role_description" class="form-control">
+        </td>
+        <td>/</td>
+        <td>
+          <button (click)="createRole(role_name, role_description)" class="btn btn-sm btn-success">Add</button>
+        </td>
       </tbody>
     </table>
-  </div>
-  <h1>Add new Role</h1>
-  <div class="card" style="width: 32rem">
-    <div class="form-user">
-      <div class="row">
-        <div class="">
-          <label for="user-name" class="">Role Name:</label>
-        </div>
-        <div class="">
-          <input type="text" name="role-name" [(ngModel)]="role_name" class="form-control">
-        </div>
-        <div class="">
-            <label for="role-description" class="">Role Description</label>
-          </div>
-          <div class="">
-            <input type="text" name="role-description" [(ngModel)]="role_description" class="form-control">
-          </div>
-      </div>
-    </div>
-  
-    <div class="form-user">
-      <div class="col-lg-4">
-        <button (click)="createRole(role_name, role_description)" class="btn btn-success">Create</button>
-      </div>
-    </div>
-  </div>
   
