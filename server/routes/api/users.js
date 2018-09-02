@@ -49,7 +49,7 @@ module.exports = (app, fs) => {
             user.name = req.body.name;
             user.email = req.body.email;
             obj.users.push(user);
-            console.log(obj.users);
+            console.log("users.js sending this data to file" + obj.users);
             res.send(user);
             fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) => {
                 if (err) throw err;

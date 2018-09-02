@@ -26,7 +26,7 @@ export class UserService {
   // update currently is not being used
   updateUser(user) {
     const body = JSON.stringify(user);
-    console.log('Update User Service Called' + user);
+    console.log('Update User Service Called ' + user);
     return this.http.put('http://localhost:3000/api/user/' + user.id, body, httpOptions);
   }
   deleteUser(user) {

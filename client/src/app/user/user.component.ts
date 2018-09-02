@@ -38,12 +38,7 @@ export class UserComponent implements OnInit {
       }
     )
   }
-  updateUser(id, name, email) {
-    const user = {
-      id: id,
-      name: name,
-      email: email
-    }
+  updateUser(user) {
     console.log('Update User in component called: ' + user);
     this._userService.updateUser(user).subscribe(
       data => {
