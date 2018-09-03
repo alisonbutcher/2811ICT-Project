@@ -11,9 +11,22 @@ module.exports = (app, fs) => {
 
     app.get('/api/roles')
 
-    // Get User via get
+    
     app.get('/api/roles', (req, res) => {
         res.send(obj.roles);
+    });
+
+    app.get('/api/user-roles/:userid', function (req, res) {
+        let uid = req.params.userid;
+        console.log(uid);
+        let urole = obj.userRoles.find(x => x.userid == uid);
+        console.log(urole);
+        if (urole != null) {
+            res.send(urole)
+        } else {
+            res.send("{No role found for this user}");
+        }
+
     });
 
     // app.get('/user', function(req,res){
@@ -38,6 +51,8 @@ module.exports = (app, fs) => {
             if (err) throw err;
         })
     });
+
+
 
     // Update groups via put 
     app.put('/api/roles/:id', function (req, res) {
