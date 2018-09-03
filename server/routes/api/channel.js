@@ -34,13 +34,14 @@ module.exports = (app, fs) => {
     // Returns a list of users not associated with a given channel id
     app.get('/api/channel-not-users/:id', (req,res) => {
         let users = [];
-        let uids = obj.channelUsers.filter(x => x.channelid != req.params.id);
+        let userlist = obj.users;
+        let uids = obj.channelUsers.filter(x => x.channelid == req.params.id);
         if (uids != null) {
             for (index in uids) {
                 let pid = uids[index].userid;
-                users.push(obj.users.find(x => x.id == pid));
+                userlist = userlist.filter(x => x.id != pid);
             }
-            res.send(users);
+            res.send(userlist);
         } else {
             res.send("user not found in channel");
         }
