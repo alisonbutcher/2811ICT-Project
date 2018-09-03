@@ -18,9 +18,17 @@ export class ChannelsService {
       return this.http.get('http://localhost:3000/api/channel');
     }
 
+    getUsersInChannel(channel) {
+      return this.http.get('http://localhost:3000/api/channel-users/', channel.id);
+    }
+
+    getUsersNotInChannel(channel) {
+      return this.http.get('http://localhost:3000/api/channel-not-users/', channel.id);
+    }
+
     createChannel(channel) {
       // console.log(user);
-      let body = JSON.stringify(channel);
+      const body = JSON.stringify(channel);
       return this.http.post('http://localhost:3000/api/channel/', body, httpOptions);
     }
 

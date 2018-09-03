@@ -9,13 +9,42 @@ module.exports = (app, fs) => {
         }
     });
 
-    app.get('/api/channel')
+    // app.get('/api/channel')
 
     // Get User via get
     app.get('/api/channel', (req, res) => {
         res.send(obj.channels);
     });
 
+    // Returns a list of users associated with a given channel id
+    app.get('/api/channel-users/:id', (req,res) => {
+        let users = [];
+        let uids = obj.channelUsers.filter(x => x.channelid == req.params.id);
+        if (uids != null) {
+            for (index in uids) {
+                let pid = uids[index].userid;
+                users.push(obj.users.find(x => x.id == pid));
+            }
+            res.send(users);
+        } else {
+            res.send("user not found in channel");
+        }
+    });
+    
+    // Returns a list of users not associated with a given channel id
+    app.get('/api/channel-not-users/:id', (req,res) => {
+        let users = [];
+        let uids = obj.channelUsers.filter(x => x.channelid != req.params.id);
+        if (uids != null) {
+            for (index in uids) {
+                let pid = uids[index].userid;
+                users.push(obj.users.find(x => x.id == pid));
+            }
+            res.send(users);
+        } else {
+            res.send("user not found in channel");
+        }
+    });
     // app.get('/user', function(req,res){
     //     res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
     // });
@@ -36,13 +65,6 @@ module.exports = (app, fs) => {
         fs.writeFile('data/data.json', JSON.stringify(obj), 'utf8', (err) =>{
             if (err) throw err;
         })
-    });
-
-    app.put('/api/group/:groupname', function (req, res) {
-        console.log('update channel');
-        let g = obj.groups.find(x => x.groupname == groupname);
-        g.groupname = req.body.groupname;
-        res.send(g);
     });
 
     app.put('/api/channel/:id', function (req, res) {

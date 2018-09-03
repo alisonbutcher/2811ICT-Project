@@ -1,57 +1,59 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Chat Room app</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="http://localhost:3000">2811ICT Chat</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="/groups">Groups</a>
-        <!--<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>-->
-      </li>
-      <li class="nav-item">
-          <a  class="nav-link" routerLink="/channel">Channels</a>
-          <!--<a class="nav-link" href="#">Features</a>-->
-      </li>
-      <li class="nav-item">
-        <a  class="nav-link" routerLink="/user">User</a>
-        <!--<a class="nav-link" href="#">Features</a>-->
-      </li>
-      <li class="nav-item">
-          <a class="nav-link" routerLink="/roles">Roles</a>
-          <!--<a class="nav-link" href="#">Pricing</a>-->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="http://localhost:3000">2811ICT Chat</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown show">
+            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Groups</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li class="nav-item active">
+                <a class="dropdown-item" routerLink="/groups">Groups</a>
+              </li>
+               <li class="nav-item">
+                <a class="dropdown-item" routerLink="/group-channels">Group Channels</a>
+              </li>
+              <li class="nav-item">
+                <a class="dropdown-item" routerLink="/group-users">Group Users</a>
+              </li>
+            </div>
+        </li> -->
+        <li class="nav-item active">
+            <a class="nav-link" routerLink="/groups">Groups</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" routerLink="/group-channels">Group Channels</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/group-users">Group Users</a>
+          </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/channel">Channels</a>
         </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-        <!--<a class="nav-link" href="#">Pricing</a>-->
-      </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/channel-users">Channel Users</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/user">User</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/roles">Roles</a>
+        </li>
 
-    </ul>
-  </div>
-</nav>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login">Login</a>
+        </li>
 
-<!-- <div class="container list-group">
-  <div class="col-2">
-  <a class="list-group-item list-group-item-action" routerLink="/groups">Groups</a>
-  <a  class="list-group-item list-group-item-action" routerLink="/channel">Channels</a>
-  <a  class="list-group-item list-group-item-action" routerLink="/user">User</a>
-</div>
-</div> -->
+      </ul>
+    </div>
+  </nav>
 
-</body>
-</html>
+
 
 <router-outlet></router-outlet>
