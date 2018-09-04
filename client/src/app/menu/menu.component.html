@@ -7,7 +7,7 @@
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li *ngIf="role >= 1" class="nav-item">
         <a class="nav-link" routerLink="/chat">Chat</a>
       </li>
       <li class="nav-item active">
@@ -35,10 +35,13 @@
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li *ngIf="role >= 1" class="nav-item">
-          <a class="nav-link" routerLink="/login">Logout</a>
+          <a class="nav-link btn pt-1.5" (click)="logout()">Logout</a>
       </li>
 
-
     </ul>
+    <ul class="navbar-nav ml-auto">
+        <li *ngIf="role >= 1" class="nav-link">Your user level is {{role}}</li>
+    </ul>
+    
   </div>
 </nav>

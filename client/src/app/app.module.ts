@@ -17,6 +17,7 @@ import { GroupChannelsComponent } from './group-channels/group-channels.componen
 import { ChannelUsersComponent } from './channel-users/channel-users.component';
 import { MenuComponent } from './menu/menu.component';
 import { ChatComponent } from './chat/chat.component';
+import { SessionService } from './session.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,9 @@ import { ChatComponent } from './chat/chat.component';
     FormsModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [SessionService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+
+}

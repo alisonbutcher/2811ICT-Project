@@ -1,1 +1,66 @@
-{"users":[{"id":1,"name":"super","email":"superuser@"},{"id":2,"name":"groupadmin","email":"groupadmin@"},{"id":3,"name":"Alison","email":"alison@uni.edu"}],"groups":[{"id":"1","name":"1234ff","description":"dfgff12"}],"channels":[{"id":"1","name":"Channel 1","description":"new description123"},{"id":2,"name":"Channel 2"},{"id":3,"name":"Channel 3"}],"userRoles":[{"userid":1,"roleid":1}],"user_group":[],"channelUsers":[{"channelid":1,"userid":1},{"channelid":1,"userid":2},{"channelid":2,"userid":1}],"group_channel":[],"roles":[{"id":"1","name":"User","description":"General Chat Users"},{"id":2,"name":"Group Admin","description":"Group Admins"},{"id":"3","name":"Super User","description":"Super User (All Access);"}]}
+{
+    "users": [{
+        "id": 1,
+        "name": "user",
+        "email": "user@chat"
+    }, {
+        "id": 2,
+        "name": "groupadmin",
+        "email": "groupadmin@chat"
+    }, {
+        "id": 3,
+        "name": "super",
+        "email": "superadmin@chat"
+    }],
+    "groups": [{
+        "id": "1",
+        "name": "1234ff",
+        "description": "dfgff12"
+    }],
+    "channels": [{
+        "id": "1",
+        "name": "Channel 1",
+        "description": "new description123"
+    }, {
+        "id": 2,
+        "name": "Channel 2"
+    }, {
+        "id": 3,
+        "name": "Channel 3"
+    }],
+    "userRoles": [{
+        "userid": 1,
+        "roleid": 1
+    },{
+        "userid": 2,
+        "roleid": 2
+    },{
+        "userid": 3,
+        "roleid": 3
+    }],
+    "user_group": [],
+    "channelUsers": [{
+        "channelid": 1,
+        "userid": 1
+    }, {
+        "channelid": 1,
+        "userid": 2
+    }, {
+        "channelid": 2,
+        "userid": 1
+    }],
+    "group_channel": [],
+    "roles": [{
+        "id": "1",
+        "name": "User",
+        "description": "General Chat Users"
+    }, {
+        "id": 2,
+        "name": "Group Admin",
+        "description": "Group Admins"
+    }, {
+        "id": "3",
+        "name": "Super User",
+        "description": "Super User (All Access);"
+    }]
+}

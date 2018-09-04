@@ -15,9 +15,10 @@ export class LoginComponent implements OnInit {
   name: string = '';
   private userObject;
   email: string = '';
-  @input() session: SessionService;
+  // @input() session: SessionService;
 
-  constructor(private router: Router, private form: FormsModule, private _loginService: LoginService) { }
+  constructor(private router: Router, private form: FormsModule, private _loginService: LoginService,
+    public _session: SessionService) { }
 
   ngOnInit() {
   }
@@ -35,12 +36,16 @@ export class LoginComponent implements OnInit {
           // sessionStorage.setItem('email', this.userObject.email);
           // sessionStorage.setItem('role', this.userObject.role);
           // use the session service to store this sessionstorage item
-          this.session.setItem('username', this.userObject.id);
-          this.session.setItem('username', this.userObject.name);
-          this.session.setItem('email', this.userObject.email);
-          this.session.setItem('role', Number(this.userObject.role));
+          this._session.setItem('username', this.userObject.id);
+          this._session.setItem('username', this.userObject.name);
+          this._session.setItem('email', this.userObject.email);
+          this._session.setItem('role', Number(this.userObject.role));
+          if (this.userObject.role >= 3) {
+            this.router.navigateByUrl('/user');
+          } else {
+            this.router.navigateByUrl('/chat');
+          }
 
-          this.router.navigateByUrl('/chat');
         } else {
           alert('Username not found');
         }
@@ -50,8 +55,8 @@ export class LoginComponent implements OnInit {
 
   logout(event) {
     event.preventDefault();
-    this.session.removeAllItems();
-    this.session.setItem('role', 0);
+    this._session.removeAllItems();
+    this._session.setItem('role', 0);
   }
 }
 

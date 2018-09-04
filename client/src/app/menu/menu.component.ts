@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SessionService } from '../session.service';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 // Observable triggered on local session data change
 
@@ -9,11 +11,9 @@ import { SessionService } from '../session.service';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  role = 3;
+  role = 0;
 
-  @Input() session: SessionService;
-
-  constructor() { }
+  constructor(public session: SessionService, private router: Router) { }
 
   ngOnInit() {
 
@@ -22,6 +22,12 @@ export class MenuComponent implements OnInit {
       this.role = Number(this.session.getitem('role'));
       console.log('Role is: ' + this.role);
     });
+  }
+
+  logout() {
+    this.session.removeAllItems();
+    this.session.setItem('role', 0);
+    this.router.navigateByUrl('/');
   }
 
 }

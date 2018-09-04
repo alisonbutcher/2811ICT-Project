@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,6 +21,7 @@ export class SessionService {
   }
 
   setItem(key: string, data: any) {
+    console.log('SessionService: ' + key + ':' + data);
     localStorage.setItem(key, data);
     this.storageSub.next(true);
   }
