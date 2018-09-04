@@ -36,14 +36,18 @@ export class LoginComponent implements OnInit {
           // sessionStorage.setItem('email', this.userObject.email);
           // sessionStorage.setItem('role', this.userObject.role);
           // use the session service to store this sessionstorage item
-          this._session.setItem('username', this.userObject.id);
+          this._session.setItem('id', this.userObject.id);
           this._session.setItem('username', this.userObject.name);
           this._session.setItem('email', this.userObject.email);
           this._session.setItem('role', Number(this.userObject.role));
           if (this.userObject.role >= 3) {
             this.router.navigateByUrl('/user');
-          } else {
+          } else if (this.userObject.role == 2){
+            this.router.navigateByUrl('/groups');
+          } else if (this.userObject.role == 1) {
             this.router.navigateByUrl('/chat');
+          } else {
+            this.router.navigateByUrl('/login');
           }
 
         } else {

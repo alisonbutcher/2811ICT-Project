@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   role = 0;
-
+  user;
   constructor(public session: SessionService, private router: Router) { }
 
   ngOnInit() {
@@ -20,6 +20,7 @@ export class MenuComponent implements OnInit {
     // Subscribe to the observable sessionService to monitor session variables
     this.session.watchStorage().subscribe((data: string) => {
       this.role = Number(this.session.getitem('role'));
+      this.user = this.session.getitem('username');
       console.log('Role is: ' + this.role);
     });
   }
