@@ -8,6 +8,7 @@ import { RolesComponent } from './roles/roles.component';
 import { ChannelUsersComponent } from './channel-users/channel-users.component';
 import { GroupUsersComponent } from './group-users/group-users.component';
 import { GroupChannelsComponent } from './group-channels/group-channels.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'roles', component: RolesComponent },
   {path: 'channel-users', component: ChannelUsersComponent },
   {path: 'group-users', component: GroupUsersComponent },
-  {path: 'group-channels', component: GroupChannelsComponent }
+  {path: 'group-channels', component: GroupChannelsComponent },
+  {path: 'chat', component: ChatComponent }
 
 ];
 

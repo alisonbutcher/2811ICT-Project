@@ -15,6 +15,8 @@ import { RolesComponent } from './roles/roles.component';
 import { GroupUsersComponent } from './group-users/group-users.component';
 import { GroupChannelsComponent } from './group-channels/group-channels.component';
 import { ChannelUsersComponent } from './channel-users/channel-users.component';
+import { MenuComponent } from './menu/menu.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { ChannelUsersComponent } from './channel-users/channel-users.component';
     RolesComponent,
     GroupUsersComponent,
     GroupChannelsComponent,
-    ChannelUsersComponent
+    ChannelUsersComponent,
+    MenuComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
