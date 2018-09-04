@@ -10,20 +10,18 @@ module.exports = (app, fs) => {
         }
     });
 
+    // Handles user authentication requests.
     app.get('/api/login/:name', (req, res) => {
         const requestedUser = req.params['name'];
         let str;
-
         for (let i = 0; i < obj.users.length; i++) {
             if (obj.users[i].name == requestedUser){
                 str = obj.users[i];
             }
         }
-        console.log(str);
         if (str != null) {
             let ur;
             ur = obj.userRoles.find(x => x.userid == str.id);
-            console.log(ur);
             str = '{ "id": ' + str.id + ', "name": "' + str.name + '", "email": "' + str.email  + '", "role": ';
             
             if (ur != null) {

@@ -20,18 +20,19 @@ export class LoginComponent implements OnInit {
 
   loginUser(event){
     event.preventDefault();
-    console.log("Calling loginservice");
+    console.log('Calling loginservice');
     this._loginService.checkLogin(this.name).subscribe(
       data => this.userObject = data,
       err => alert(err),
       () => {
         if (this.userObject != null) {
+          sessionStorage.setItem('id', this.userObject.id);
           sessionStorage.setItem('username', this.userObject.name);
           sessionStorage.setItem('email', this.userObject.email);
-          console.log("setting role specific session");
+          sessionStorage.setItem('role', this.userObject.role);
+          console.log(this.userObject);
 
-
-          // this.router.navigateByUrl('/channels');
+          this.router.navigateByUrl('/channel');
         } else {
           alert('Username Incorrect');
         }
