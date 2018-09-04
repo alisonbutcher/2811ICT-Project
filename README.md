@@ -1,7 +1,8 @@
 # **2811ICT-Project**
+## Introduction
 *A Client Server Chat Application based on NodeJS, Express, and Angular created as Part 1 of 2 for the 2811ICT Web Development Course in the Computer Science program at Griffith University, Australia*
 
-## Introduction
+
 
 ## Layout of Git Repository
 The project is separeted into two sections *Client* which contains the angular project and *Server* which contains the nodeJS and Express project for the REST API. The client and server projects were managed within a single git repository

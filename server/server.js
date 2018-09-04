@@ -20,8 +20,8 @@ app.get('/', function (req, res) {
 // let data = require('./data/data.js')(fs);
 
 // Routes
-require('./routes/api/auth.js')(app,fs);
-require('./routes/api/register.js')(app,fs);
+// require('./routes/api/auth.js')(app,fs);
+// require('./routes/api/register.js')(app,fs);
 require('./routes/api/users.js')(app,fs);
 require('./routes/api/groups.js')(app,fs);
 require('./routes/api/login.js')(app,fs);
