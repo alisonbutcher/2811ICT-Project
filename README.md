@@ -65,19 +65,58 @@ Group_Channel contains the channels that belong to a specific group and are stor
 ##### User_Role
 UserRole contains the relationship between users and roles (eg: the role/s assigned to each user) and are stored in a JSON array of objects containing roleid and userid key:value pairs.
 
-## REST API
-The Angular front end should communicate with the Node.js server using a REST API. Describe each route provided, parameters, return values, and what it does.
 ## Angular Architecture
 Describe your *Angular architecture in terms of components, services, and models.
 components, services, models, routes
-### Session Service
-It quickly became clear that while the user login details for a successful login are stored in local session storage that it would be difficult for other components in the angular system to notice changes in these session variables. A singleton service was created which provided a single instance of a service that handled reading and writing of session variables.
+### Menu
+The *menu component* works with the *Session Service* to generate the navigation bar view and controls which parts of the menu are available for each user role.
 
-Additionaly it was configured as an observable so that components could subscribe to it and be notified by an event whenever a session variable was changed which made it very easy to enable and disable various parts of the view depending on the login details stored in the session variables without needing to check them constantly.
-## Routes
+### Login
+The *Login Component* creates the login view and via the *Login Service* it sends requests to the REST API to log a valid user in and out.
+
+### User component and service
+The *User Component* generates a table view of the Users data and via the *User Service* it adds, updates, deletes and gets users from the REST API.
+
+### Chat component and service
+The *Chat Component* will provide a view of the current channel in part 2 of the project
+
+### Groups component and service
+The *Groups Component* provides a table view of the groups data and uses the *Groups Service* to communicate with the REST API allowing add, update, delete and get functionality.
+
+### Channels component and service
+The *Channels Component* provides a table view of the channels data and allows for adding, updating, deleting and getting channels via the *Channels Service* and the REST API.
+
+### Roles component and service
+The *Roles Component* provides a table view of the user roles data and uses the *Roles Service* to communicate with the REST API for add, delete, update and get functionality.
+
+### Channel-Users component and service
+The *Channel-Users Component* works on conjunction with the *Channel-Users Service* to provide a Master/Detail view of the users in each channel. Unfortunately it was not completely implemented for Part 1 due to time constraints but when completed will provide a view for adding and deleting users from specific channels.
+
+### Group-Channels component and service
+The *Group-Channels Component* working in conjuntion with the *Channel-Users Service* to provide and interface to the REST API provides a Master/Detail view of the channels assigned to each group with the ability to add and delete channels from each group. Unfortunately due to time constraints this was not fully implemented in Part 1 of the project. 
+
+### Group-Users component and service 
+The *Group-Users Component* via the *Group-Users Service* acting as an interface to the REST API provides a Master/Detail view of the users contained in each group with the ability to add and delete users from each group. Unfortunately due to time constraints this was not fully implemented in Part 1 of the project. 
+
+### The Session Service
+It quickly became clear that while the user login details for a successful login are stored in local session storage that it would be difficult for other components in the angular system to notice changes in these session variables. A singleton service *SessionService* was created which provided a single instance of a service that handled reading and writing of session variables.
+
+Additionaly it was configured as an observable so that components could subscribe to it and be notified by an event whenever a session variable was changed which made it very easy to enable and disable various parts of the view depending on the login details stored in the session variables without needing to poll/check them constantly.
+
+## Routes (REST API)
 parameters, returnvalues, purpose
+### User Routes
 
----
----
+### Role Routes
+
+### Groups Routes
+
+### Channels Routes
+
+### Login Routes
+
+
+
+
 
 

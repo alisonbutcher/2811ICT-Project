@@ -31,11 +31,6 @@ export class LoginComponent implements OnInit {
       err => alert('Error loging in: '),
       () => {
         if (this.userObject != null) {
-          // sessionStorage.setItem('id', this.userObject.id);
-          // sessionStorage.setItem('username', this.userObject.name);
-          // sessionStorage.setItem('email', this.userObject.email);
-          // sessionStorage.setItem('role', this.userObject.role);
-          // use the session service to store this sessionstorage item
           this._session.setItem('id', this.userObject.id);
           this._session.setItem('username', this.userObject.name);
           this._session.setItem('email', this.userObject.email);
