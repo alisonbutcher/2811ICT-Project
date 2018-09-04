@@ -114,15 +114,67 @@ Additionaly it was configured as an observable so that components could subscrib
 ## Routes (REST API)
 parameters, returnvalues, purpose
 ### User Routes
+users.js has the routes for REST requests for handling get, add, update and delete methods for the users. Detais of each is as follows:
 
+##### Get (/api/user)
+Get returns a list of users stored on the server via a GET request. I accepts no parameters and returns a JSON array of users with id, name and email for each user.
+
+##### Post (/api/user)
+Post adds a new user via a POST request. User details including id, name and email with the updated details are retrieved from the body which is sent with the request. Before creating a new user the id numbers of existing users are iterated and an id at the next available value is added.
+
+##### Put (/api/user:id)
+Put updates a users details via a PUT request. It accepts one parameter (id) which represents the users id number. User details including id, name and email with the updated details are retrieved from the body which is sent with the request.
+
+##### Delete (/api/user:id)
+Given a user id as a parameter the Delete route uses a DELELTE request to find the user in the database and deletes that user. It returns a success response only.
 ### Role Routes
 
+roles.js has the routes for REST requests for handling get, add, update and delete methods for the roles. Detais of each is as follows:
+
+##### Get (/api/roles)
+Get returns a list of roles stored on the server via a GET request. I accepts no parameters and returns a JSON array of roles with id, name and description for each role.
+
+##### Get (/api/user-roles:userid)
+Given a userid via a parameter this route uses a GET request to search for the roles assigned to a user. It returns the roleid and userid via JSON.
+
+##### Post (/api/roles)
+Post adds a new role via a POST request. User details including id, name and email with the updated details are retrieved from the body which is sent with the request. Before creating a new user the id numbers of existing roles are iterated and an id at the next available value is added.
+
+##### Put (/api/role:id)
+Put updates a users details via a PUT request. It accepts one parameter (id) which represents the roles id number. Role details including id, name and description with the updated details are retrieved from the body which is sent with the request.
+
+##### Delete (/api/role:id)
+Given a role id as a parameter the Delete route uses a DELELTE request to find the role in the database and deletes that role. It returns a success response only.
+
 ### Groups Routes
+##### Get (/api/group)
+Get returns a list of roles stored on the server via a GET request. I accepts no parameters and returns a JSON array of roles groups id, name and description for each group.
+##### Get (/api/channel-users:id)
+Given a channel id via a parameter this route uses a GET request to search for the users assigned to a channel. It returns the userid and channelid via JSON.
+##### Post (/api/group)
+Post adds a new group via a POST request. Group details including id, name and description with the updated details are retrieved from the body which is sent with the request. Before creating a new group the id numbers of existing group are iterated and an id at the next available value is added.
 
+##### Put (/api/group:id)
+Put updates a groups details via a PUT request. It accepts one parameter (id) which represents the groups id number. Group details including id, name and description with the updated details are retrieved from the body which is sent with the request.
+
+##### Delete (/api/group:id)
+Given a group id as a parameter the Delete route uses a DELELTE request to find the group in the database and deletes that group. It returns a success response only.
 ### Channels Routes
+##### Get (/api/channel)
+Get returns a list of channels stored on the server via a GET request. I accepts no parameters and returns a JSON array of channels with id, name and description for each channel.
 
+##### Post (/api/channel)
+Post adds a new channel via a POST request. Channel details including id, name and description with the updated details are retrieved from the body which is sent with the request. Before creating a new channel the id numbers of existing channels are iterated and an id at the next available value is added.
+
+##### Put (/api/channel:id)
+Put updates a channels details via a PUT request. It accepts one parameter (id) which represents the channels id number. Group details including id, name and description with the updated details are retrieved from the body which is sent with the request.
+
+##### Delete (/api/channel:id)
+Given a channel id as a parameter the Delete route uses a DELELTE request to find the channel in the database and deletes that channel. It returns a success response only.
 ### Login Routes
-
+Currently the login.js contains a single route for checking if a user exists in the system. This will be expanded in part 2 of the project.
+##### Get (/api/login/:name)
+A get request with the name parameter containing a user name checks for an user of that name existing in the system. This GET request returns JSON containing the users details (id,name,email) and also the roleid of the role they have on the system.
 
 
 
