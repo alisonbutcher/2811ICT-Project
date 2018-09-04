@@ -4,7 +4,8 @@
 ## Introduction
 
 ## Layout of Git Repository
-The project is separeted into two sections *Client* which contains the angular project and *Server* which contains the nodeJS and Express project for the REST API. 
+The project is separeted into two sections *Client* which contains the angular project and *Server* which contains the nodeJS and Express project for the REST API. The client and server projects were managed within a single git repository
+
 ### Client Folder
 The client folder contains the root folder of the Angular project and has several files and folders including: 
 
@@ -39,7 +40,13 @@ The routes folder contains several javascript files which split the REST API fun
 There are several files in the server folder, the most important being the package-json file which contains the information required to rebuild the node_modules folder. Another very important file here is the .gitignore file which tells git to exclude certain files or folders which doing commits (for example the node_modules folders). Additonally there is a listen.js file which configures the http server part of the project to listen on port 3000 and also the server.js file which is the starting point for node project.
 
 ## Git Repository Usage
-How the git system was used for this project
+Single developer projects sometimes don't require the full set of tools provided by git, however the branch and merge functionality is something that could have been used to better manage the project as opposed to just a sequential series of commits that happens with a single developer project. 
+
+The workflow for this project was a series of sequential add, commits with a revert to an earlier commit when the project went slightly off track. 
+
+The git commits generally followed the pattern of a separate commit for each new feature or part of the project with additional commits for bug fixes or extra functionality. 
+
+In hindsight the more effective workflow of a branch for each new feature would have enabled working on separate parts of the project in a non sequential way.
 
 ## Server Data Structures
 For Part 1 of the project a JSON file was used to store all data. The main sections of the JSON file are described below:
