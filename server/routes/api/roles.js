@@ -18,23 +18,15 @@ module.exports = (app, fs) => {
 
     app.get('/api/user-roles/:userid', function (req, res) {
         let uid = req.params.userid;
-        console.log(uid);
         let urole = obj.userRoles.find(x => x.userid == uid);
-        console.log(urole);
         if (urole != null) {
             res.send(urole)
         } else {
             res.send("{No role found for this user}");
         }
-
     });
 
-    // app.get('/user', function(req,res){
-    //     console.log(path.join(__dirname__, '../../../client/dist/client/index.html'));
-    //     res.sendFile(path.join(__dirname, '../../../client/dist/client/index.html'))
-    // });
-
-    // Add User via post
+    // Add Role via post
     app.post('/api/roles', (req, res) => {
         
         // calculate the next ID
@@ -51,6 +43,17 @@ module.exports = (app, fs) => {
             if (err) throw err;
         })
     });
+
+    // Add a user to a role
+    // app.post('/api/user-roles', function (req, res) {
+    //     let uid = req.body.userid;
+    //     let urole = obj.userRoles.find(x => x.userid == uid);
+    //     if (urole != null) {
+    //         res.send(urole)
+    //     } else {
+    //         res.send("{No role found for this user}");
+    //     }
+    // });
 
 
 

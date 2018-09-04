@@ -1,17 +1,20 @@
-<div class="box" style="width: 400px">
-<h3>Please Login</h3>
-<form class="control" (submit)="loginUser($event)">
+<div class="card mt-3 ml-3" style="width: 400px">
+  <div class="card-body">
+    <h3>Please Login:</h3>
+    <div class="form-group">
+      <form class="control" (submit)="loginUser($event)">
 
-  <div class="field">
-    <label class="label">Username</label>
-    <input class="input" type="text" placeholder="enter username" [(ngModel)]="name" name="username" id="username">
+        <div class="field mt-3">
+          <label for="username">Username</label>
+          <input class="form-control" type="text" placeholder="enter username" [(ngModel)]="name" name="username" id="username">
+        </div>
+        <div class="field mt-3">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" placeholder="password" disabled [(ngModel)]="password" name="password"
+            id="password">
+        </div>
+        <div class="float-right mt-3"><p><button class="button is-primary" type="submit">Submit</button></p></div>
+      </form>
+    </div>
   </div>
-  <div class="field">
-    <label class="label">Password</label>
-    <input class="input password disabled" type="password" placeholder="password" disabled [(ngModel)]="password" name="password" id="password">
-  </div>
-
-  <p><button class="button is-primary" type="submit">Submit</button></p>
-
-</form>
-</div>
+  <!-- </div> -->

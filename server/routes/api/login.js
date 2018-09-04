@@ -17,10 +17,23 @@ module.exports = (app, fs) => {
         for (let i = 0; i < obj.users.length; i++) {
             if (obj.users[i].name == requestedUser){
                 str = obj.users[i];
+            }
+        }
+        console.log(str);
+        if (str != null) {
+            let ur;
+            ur = obj.userRoles.find(x => x.userid == str.id);
+            console.log(ur);
+            str = '{ "id": ' + str.id + ', "name": "' + str.name + '", "email": "' + str.email  + '", "role": ';
+            
+            if (ur != null) {
+                str = str + ur.roleid + ' }';
             } else {
-                str = null;
+                str = str + '0 }';
             }
             res.send(str);
-        }
+        } else {
+            res.send('{ "username": ' + requestedUser + ', "status": "not found" }');
+        }    
     });
 };
