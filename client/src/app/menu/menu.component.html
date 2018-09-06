@@ -1,5 +1,5 @@
 <mat-sidenav-container class="example-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+  <mat-sidenav color="primary" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
 
     <mat-nav-list dense>
 
@@ -29,6 +29,9 @@
 
   <mat-sidenav-content>
     <button mat-button (click)="sidenav.toggle()">Menu</button>
+    <div>
+      Site content here...
+    </div>
 
   </mat-sidenav-content>
 </mat-sidenav-container>
