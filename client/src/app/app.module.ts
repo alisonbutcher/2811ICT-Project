@@ -20,6 +20,13 @@ import { ChatComponent } from './chat/chat.component';
 import { SessionService } from './session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Angular Material Components
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenav } from '@angular/material/sidenav';
+import { MatMenuModule} from '@angular/material/menu';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +47,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     FontAwesomeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatInputModule,
+    MatSidenav,
+    MatMenuModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
