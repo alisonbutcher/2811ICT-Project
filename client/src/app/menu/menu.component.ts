@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SessionService } from '../session.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-
+// import { MatSidenav} from '@angular/material/sidenav';
+ 
 // Observable triggered on local session data change
 
 @Component({
@@ -11,8 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+  events: string[] = [];
+  opened: boolean;
   role = 0;
   user;
+
   constructor(public session: SessionService, private router: Router) { }
 
   ngOnInit() {

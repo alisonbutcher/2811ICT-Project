@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,12 +20,44 @@ import { SessionService } from './session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Material Components
-import { MatTableModule } from '@angular/material/table';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenav } from '@angular/material/sidenav';
-import { MatMenuModule} from '@angular/material/menu';
-
+import {
+  MatAutocompleteModule,
+  MatBadgeModule,
+  MatBottomSheetModule,
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDatepickerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatExpansionModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatNativeDateModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatRadioModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSliderModule,
+  MatSlideToggleModule,
+  MatSnackBarModule,
+  MatSortModule,
+  MatStepperModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatTreeModule,
+  MatRadioGroup
+} from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,13 +77,16 @@ import { MatMenuModule} from '@angular/material/menu';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
     MatInputModule,
-    MatSidenav,
-    MatMenuModule
+    MatSidenavModule,
+    MatRadioModule,
+    // MatMenuModule
+    MatToolbarModule,
+    MatCheckboxModule,
+
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
