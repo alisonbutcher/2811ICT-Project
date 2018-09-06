@@ -18,6 +18,7 @@ import { ChannelUsersComponent } from './channel-users/channel-users.component';
 import { MenuComponent } from './menu/menu.component';
 import { ChatComponent } from './chat/chat.component';
 import { SessionService } from './session.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { SessionService } from './session.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BrowserAnimationsModule
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
