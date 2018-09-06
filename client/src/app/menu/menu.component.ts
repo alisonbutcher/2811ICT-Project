@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   events: string[] = [];
-  opened: boolean;
-  role = 0;
+  opened: boolean = true;
+  panelOpenState = false;
+  role = 3;
   user;
 
   constructor(public session: SessionService, private router: Router) { }

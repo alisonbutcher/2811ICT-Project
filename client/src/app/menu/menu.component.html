@@ -1,69 +1,35 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
-                 (closed)="events.push('close!')">
-      Sidenav content
-    </mat-sidenav>
-  
-    <mat-sidenav-content>
-      <p><button mat-button (click)="sidenav.toggle()">Menu</button></p>
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
 
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+    <mat-nav-list dense>
 
-<!-- <mat-menu #appMenu="matMenu">
-  <button mat-menu-item>Settings</button>
-  <button mat-menu-item>Help</button>
-</mat-menu>
+      <a mat-list-item *ngIf="role == 1" routerLink="/chat">Chat</a>
+      <div *ngIf="role >= 2">
+        <h4 matSubheader>Group Mangement</h4>
+        <a mat-list-item routerLink="/groups">Groups</a>
+        <a mat-list-item routerLink="/group-users">Group Users</a>
+        <a mat-list-item routerLink="/group-channels">Group Channels</a>
+        <mat-divider></mat-divider>
+        <h4 matSubheader>Channel Mangement</h4>
+        <a mat-list-item routerLink="/channel">Manage Channels</a>
+        <a mat-list-item routerLink="/channel-users">Channel Users</a>
+      </div>
+      <div *ngIf="role >= 3">
+        <mat-divider></mat-divider>
+        <h4 matSubheader>User Mangement</h4>
+        <a mat-list-item routerLink="/user">Manage Users</a>
+        <a mat-list-item routerLink="/roles">Mange Roles</a>
+      </div>
+      <mat-divider></mat-divider>
+      <a mat-list-item *ngIf="role > 0" (click)="logout()">Logout</a>
+      <a mat-list-item *ngIf="role == 0" routerLink="/login">Login</a>
+    </mat-nav-list>
 
-<button mat-button [matMenuTriggerFor]="appMenu">
-Trigger
-</button> -->
+  </mat-sidenav>
 
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="http://localhost:3000">2811ICT Chat</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <mat-sidenav-content>
+    <button mat-button (click)="sidenav.toggle()">Menu</button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
-    <ul class="navbar-nav mr-auto">
-      <li *ngIf="role >= 1" class="nav-item">
-        <a class="nav-link" routerLink="/chat">Chat</a>
-      </li>
-      <li class="nav-item active">
-          <a  *ngIf="role >= 2" class="nav-link" routerLink="/groups">Groups</a>
-        </li>
-         <li *ngIf="role >= 2" class="nav-item">
-          <a class="nav-link" routerLink="/group-channels">Group Channels</a>
-        </li>
-        <li *ngIf="role >= 2" class="nav-item">
-          <a class="nav-link" routerLink="/group-users">Group Users</a>
-        </li>
-      <li  *ngIf="role >= 2" class="nav-item">
-        <a class="nav-link" routerLink="/channel">Channels</a>
-      </li>
-      <li *ngIf="role >= 2" class="nav-item">
-        <a class="nav-link" routerLink="/channel-users">Channel Users</a>
-      </li>
-      <li *ngIf="role >= 3" class="nav-item">
-        <a class="nav-link" routerLink="/user">User</a>
-      </li>
-      <li *ngIf="role >= 3" class="nav-item">
-        <a class="nav-link" routerLink="/roles">Roles</a>
-      </li>
-      <li *ngIf="role == 0" class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
-      <li *ngIf="role >= 1" class="nav-item">
-          <a class="nav-link btn pt-1.5" (click)="logout()">Logout</a>
-      </li>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
-    </ul>
-    <ul class="navbar-nav ml-auto">
-        <li *ngIf="role >= 1" class="nav-link">Welcome {{user}}</li>
-    </ul>
-    
-  </div>
-</nav> -->

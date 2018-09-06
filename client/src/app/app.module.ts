@@ -86,6 +86,8 @@ import {
     // MatMenuModule
     MatToolbarModule,
     MatCheckboxModule,
+    MatExpansionModule,
+    MatListModule
 
   ],
   providers: [SessionService],
