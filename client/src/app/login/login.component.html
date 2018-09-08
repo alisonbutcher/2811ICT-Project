@@ -1,20 +1,17 @@
-<div class="card mt-3 ml-3" style="width: 400px">
-  <div class="card-body">
-    <h3>Please Login:</h3>
-    <div class="form-group">
-      <form class="control" (submit)="loginUser($event)">
+<div id="login">
 
-        <div class="field mt-3">
-          <label for="username">Username</label>
-          <input class="form-control" type="text" placeholder="enter username" [(ngModel)]="name" name="username" id="username">
-        </div>
-        <div class="field mt-3">
-          <label for="password">Password</label>
-          <input class="form-control" type="password" placeholder="password" disabled [(ngModel)]="password" name="password"
-            id="password">
-        </div>
-        <div class="float-right mt-3"><p><button class="button is-primary" type="submit">Submit</button></p></div>
-      </form>
-    </div>
-  </div>
-  <!-- </div> -->
+  <h3>Please Login:</h3>
+
+  <form (submit)="loginUser($event)">
+
+    <mat-form-field>
+      <input matInput placeholder="enter username" [(ngModel)]="name" name="username" id="username">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput type="password" placeholder="password" disabled [(ngModel)]="password" name="password" id="password">
+    </mat-form-field>
+    <br />
+    <button mat-flat-button color="primary" type="submit">Submit</button>
+
+  </form>

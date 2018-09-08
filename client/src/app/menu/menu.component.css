@@ -19,3 +19,33 @@
   mat-sidenav {
     width: 220px;
   }
+
+  mat-icon {
+    padding-left: 3px;
+    margin-right: 10px;
+  }
+
+  a {
+    padding-left: 40px;
+  }
+
+  #hamburger {
+    padding: 0;
+    height: 64px;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  #hamburger mat-icon {
+    padding-top: 10px;
+  }
+
+  mat-sidenav-content {
+    padding-top: 28px;
+    padding-left: 28px;
+  }
+
+  #heading {
+    text-decoration: none;
+    color: white;
+  }

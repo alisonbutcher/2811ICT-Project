@@ -1,3 +1,16 @@
+<mat-toolbar color="primary">
+  <span><a id="hamburger" ><mat-icon (click)="sidenav.toggle()">menu</mat-icon></a></span>
+    <span><a id="heading" href="http://localhost:3000">2811ICT Chat</a></span>
+
+    <!-- This fills the remaining space of the current row -->
+    <span class="toolbar-fill-remaining-space"></span>
+  
+    <span>
+      <button *ngIf="role > 0" mat-button (click)="logout()"><mat-icon>lock</mat-icon>Logout</button>
+     <button *ngIf="role == 0" mat-button routerLink="/login"><mat-icon>lock_open</mat-icon>Login</button>
+    </span>
+</mat-toolbar>
+
 <mat-sidenav-container class="example-container">
   <mat-sidenav color="primary" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
 
@@ -5,34 +18,29 @@
 
       <a mat-list-item *ngIf="role == 1" routerLink="/chat">Chat</a>
       <div *ngIf="role >= 2">
-        <h4 matSubheader>Group Mangement</h4>
+        <h4 matSubheader><mat-icon>dashboard</mat-icon>Group Mangement</h4>
         <a mat-list-item routerLink="/groups">Groups</a>
         <a mat-list-item routerLink="/group-users">Group Users</a>
         <a mat-list-item routerLink="/group-channels">Group Channels</a>
         <mat-divider></mat-divider>
-        <h4 matSubheader>Channel Mangement</h4>
-        <a mat-list-item routerLink="/channel">Manage Channels</a>
+        <h4 matSubheader><mat-icon>library_books</mat-icon>Channel Mangement</h4>
+        <a mat-list-item routerLink="/channel">Channels</a>
         <a mat-list-item routerLink="/channel-users">Channel Users</a>
       </div>
       <div *ngIf="role >= 3">
         <mat-divider></mat-divider>
-        <h4 matSubheader>User Mangement</h4>
+        <h4 matSubheader><mat-icon>perm_identity</mat-icon>User Mangement</h4>
         <a mat-list-item routerLink="/user">Manage Users</a>
         <a mat-list-item routerLink="/roles">Mange Roles</a>
       </div>
-      <mat-divider></mat-divider>
-      <a mat-list-item *ngIf="role > 0" (click)="logout()">Logout</a>
-      <a mat-list-item *ngIf="role == 0" routerLink="/login">Login</a>
+      
+      
     </mat-nav-list>
 
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button mat-button (click)="sidenav.toggle()">Menu</button>
-    <div>
-      Site content here...
-    </div>
-
-  </mat-sidenav-content>
+    <router-outlet></router-outlet>
+</mat-sidenav-content>
 </mat-sidenav-container>
 

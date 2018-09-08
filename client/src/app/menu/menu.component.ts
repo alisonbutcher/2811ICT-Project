@@ -15,7 +15,7 @@ export class MenuComponent implements OnInit {
   events: string[] = [];
   opened: boolean = true;
   panelOpenState = false;
-  role = 3;
+  role = 0;
   user;
 
   constructor(public session: SessionService, private router: Router) { }

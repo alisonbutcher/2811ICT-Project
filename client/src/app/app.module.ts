@@ -58,6 +58,7 @@ import {
   MatTreeModule,
   MatRadioGroup
 } from '@angular/material';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +71,8 @@ import {
     GroupChannelsComponent,
     ChannelUsersComponent,
     MenuComponent,
-    ChatComponent
+    ChatComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -87,7 +89,8 @@ import {
     MatToolbarModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
 
   ],
   providers: [SessionService],
