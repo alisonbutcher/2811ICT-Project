@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelsService } from '../channels.service';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-channels',
@@ -9,7 +10,7 @@ import { ChannelsService } from '../channels.service';
 export class ChannelsComponent implements OnInit {
   public channels;
   public channelName;
-
+  dataSource = new MatTableDataSource(this.channels);
   constructor(private _channelsService: ChannelsService) { }
 
   ngOnInit() {
