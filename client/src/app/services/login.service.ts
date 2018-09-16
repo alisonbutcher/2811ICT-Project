@@ -17,7 +17,9 @@ export class LoginService {
 
 // Uses http.get() to load data from a single API endpoint
   checkLogin(username) {
-    return this.http.get('http://localhost:3000/api/login/' + username );
+    return this.http.get('http://localhost:3000/login/' + username );
   }
 }
+
+
 

@@ -1,4 +1,6 @@
-var express = require('express'),
+const path = require('path');
+const cors = require('cors');
+const express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
@@ -10,104 +12,74 @@ var express = require('express'),
   GroupChannels = require('./models/group-channel.model'),
   ChannelUsers = require('./models/channel-user.model'),
   GroupUsers = require('./models/group-user.model'),
+  Login = require('./models/login.model'),
   bodyParser = require('body-parser');
   
+
+// Set maximum discrete number of endpoints
+app.setMaxListeners(20);
+
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/2811ICT'); 
 
-
+// Configure Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+// Configure CORS
+var corsOptions = {
+  origin: 'http://localhost:' + port,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}
+app.use(cors(corsOptions))
 
-var routes = require('./routes/user.routes'); //importing route
-routes(app); //register the route
 
+
+// REST API routes
+
+var login = require('./routes/login.routes');
+login(app);
+
+// User Routes
+var user = require('./routes/user.routes');
+user(app);
+
+// Group Routes
 var groups = require('./routes/group.routes');
 groups(app);
 
+// Channels Routes
 var channels = require('./routes/channel.routes');
 channels(app);
 
+// Roles Routes
 var roles = require('./routes/role.routes');
 roles(app);
 
-
+// User-Role Routes
 var userroles = require('./routes/user-role.routes');
 userroles(app);
 
+// Group-Channels Routes
 var groupchannels = require('./routes/group-channel.routes');
 groupchannels(app);
 
+// Group-Users Routes
 var groupusers = require('./routes/group-user.routes');
 groupusers(app);
 
+// Channel-Users Routes
 var channelusers = require('./routes/channel-user.routes');
 channelusers(app);
-// // Static Directory for Angular Client Side app
-// app.use(express.static(path.join(__dirname, '../client/dist/client')));
-// app.get('/', function (req, res) {
-//     res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
-// });
 
 
-app.listen(port);
+// Static Directory for Angular Client Side app
+app.use(express.static(path.join(__dirname, '../client/dist/client')));
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
+});
 
 
-console.log('RESTful API server started on: ' + port);
-
-
-// const express = require('express');
-// const app = express();
-// const http = require('http').Server(app);
-// const fs = require('fs');
-// const cors = require('cors');
-// const bodyparser = require('body-parser');
-// const path = require('path');
-// const mongoose = require('mongoose');
-
-
-// // Connection to DB via mongoose
-// let databaseUrl = 'mongodb://localhost/2811ICT';
-// // let mongoDB = process.env.MONGODB_URI || databaseUrl;
-// let mongoDB = databaseUrl;
-// mongoose.connect(mongoDB);
-// mongoose.Promise = global.Promise;
-// let db = mongoose.connection;
-// db.on('error', console.error.bind.bind(console, 'MongoDB connection error:'));
-
-// // Setup Body Parser
-// app.use(bodyparser.urlencoded({ extended: false }));
-// app.use(bodyparser.json());
-
-// // Static Directory for Angular Client Side app
-// app.use(express.static(path.join(__dirname, '../client/dist/client')));
-// app.get('/', function (req, res) {
-//     res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
-// });
-
-
-// // returns an object containing json user, channel and group data
-// // let data = require('./data/data.js')(fs);
-
-// // Routes
-// // require('./routes/api/auth.js')(app,fs);
-// // require('./routes/api/register.js')(app,fs);
-// // // require('./routes/api/users.js')(app,fs);
-// // import routes from './routes/userRoutes';
-
-// //app.js
-
-// const user = require('./routes/userRoutes'); // Imports routes for the user
-// app.use('/user', user);
-
-
-// // require('./routes/userRoutes.js')(app);
-// require('./routes/api/groups.js')(app,fs);
-// require('./routes/api/login.js')(app,fs);
-// require('./routes/api/channel.js')(app,fs);
-// require('./routes/api/roles.js')(app,fs);
-
-// // Http server
-// require('./listen.js')(http);
+// Start HTTP Server
+require('./listen')(app, port);
