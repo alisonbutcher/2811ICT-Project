@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { GroupsComponent } from './groups/groups.component';
-import { UserComponent } from './user/user.component';
-import {LoginComponent} from './login/login.component';
-import { ChannelsComponent } from './channels/channels.component';
-import { RolesComponent } from './roles/roles.component';
-import { ChannelUsersComponent } from './channel-users/channel-users.component';
-import { GroupUsersComponent } from './group-users/group-users.component';
-import { GroupChannelsComponent } from './group-channels/group-channels.component';
-import { ChatComponent } from './chat/chat.component';
+import { GroupsComponent } from './components/groups/groups.component';
+import { UserComponent } from './components/user/user.component';
+import {LoginComponent} from './components/login/login.component';
+import { ChannelsComponent } from './components/channels/channels.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { ChannelUsersComponent } from './components/channel-users/channel-users.component';
+import { GroupUsersComponent } from './components/group-users/group-users.component';
+import { GroupChannelsComponent } from './components/group-channels/group-channels.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 const routes: Routes = [

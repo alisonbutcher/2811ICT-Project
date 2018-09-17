@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { SessionService } from './session.service';
+import { SessionService } from './services/session.service';
 // import { Subscription } from 'rxjs/Subscription';
 
 @Component({

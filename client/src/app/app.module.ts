@@ -3,20 +3,20 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GroupsComponent } from './groups/groups.component';
+import { GroupsComponent } from './components/groups/groups.component';
 import { FormsModule } from '@angular/forms'; // to create bindings
 
 import { HttpClientModule} from '@angular/common/http';
-import { UserComponent } from './user/user.component';
-import { LoginComponent } from './login/login.component';
-import { ChannelsComponent } from './channels/channels.component';
-import { RolesComponent } from './roles/roles.component';
-import { GroupUsersComponent } from './group-users/group-users.component';
-import { GroupChannelsComponent } from './group-channels/group-channels.component';
-import { ChannelUsersComponent } from './channel-users/channel-users.component';
-import { MenuComponent } from './menu/menu.component';
-import { ChatComponent } from './chat/chat.component';
-import { SessionService } from './session.service';
+import { UserComponent } from './components/user/user.component';
+import { LoginComponent } from './components/login/login.component';
+import { ChannelsComponent } from './components/channels/channels.component';
+import { RolesComponent } from './components/roles/roles.component';
+import { GroupUsersComponent } from './components/group-users/group-users.component';
+import { GroupChannelsComponent } from './components/group-channels/group-channels.component';
+import { ChannelUsersComponent } from './components/channel-users/channel-users.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { SessionService } from './services/session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Angular Material Components
@@ -58,7 +58,7 @@ import {
   MatTreeModule,
   MatRadioGroup
 } from '@angular/material';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,

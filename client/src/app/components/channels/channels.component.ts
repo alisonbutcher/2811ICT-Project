@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ChannelsService } from '../channels.service';
+import { ChannelsService } from '../../services/channels.service';
 import { MatTableDataSource } from '@angular/material';
 
 @Component({

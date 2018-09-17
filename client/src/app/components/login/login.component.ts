@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from '../services/login.service';
-import { SessionService } from '../session.service';
+import { LoginService } from '../../services/login.service';
+import { SessionService } from '../../services/session.service';
 
 
 @Component({

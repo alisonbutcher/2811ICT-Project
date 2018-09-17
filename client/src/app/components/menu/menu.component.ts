@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SessionService } from '../session.service';
+import { SessionService } from '../../services/session.service';
 import { FormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 // import { MatSidenav} from '@angular/material/sidenav';
