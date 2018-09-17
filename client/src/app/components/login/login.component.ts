@@ -12,9 +12,9 @@ import { SessionService } from '../../services/session.service';
 })
 export class LoginComponent implements OnInit {
 
-  name: string = '';
+  private name: string = null;
+  private password: string = null;
   private userObject;
-  email: string = '';
   // @input() session: SessionService;
 
   constructor(private router: Router, private form: FormsModule, private _loginService: LoginService,
@@ -23,28 +23,39 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-
   loginUser(event) {
     event.preventDefault();
-    this._loginService.checkLogin(this.name).subscribe(
+    // Build JSON to body
+    const user = {
+      name: this.name,
+      password: this.password
+    };
+    console.log(user);
+    this._loginService.checkLogin(user).subscribe(
       data => this.userObject = data,
       err => alert('Error loging in: '),
       () => {
         if (this.userObject != null) {
-          this._session.setItem('id', this.userObject.id);
-          this._session.setItem('username', this.userObject.name);
-          this._session.setItem('email', this.userObject.email);
-          this._session.setItem('role', Number(this.userObject.role));
-          if (this.userObject.role >= 3) {
-            this.router.navigateByUrl('/user');
-          } else if (this.userObject.role == 2){
-            this.router.navigateByUrl('/groups');
-          } else if (this.userObject.role == 1) {
-            this.router.navigateByUrl('/chat');
+          // If error from API alert user
+          if (this.userObject.hasOwnProperty('message')) {
+            alert(this.userObject.message);
           } else {
-            this.router.navigateByUrl('/login');
-          }
 
+            // Set local session variables
+            const access = this.userObject.accessLevel;
+            this._session.setItem('id', this.userObject.id);
+            this._session.setItem('name', this.userObject.name);
+            this._session.setItem('accessLevel', access);
+
+            // Routing based on access level
+            if (access >= 3) {
+              this.router.navigateByUrl('/user');
+            } else if (access === 2) {
+              this.router.navigateByUrl('/group');
+            } else if (access === 1) {
+              this.router.navigateByUrl('/chat');
+            }
+          }
         } else {
           alert('Username not found');
         }

@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     let user = {
       name: name,
       email: email
-    }
+    };
     console.log('log:' + user);
     this._userService.createUser(user).subscribe(
       data => {
@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
       error => {
         console.error(error);
       }
-    )
+    );
   }
   updateUser(user) {
     this._userService.updateUser(user).subscribe(
