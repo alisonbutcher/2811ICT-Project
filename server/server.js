@@ -12,7 +12,6 @@ const express = require('express'),
   GroupChannels = require('./models/group-channel.model'),
   ChannelUsers = require('./models/channel-user.model'),
   GroupUsers = require('./models/group-user.model'),
-  Login = require('./models/login.model'),
   bodyParser = require('body-parser');
   
 
@@ -37,9 +36,6 @@ app.use(cors(corsOptions))
 
 
 // REST API routes
-
-var login = require('./routes/login.routes');
-login(app);
 
 // User Routes
 var user = require('./routes/user.routes');
