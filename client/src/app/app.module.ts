@@ -19,6 +19,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { SessionService } from './services/session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 // Angular Material Components
 import {
   MatAutocompleteModule,
@@ -59,6 +60,7 @@ import {
   MatRadioGroup
 } from '@angular/material';
 import { FooterComponent } from './components/footer/footer.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +74,8 @@ import { FooterComponent } from './components/footer/footer.component';
     ChannelUsersComponent,
     MenuComponent,
     ChatComponent,
-    FooterComponent
+    FooterComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +93,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatCheckboxModule,
     MatExpansionModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule
 
   ],
   providers: [SessionService],
