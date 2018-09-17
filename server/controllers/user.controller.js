@@ -92,7 +92,7 @@ exports.login = function (req, res) {
                 if (userRole.length > 0) {
 
                     // Build output json
-                    let out = JSON.parse('{"name": "' + u[0].name + '", "email": "' + 
+                    let out = JSON.parse('{"id": "' + u[0]._id + '", "name": "' + u[0].name + '", "email": "' + 
                         u[0].email + '", "accessLevel": "' + userRole[0].accessLevel + '"}');
 
                     // Return user and role access level object

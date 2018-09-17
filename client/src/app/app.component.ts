@@ -3,6 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { SessionService } from './services/session.service';
 // import { Subscription } from 'rxjs/Subscription';
 
+const serverPath = 'http://localhost:3000';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

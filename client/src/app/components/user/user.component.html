@@ -1,40 +1,41 @@
-<table mat-table [dataSource]="users">
+<h2>Manage Users</h2>
 
+<table mat-table [dataSource]="users" matSort >
+
+    <!-- Action Buttons -->
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef >  Actions</th>
+        <td mat-cell *matCellDef="let element" >
+             <button mat-icon-button color="primary"><mat-icon>create</mat-icon></button>
+             <button mat-icon-button color="warn" (click)="deleteUser(element)"><mat-icon>cancel</mat-icon></button>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef >Role</th>
+        <td mat-cell *matCellDef="let element" >role here...</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <!-- <ng-container matColumnDef="_id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
+      </ng-container> -->
+
+  <!-- Name Column -->
   <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> No. </th>
-    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
   </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-<div style="text-align:center">
-  <h4>Users</h4>
-  <table class="table table-striped table-bordered table-sm">
-    <thead class="">
-      <tr>
-        <td scope="col">Select</td>
-        <th scope="col">User ID</th>
-        <th scope="col">User Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Delete</th>
-        <th scope="col">Update</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of users">
-        <td><input type="checkbox"></td>
-        <td>{{user.id}}</td>
-        <td><input class="form-control" type="text" [(ngModel)]="user.name" value="{{user.name}}"></td>
-        <td><input class="form-control" type="email" [(ngModel)]="user.email"></td>
-        <td><button (click)="deleteUser(user)" class="btn btn-danger btn-sm">Delete</button></td>
-        <td><button (click)="updateUser(user)" class="btn btn-sm btn-primary">Update</button></td>
-      </tr>
-      <tr>
-          <td colspan="2">Add new user:</td>
-          <td><input type="text" name="user-name" [(ngModel)]="user_name" class="form-control"></td>
-          <td><input type="text" name="user-email" [(ngModel)]="user_email" class="form-control"></td>
-          <td>.</td>
-          <td><button (click)="createUser(user_name, user_email)" class="btn btn-success">Add</button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+

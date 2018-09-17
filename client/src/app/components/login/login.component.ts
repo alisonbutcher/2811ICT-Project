@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 import { SessionService } from '../../services/session.service';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
   private name: string = null;
   private password: string = null;
   private userObject;
-  // @input() session: SessionService;
 
   constructor(private router: Router, private form: FormsModule, private _loginService: LoginService,
     public _session: SessionService) { }
@@ -43,6 +41,7 @@ export class LoginComponent implements OnInit {
 
             // Set local session variables
             const access = this.userObject.accessLevel;
+            console.log(this.userObject);
             this._session.setItem('id', this.userObject.id);
             this._session.setItem('name', this.userObject.name);
             this._session.setItem('accessLevel', access);

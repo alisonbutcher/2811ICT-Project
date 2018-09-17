@@ -24,15 +24,15 @@ export class MenuComponent implements OnInit {
 
     // Subscribe to the observable sessionService to monitor session variables
     this.session.watchStorage().subscribe((data: string) => {
-      this.role = Number(this.session.getitem('role'));
-      this.user = this.session.getitem('username');
-      console.log('Role is: ' + this.role);
+      this.role = Number(this.session.getitem('accessLevel'));
+      this.user = this.session.getitem('name');
+      console.log('Hello ' + this.user + ', your access level is: ' + this.role);
     });
   }
 
   logout() {
     this.session.removeAllItems();
-    this.session.setItem('role', 0);
+    this.session.setItem('accessLevel', 0);
     this.router.navigateByUrl('/');
   }
 

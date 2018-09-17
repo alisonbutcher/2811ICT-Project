@@ -1,0 +1,9 @@
+table {
+    width: 100%;
+    padding-right: 20px;
+  }
+
+.mat-button {
+  font-size: 4px;
+  border-color: black;
+}

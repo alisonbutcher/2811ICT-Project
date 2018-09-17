@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { MatSort, MatTableDataSource } from '@angular/material';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
 export class UserComponent implements OnInit {
+
   public users;
-  public username;
-  public useremail;
+  displayedColumns: string[] = ['name', 'email', 'role', 'actions'];
+  private username;
+  private useremail;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private _userService: UserService) { }
 
@@ -17,7 +24,10 @@ export class UserComponent implements OnInit {
   }
   getUsers() {
     this._userService.getUsers().subscribe(
-      data => { this.users = data; },
+      data => {
+        this.users = data;
+        console.log(JSON.stringify(data));
+      },
       err => console.error(err),
       () => console.log('done loading users')
     );
@@ -27,7 +37,6 @@ export class UserComponent implements OnInit {
       name: name,
       email: email
     };
-    console.log('log:' + user);
     this._userService.createUser(user).subscribe(
       data => {
         this.getUsers();
@@ -50,6 +59,7 @@ export class UserComponent implements OnInit {
     );
   }
   deleteUser(user) {
+    console.log(user);
     this._userService.deleteUser(user).subscribe(
       data => {
         this.getUsers();
@@ -60,5 +70,8 @@ export class UserComponent implements OnInit {
       }
     );
   }
+
+
+
 
 }
