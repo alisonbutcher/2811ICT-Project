@@ -18,20 +18,20 @@ export class UserService {
 
   // Uses http.get() to load data from a single API endpoint
   getUsers() {
-    return this.http.get(environment.apiHost + '/user');
+    return this.http.get(environment.apiHost + '/api/user');
   }
 
   createUser(user) {
     const body = JSON.stringify(user);
-    return this.http.post(environment.apiHost + '/user/', body, httpOptions);
+    return this.http.post(environment.apiHost + '/api/user/', body, httpOptions);
   }
   // update currently is not being used
   updateUser(user) {
     const body = JSON.stringify(user);
-    return this.http.put(environment.apiHost + '/user/' + user._id, body, httpOptions);
+    return this.http.put(environment.apiHost + '/api/user/' + user._id, body, httpOptions);
   }
   deleteUser(user) {
-    return this.http.delete(environment.apiHost + '/user/' + user._id);
+    return this.http.delete(environment.apiHost + '/api/user/' + user._id);
   }
 }
 

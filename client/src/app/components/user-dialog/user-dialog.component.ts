@@ -19,8 +19,8 @@ export interface DialogData {
 })
 export class UserDialogComponent implements OnInit {
 
-    form: FormGroup;
-    title: string;
+    private form: FormGroup;
+    private title: string;
 
     // roles = [
     //     { _id: '5b9f48492422f249f0724dfc', name: 'Super Admin' },

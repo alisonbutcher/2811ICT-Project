@@ -19,7 +19,7 @@ export class LoginService {
 // Uses http.get() to load data from a single API endpoint
   checkLogin(user) {
     const body = JSON.stringify(user);
-    return this.http.post(environment.apiHost + '/user/login/', body, httpOptions);
+    return this.http.post(environment.apiHost + '/api/user/login/', body, httpOptions);
   }
 }
 
