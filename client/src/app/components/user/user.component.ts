@@ -5,13 +5,15 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 
 // TODO: move into a models file
-export interface User {
+export interface DialogData {
     _id: string;
     name: string;
     email: string;
     role: string;
     password: string;
+    metaTitle: string;
 }
+
 
 @Component({
     selector: 'app-user',
@@ -22,12 +24,13 @@ export interface User {
 export class UserComponent implements OnInit {
 
     @Input()
-    user: User[];
+    dialogData: DialogData[];
 
     // Which columns are visible in table
     displayedColumns: string[] = ['name', 'email', 'role', 'actions'];
 
     private users;
+    private title;
 
     // @ViewChild(MatSort) sort: MatSort;
 
@@ -38,29 +41,35 @@ export class UserComponent implements OnInit {
     }
 
     addUser() {
-        const user = {
+        const dialogData = {
             _id: '',
             name: '',
             email: '',
             role: '',
-            password: ''
+            password: '',
+            metaTitle: 'Add User'
         };
-        this.addEditUser(user);
+
+        this.addEditUser(dialogData);
     }
 
 
-    addEditUser({ _id, name, email, role, password }: User) {
-
+    addEditUser({ _id, name, email, role, password, metaTitle }: DialogData) {
+        if (_id !== '') {
+            metaTitle = 'Update User';
+        }
         const dialogConfig = new MatDialogConfig();
         dialogConfig.autoFocus = true;
 
         dialogConfig.data = {
-            _id, name, email, role, password
+            _id, name, email, role, password, metaTitle
         };
 
         const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {
+
+            delete result['metaTitle'];
 
             // If id empty its a new user
             if (_id === '') {
