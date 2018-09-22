@@ -72,7 +72,7 @@ channelusers(app);
 
 // Static Directory for Angular Client Side app
 app.use(express.static(path.join(__dirname, '../client/dist/client')));
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname,'../client/dist/client/index.html'))
 });
 
