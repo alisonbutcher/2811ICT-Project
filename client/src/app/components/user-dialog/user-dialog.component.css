@@ -1,7 +1,7 @@
-.mat-icon {
+/* .mat-icon {
     padding-top: 6px;
     padding-right: 10px;
-}
+} */
 /* 
 input {
     padding-left: 40px;
@@ -13,12 +13,38 @@ input {
 } */
 
 form {
-    width: 260px;
+    width: 320px;
     margin: 22px;
 }
 
-/* button {
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-button {
+    font-size: 4px;
+    border-color: black;
+    background-color: none;
     float: right;
-    margin-right: 46px;
-} */
+    color: none;
+    margin-right: 10px;
+}
+
+.dlgClose {
+    float: right;
+    background-color: transparent;
+    fill: transparent;
+    margin-top: -8px;
+}
+
+.dlgSave {
+    float: right;
+    margin-right: 1px;
+}
+
 

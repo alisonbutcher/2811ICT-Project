@@ -65,6 +65,8 @@ export class UserComponent implements OnInit {
             _id, name, email, role, password, metaTitle
         };
 
+        dialogConfig.width = '360px';
+
         const dialogRef = this.dialog.open(UserDialogComponent, dialogConfig);
 
         dialogRef.afterClosed().subscribe(result => {

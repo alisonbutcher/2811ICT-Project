@@ -15,7 +15,8 @@ export interface DialogData {
 @Component({
     selector: 'app-user-dialog',
     templateUrl: './user-dialog.component.html',
-    styleUrls: ['./user-dialog.component.css']
+    styleUrls: ['./user-dialog.component.css'],
+    preserveWhitespaces: true
 })
 export class UserDialogComponent implements OnInit {
 
