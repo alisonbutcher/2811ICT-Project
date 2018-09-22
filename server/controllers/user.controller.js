@@ -15,6 +15,7 @@ exports.list_all_users = function (req, res) {
 // Create a user
 exports.create_a_user = function (req, res) {
     var new_user = new User(req.body);
+    console.log("In createUser controller: " + new_user);
     new_user.save(function (err, user) {
         if (err)
             res.send(err);

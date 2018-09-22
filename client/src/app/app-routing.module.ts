@@ -9,12 +9,12 @@ import { ChannelUsersComponent } from './components/channel-users/channel-users.
 import { GroupUsersComponent } from './components/group-users/group-users.component';
 import { GroupChannelsComponent } from './components/group-channels/group-channels.component';
 import { ChatComponent } from './components/chat/chat.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 
 
 const routes: Routes = [
   {path: 'user', component: UserComponent},
-  {path: 'add-user', component: AddUserComponent},
+  {path: 'user-dialog', component: UserDialogComponent},    // TODO: this is a modal dialog now we probably dont need a route
   {path: 'groups', component: GroupsComponent },
   {path: 'login', component: LoginComponent },
   {path: 'channel', component: ChannelsComponent },

@@ -13,5 +13,12 @@ input {
 } */
 
 form {
-    width: 500px;
+    width: 260px;
+    margin: 22px;
 }
+
+/* button {
+    float: right;
+    margin-right: 46px;
+} */
+

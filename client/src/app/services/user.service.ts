@@ -23,13 +23,11 @@ export class UserService {
 
   createUser(user) {
     const body = JSON.stringify(user);
-    console.log("In service.createUser(): " + body);
-    return this.http.post(environment.apiHost + '/user', body, httpOptions);
+    return this.http.post(environment.apiHost + '/user/', body, httpOptions);
   }
   // update currently is not being used
   updateUser(user) {
     const body = JSON.stringify(user);
-    console.log('Update User Service Called ' + body);
     return this.http.put(environment.apiHost + '/user/' + user._id, body, httpOptions);
   }
   deleteUser(user) {

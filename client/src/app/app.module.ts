@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GroupsComponent } from './components/groups/groups.component';
-import { FormsModule } from '@angular/forms'; // to create bindings
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // to create bindings
 
 import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
@@ -60,7 +60,7 @@ import {
   MatRadioGroup
 } from '@angular/material';
 import { FooterComponent } from './components/footer/footer.component';
-import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,13 +75,14 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     MenuComponent,
     ChatComponent,
     FooterComponent,
-    AddUserComponent
+    UserDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     MatTableModule,
     MatButtonModule,
@@ -94,7 +95,8 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     MatExpansionModule,
     MatListModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
 
   ],
   providers: [SessionService],

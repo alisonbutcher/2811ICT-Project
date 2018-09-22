@@ -1,12 +1,12 @@
 <h2>Manage Users</h2>
-
+<button mat-raised-button (click)="addUser()">Add User</button>
 <table mat-table [dataSource]="users" matSort >
 
     <!-- Action Buttons -->
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef >  Actions</th>
         <td mat-cell *matCellDef="let element" >
-             <button mat-icon-button color="primary"><mat-icon>create</mat-icon></button>
+             <button mat-icon-button color="primary" (click)="addEditUser(element)"><mat-icon>create</mat-icon></button>
              <button mat-icon-button color="warn" (click)="deleteUser(element)"><mat-icon>cancel</mat-icon></button>
         </td>
     </ng-container>
@@ -15,12 +15,6 @@
         <th mat-header-cell *matHeaderCellDef >Role</th>
         <td mat-cell *matCellDef="let element" >role here...</td>
     </ng-container>
-
-    <!-- Name Column -->
-    <!-- <ng-container matColumnDef="_id">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element._id}} </td>
-      </ng-container> -->
 
   <!-- Name Column -->
   <ng-container matColumnDef="name">
