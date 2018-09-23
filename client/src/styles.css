@@ -44,3 +44,7 @@ body {
     border-left-color: black;
     border-left-width: 1px;
   }
+
+  .add-item-button {
+    margin-bottom: 10px;
+  }

@@ -21,7 +21,7 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
 import { ContentContainerComponent } from './content-container/content-container.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-
+import { ChannelDialogComponent } from './components/channel-dialog/channel-dialog.component';
 // Angular Material Components
 import {
   MatAutocompleteModule,
@@ -62,6 +62,7 @@ import {
   MatRadioGroup
 } from '@angular/material';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +78,8 @@ import {
     UserDialogComponent,
     ContentContainerComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    ChannelDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,6 +103,10 @@ import {
     MatDialogModule
 
 
+  ],
+  entryComponents: [
+    ChannelDialogComponent,
+    UserDialogComponent
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]
