@@ -23,11 +23,11 @@ export class UserDialogComponent implements OnInit {
     private form: FormGroup;
     private title: string;
 
-    // roles = [
-    //     { _id: '5b9f48492422f249f0724dfc', name: 'Super Admin' },
-    //     { _id: '5b9f48652422f249f0724dfd', name: 'Group Admin' },
-    //     { _id: '5b9f48792422f249f0724dfe', name: 'Chat User' }
-    // ];
+    roles = [
+        { name: 'Super Admin' },
+        { name: 'Group Admin' },
+        { name: 'Chat User' }
+    ];
 
     constructor(
         private fb: FormBuilder,

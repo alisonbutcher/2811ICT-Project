@@ -17,7 +17,12 @@
   <br />
 
   <mat-form-field>
-    <input matInput placeholder="Role" formControlName="role">
+    <mat-select placeholder="Select User Role" formControlName="role">
+      <mat-option *ngFor="let role of roles" [value]="role.name">
+        {{role.name}}
+      </mat-option>
+    </mat-select>
+    <!-- <input matInput placeholder="Role" formControlName="role"> -->
   </mat-form-field>
 
 

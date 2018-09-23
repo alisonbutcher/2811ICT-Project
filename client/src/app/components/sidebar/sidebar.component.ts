@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
   events: string[] = [];
   opened: boolean = true;
   panelOpenState = false;
-  role = 0;
+  role = '';
   user;
 
   constructor(public session: SessionService, private router: Router) { }
@@ -22,15 +22,13 @@ export class SidebarComponent implements OnInit {
 
     // Subscribe to the observable sessionService to monitor session variables
     this.session.watchStorage().subscribe((data: string) => {
-      this.role = Number(this.session.getitem('accessLevel'));
-      this.user = this.session.getitem('name');
-      console.log('Hello ' + this.user + ', your access level is: ' + this.role);
+      this.role = this.session.getitem('role');
     });
   }
 
   logout() {
     this.session.removeAllItems();
-    this.session.setItem('accessLevel', 0);
+    this.session.setItem('role', '');
     this.router.navigateByUrl('/');
   }
 

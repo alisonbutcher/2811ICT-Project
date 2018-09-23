@@ -30,29 +30,28 @@ export class LoginComponent implements OnInit {
     };
     console.log(user);
     this._loginService.checkLogin(user).subscribe(
-      data => this.userObject = data,
-      err => alert('Error loging in: '),
+      data => {
+        this.userObject = data;
+      },
+      err => alert('Error logging in: '),
       () => {
         if (this.userObject != null) {
           // If error from API alert user
           if (this.userObject.hasOwnProperty('message')) {
             alert(this.userObject.message);
           } else {
-
             // Set local session variables
-            const access = this.userObject.accessLevel;
-            console.log(this.userObject);
-            this._session.setItem('id', this.userObject.id);
-            this._session.setItem('name', this.userObject.name);
-            this._session.setItem('accessLevel', access);
+            this._session.setItem('_id', this.userObject[0]._id);
+            this._session.setItem('name', this.userObject[0].name);
+            this._session.setItem('role', this.userObject[0].role);
 
             // Routing based on access level
-            if (access >= 3) {
-              this.router.navigateByUrl('/user');
-            } else if (access === 2) {
-              this.router.navigateByUrl('/group');
-            } else if (access === 1) {
+            if (this.userObject[0].role.toString() === 'Chat User') {
               this.router.navigateByUrl('/chat');
+            } else if (this.userObject[0].role.toString() === 'Group Admin') {
+              this.router.navigateByUrl('/group');
+            } else if (this.userObject[0].role.toString() === 'Super Admin') {
+              this.router.navigateByUrl('/user');
             }
           }
         } else {

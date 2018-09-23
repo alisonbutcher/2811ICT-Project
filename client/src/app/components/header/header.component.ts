@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
     events: string[] = [];
     opened: boolean = true;
     panelOpenState = false;
-    role = 0;
+    role = '';
     user;
     constructor(public session: SessionService, private router: Router) { }
 
@@ -19,8 +19,8 @@ export class HeaderComponent implements OnInit {
         // Subscribe to the observable sessionService to monitor session variables
         this.session.watchStorage().subscribe((data: string) => {
 
-            if (this.session.getitem('accessLevel') != null)  {
-                this.role = Number(this.session.getitem('accessLevel'));
+            if (this.session.getitem('role') != null)  {
+                this.role = this.session.getitem('role');
             }
 
             if (this.session.getitem('name') != null ) {
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
 
     logout() {
         this.session.removeAllItems();
-        this.session.setItem('accessLevel', 0);
+        this.session.setItem('role', '');
         this.router.navigateByUrl('/');
     }
 

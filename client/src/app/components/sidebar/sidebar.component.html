@@ -1,8 +1,8 @@
 
   <mat-nav-list dense>
-    <a mat-list-item *ngIf="role == 1" routerLink="/chat">Chat</a>
+    <a mat-list-item *ngIf="role == 'Chat User'" routerLink="/chat">Chat</a>
     <!-- <div *ngIf="role >= 2"> -->
-        <div *ngIf="role >= 0">
+        <div *ngIf="role == 'Group Admin' || role == 'Super Admin'">
       <h4 matSubheader>
         <mat-icon>dashboard</mat-icon>Group Mangement
       </h4>
@@ -16,8 +16,7 @@
       <a mat-list-item routerLink="/channel">Channels</a>
       <a mat-list-item routerLink="/channel-users">Channel Users</a>
     </div>
-    <!-- <div *ngIf="role >= 3"> -->
-      <div *ngIf="role >= 0">
+    <div *ngIf="role == 'Super Admin'">
       <mat-divider></mat-divider>
       <h4 matSubheader>
         <mat-icon>perm_identity</mat-icon>User Mangement
