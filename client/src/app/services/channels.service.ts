@@ -19,11 +19,11 @@ export class ChannelsService {
     }
 
     getUsersInChannel(channel) {
-      return this.http.get('http://localhost:3000/api/channel-users/', channel.id);
+      return this.http.get('http://localhost:3000/api/channel-users/', channel._id);
     }
 
     getUsersNotInChannel(channel) {
-      return this.http.get('http://localhost:3000/api/channel-not-users/', channel.id);
+      return this.http.get('http://localhost:3000/api/channel-not-users/', channel._id);
     }
 
     createChannel(channel) {
@@ -34,9 +34,9 @@ export class ChannelsService {
 
     updateChannel(channel) {
       const body = JSON.stringify(channel);
-      return this.http.put('http://localhost:3000/api/channel/' + channel.id, body, httpOptions);
+      return this.http.put('http://localhost:3000/api/channel/' + channel._id, body, httpOptions);
     }
     deleteChannel(channel) {
-      return this.http.delete('http://localhost:3000/api/channel/' + channel.id);
+      return this.http.delete('http://localhost:3000/api/channel/' + channel._id);
     }
 }

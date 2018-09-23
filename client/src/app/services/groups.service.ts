@@ -24,12 +24,11 @@ export class GroupsService {
   }
 
   updateGroup(group) {
-    console.log(group);
     const body = JSON.stringify(group);
-    return this.http.put('http://localhost:3000/api/group/' + group.id, body, httpOptions);
+    return this.http.put('http://localhost:3000/api/group/' + group._id, body, httpOptions);
   }
   deleteGroup(group) {
-    return this.http.delete('http://localhost:3000/api/group/' + group.id);
+    return this.http.delete('http://localhost:3000/api/group/' + group._id);
   }
 }
 

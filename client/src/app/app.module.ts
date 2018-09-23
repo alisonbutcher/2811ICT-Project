@@ -22,6 +22,7 @@ import { ContentContainerComponent } from './content-container/content-container
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChannelDialogComponent } from './components/channel-dialog/channel-dialog.component';
+import { GroupDialogComponent } from './components/group-dialog/group-dialog.component';
 // Angular Material Components
 import {
   MatAutocompleteModule,
@@ -63,6 +64,7 @@ import {
 } from '@angular/material';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +82,7 @@ import {
     HeaderComponent,
     SidebarComponent,
     ChannelDialogComponent,
+    GroupDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,7 +109,8 @@ import {
   ],
   entryComponents: [
     ChannelDialogComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    GroupDialogComponent
   ],
   providers: [SessionService],
   bootstrap: [AppComponent]

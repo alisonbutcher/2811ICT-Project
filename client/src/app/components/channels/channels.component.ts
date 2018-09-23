@@ -108,7 +108,7 @@ addEditChannel({ _id, name, description, metaTitle }: DialogData) {
   }
 
   updateChannel(channel) {
-    console.log('Update Channel in component called: ' + channel);
+    console.log('Update Channel in component called: ' + JSON.stringify(channel));
     this._channelsService.updateChannel(channel).subscribe(
       data => {
         this.getChannels();
