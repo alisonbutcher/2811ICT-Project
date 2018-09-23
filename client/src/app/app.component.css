@@ -41,14 +41,4 @@ a[data-toggle="collapse"] {
   }
 }
 
-.page {
-  display: flex
-}
 
-.page__sidebar {
-  width: 300px;
-}
-
-.page__content {
-  flex: 1
-}
