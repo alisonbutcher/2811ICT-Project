@@ -15,5 +15,4 @@ module.exports = function(app) {
   // user login route
   app.route('/api/user/login')
     .post(User.login);
-
 };

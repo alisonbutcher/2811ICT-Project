@@ -10,7 +10,10 @@ var ChannelSchema = new Schema({
     },
     description: {
         type: String
-    }
+    },
+    users: [{
+        username: String
+    }]
 });
 
 module.exports = mongoose.model('Channel', ChannelSchema);

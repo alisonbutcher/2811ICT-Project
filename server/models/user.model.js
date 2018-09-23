@@ -14,6 +14,10 @@ var UserSchema = new Schema({
     },
     email: {
         type: String
+    },
+    role: {
+        type: String,
+        required: 'Please select a user role'
     }
 
 });

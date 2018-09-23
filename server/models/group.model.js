@@ -10,7 +10,13 @@ var GroupSchema = new Schema({
     },
     description: {
         type: String
-    }
+    },
+    users: [{
+        username: String
+    }],
+    channels: [{
+        channelname: String
+    }]
 });
 
 module.exports = mongoose.model('Group', GroupSchema);
