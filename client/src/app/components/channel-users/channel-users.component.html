@@ -1,7 +1,30 @@
+<h2>Manage Channel Users</h2>
+<div class="wrapper">
 
+<div class="channels">
+  <h4>Select a Channel</h4>
+  <mat-select placeholder="select a channel" dense>
 
+    <mat-option *ngFor="let c of channels" (click)="selectChannel(c)">{{ c.name }}</mat-option>
+  </mat-select>
+</div>
 
-Channel Users comming soon...
+<div class="current-users">
+  <h4>Current users in channel</h4>
+  <mat-nav-list dense>
+    <mat-option mat-list-item *ngFor="let u of channelUsers"> {{ u.username }} </mat-option>
+  </mat-nav-list>
+</div>
+</div>
+<div class="wrapper">
+<div class="adduser">
+  <h4>Add a user</h4>
 
-
-
+  <mat-select placeholder="Select User to add">
+    <mat-option *ngFor="let user of users" [value]="user.name" (click)="addUserToChannel(user)" >
+      {{user.name}}
+    </mat-option><br />
+  </mat-select>
+  <!-- <button mat-flat-button color="primary" (click)="addUserToChannel(user)">Add to channel</button> -->
+</div>
+</div>

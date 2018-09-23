@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChannelsService } from '../../services/channels.service';
+import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
 
 
@@ -9,46 +10,69 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./channel-users.component.css']
 })
 export class ChannelUsersComponent implements OnInit {
-  public users;
-  public channels;
-  public channelusers;
+  private nonChannelusers;
+  private channels;
+  private channelUsers = [];
+  private channel;
+  private users;
+  private selectedChannel;
 
-  constructor(private _channelsService: ChannelsService) { }
+  constructor(private _channelsService: ChannelsService, private userService: UserService) { }
 
   ngOnInit() {
     this.getChannels();
+    this.getUsers();
+    console.log(this.channelUsers);
+    console.log(this.channels);
   }
 
-
+  selectChannel(channel) {
+    this.selectedChannel = channel;
+    this.getUsersInChannel(channel);
+  }
 
   getChannels() {
     this._channelsService.getChannels().subscribe(
-      data => { this.channels = data; },
+      data => {
+        this.channels = data;
+      },
       err => console.error(err),
       () => console.log('done loading channels')
     );
   }
 
-  getUsersNotInChannel(channel) {
-    console.log(channel);
-    this._channelsService.getUsersNotInChannel(channel).subscribe(
-      data => { this.channels = data; },
+  getUsers() {
+    this.userService.getUsers().subscribe(
+      data => {
+        this.users = data;
+      },
       err => console.error(err),
-      () => console.log('loaded users not belonging to channel')
+      () => console.log('done loading users')
     );
   }
 
   getUsersInChannel(channel) {
-    console.log(channel);
-    this._channelsService.getUsersInChannel(channel).subscribe(
-      data => { this.channels = data; },
-      err => console.error(err),
-      () => console.log('loaded users belonging to channel')
-    );
+    this.channelUsers = channel.users;
   }
 
-  addUsersToChannel(channel, users) {
+  addUserToChannel(user) {
+    console.log('Update Channel in component called: ' + JSON.stringify(this.selectedChannel));
 
+    let str: string = '';
+    str = '{ "username": "' + user.name + '" }';
+    console.log((str));
+    this.selectedChannel.users.push(JSON.parse(str));
+    console.log(this.selectedChannel);
+
+    this._channelsService.updateChannel(this.selectedChannel).subscribe(
+      data => {
+        this.getChannels();
+        return true;
+      },
+      error => {
+        console.error('Error saving channel');
+      }
+    );
   }
 
   removeUsersFromChannel(channel, users) {
