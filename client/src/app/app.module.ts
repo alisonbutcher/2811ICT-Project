@@ -10,7 +10,6 @@ import { HttpClientModule} from '@angular/common/http';
 import { UserComponent } from './components/user/user.component';
 import { LoginComponent } from './components/login/login.component';
 import { ChannelsComponent } from './components/channels/channels.component';
-import { RolesComponent } from './components/roles/roles.component';
 import { GroupUsersComponent } from './components/group-users/group-users.component';
 import { GroupChannelsComponent } from './components/group-channels/group-channels.component';
 import { ChannelUsersComponent } from './components/channel-users/channel-users.component';
@@ -70,7 +69,6 @@ import {
     UserComponent,
     LoginComponent,
     ChannelsComponent,
-    RolesComponent,
     GroupUsersComponent,
     GroupChannelsComponent,
     ChannelUsersComponent,
