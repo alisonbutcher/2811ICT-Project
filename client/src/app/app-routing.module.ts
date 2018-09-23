@@ -13,7 +13,7 @@ import { ChatComponent } from './components/chat/chat.component';
 
 const routes: Routes = [
   {path: 'user', component: UserComponent},
-  {path: 'groups', component: GroupsComponent },
+  {path: 'group', component: GroupsComponent },
   {path: 'login', component: LoginComponent },
   {path: 'channel', component: ChannelsComponent },
   {path: 'roles', component: RolesComponent },

@@ -16,3 +16,29 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
   }
+
+body {
+  height: 100%;
+}
+
+  .page {
+    display: flex;
+    height: 100%;
+
+  }
+  
+  .page__sidebar {
+    width: 210px;
+    height: 100%;
+    background-color: rgb(250, 241, 241);
+    border-right: black;
+    border-width: 1px;
+  }
+  
+  
+  .page__content {
+    flex: 1;
+    padding: 28px;
+    border-left-color: black;
+    border-left-width: 1px;
+  }

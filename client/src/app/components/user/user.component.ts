@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { SessionService } from '../../services/session.service';
 
 // TODO: move into a models file
 export interface DialogData {
@@ -22,6 +23,11 @@ export interface DialogData {
 })
 
 export class UserComponent implements OnInit {
+    events: string[] = [];
+    opened: boolean = true;
+    panelOpenState = false;
+    role = 0;
+    user;
 
     @Input()
     dialogData: DialogData[];
@@ -34,10 +40,15 @@ export class UserComponent implements OnInit {
 
     // @ViewChild(MatSort) sort: MatSort;
 
-    constructor(private _userService: UserService, private dialog: MatDialog) { }
+    constructor(private _userService: UserService, private dialog: MatDialog, public session: SessionService) { }
 
     ngOnInit() {
         this.getUsers();
+
+            // Subscribe to the observable sessionService to monitor session variables
+        this.session.watchStorage().subscribe((data: string) => {
+        this.role = Number(this.session.getitem('accessLevel'));
+      });
     }
 
     addUser() {

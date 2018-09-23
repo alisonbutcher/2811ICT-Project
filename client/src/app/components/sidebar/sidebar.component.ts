@@ -1,17 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../../services/session.service';
-import { FormsModule, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-// import { MatSidenav} from '@angular/material/sidenav';
- 
-// Observable triggered on local session data change
+import { MatIconModule } from '@angular/material';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class MenuComponent implements OnInit {
+export class SidebarComponent implements OnInit {
+
   events: string[] = [];
   opened: boolean = true;
   panelOpenState = false;

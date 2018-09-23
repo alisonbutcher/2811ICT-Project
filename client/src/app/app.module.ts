@@ -14,11 +14,14 @@ import { RolesComponent } from './components/roles/roles.component';
 import { GroupUsersComponent } from './components/group-users/group-users.component';
 import { GroupChannelsComponent } from './components/group-channels/group-channels.component';
 import { ChannelUsersComponent } from './components/channel-users/channel-users.component';
-import { MenuComponent } from './components/menu/menu.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SessionService } from './services/session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FooterComponent } from './components/footer/footer.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+import { ContentContainerComponent } from './content-container/content-container.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 // Angular Material Components
 import {
@@ -59,8 +62,7 @@ import {
   MatTreeModule,
   MatRadioGroup
 } from '@angular/material';
-import { FooterComponent } from './components/footer/footer.component';
-import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,10 +74,12 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
     GroupUsersComponent,
     GroupChannelsComponent,
     ChannelUsersComponent,
-    MenuComponent,
     ChatComponent,
     FooterComponent,
-    UserDialogComponent
+    UserDialogComponent,
+    ContentContainerComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -97,6 +101,7 @@ import { UserDialogComponent } from './components/user-dialog/user-dialog.compon
     MatIconModule,
     MatSelectModule,
     MatDialogModule
+
 
   ],
   providers: [SessionService],
