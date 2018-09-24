@@ -43,6 +43,8 @@ exports.update_a_user = function (req, res) {
     });
 };
 
+
+
 // Delete a user
 exports.delete_a_user = function (req, res) {
     User.deleteOne({
