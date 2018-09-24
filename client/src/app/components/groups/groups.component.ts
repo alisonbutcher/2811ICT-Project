@@ -105,6 +105,7 @@ export class GroupsComponent implements OnInit {
     );
   }
   updateGroup(group) {
+    console.log('calling update group' + JSON.stringify(group));
     this._groupsService.updateGroup(group).subscribe(
       data => {
         this.getGroups();

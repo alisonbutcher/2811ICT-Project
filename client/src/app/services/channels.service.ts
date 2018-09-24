@@ -32,17 +32,18 @@ export class ChannelsService {
       return this.http.post('http://localhost:3000/api/channel/', body, httpOptions);
     }
 
-    updateChannelByName(channel) {
+    updateChannel(channel) {
       const body = JSON.stringify(channel);
       return this.http.put('http://localhost:3000/api/channel/' + channel.name, body, httpOptions);
     }
 
-    updateChannel(channel) {
-      const body = JSON.stringify(channel);
-      console.log("In Service updateChannel(): " + body);
-      return this.http.put('http://localhost:3000/api/channel/' + channel._id, body, httpOptions);
-    }
+    // updateChannel(channel) {
+    //   const body = JSON.stringify(channel);
+    //   console.log("In Service updateChannel(): " + body);
+    //   return this.http.put('http://localhost:3000/api/channel/' + channel.name, body, httpOptions);
+    // }
+
     deleteChannel(channel) {
-      return this.http.delete('http://localhost:3000/api/channel/' + channel._id);
+      return this.http.delete('http://localhost:3000/api/channel/' + channel.name);
     }
 }

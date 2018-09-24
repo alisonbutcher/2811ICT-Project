@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ChannelsService } from '../../services/channels.service';
 import { UserService } from '../../services/user.service';
 import { FormControl, FormGroup } from '@angular/forms';
-
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-channel-users',
@@ -16,10 +16,16 @@ export class ChannelUsersComponent implements OnInit {
   private channel;
   private users;
   private selectedChannel;
+  role = '';
 
-  constructor(private _channelsService: ChannelsService, private userService: UserService) { }
+  constructor(private _channelsService: ChannelsService, private userService: UserService, private session: SessionService) { }
 
   ngOnInit() {
+    // Subscribe to the observable sessionService to monitor session variables
+    this.session.watchStorage().subscribe((data: string) => {
+      this.role = this.session.getitem('role');
+      console.log(this.role);
+    });
     this.getChannels();
     this.getUsers();
     console.log(this.channelUsers);
@@ -64,7 +70,7 @@ export class ChannelUsersComponent implements OnInit {
     this.selectedChannel.users.push(JSON.parse(str));
     console.log(this.selectedChannel);
 
-    this._channelsService.updateChannelByName(this.selectedChannel).subscribe(
+    this._channelsService.updateChannel(this.selectedChannel).subscribe(
       data => {
         this.getChannels();
         return true;
@@ -78,7 +84,7 @@ export class ChannelUsersComponent implements OnInit {
   removeUserFromChannel(user) {
     console.log('Remove user from channel: ' + user.username);
     this.selectedChannel.users.pop(user.username);
-    this._channelsService.updateChannelByName(this.selectedChannel).subscribe(
+    this._channelsService.updateChannel(this.selectedChannel).subscribe(
       data => {
         this.getChannels();
         return true;

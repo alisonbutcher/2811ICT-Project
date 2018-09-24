@@ -21,17 +21,17 @@ exports.create_a_group = (req, res) => {
 };
 
 
-// exports.read_a_group = (req, res) => {
-//   Group.findById(req.params.groupId, function(err, group) {
-//     if (err)
-//       res.send(err);
-//     res.json(group);
-//   });
-// };
+exports.read_a_group_byid = (req, res) => {
+  Group.findById(req.params.groupId, function(err, group) {
+    if (err)
+      res.send(err);
+    res.json(group);
+  });
+};
 
 
 
-exports.read_a_group = (req, res) => {
+exports.read_a_group_byname = (req, res) => {
   Group = mongoose.model('Group');
   // Build Query
   let query = JSON.parse('{"name": "' + req.params.name + '"}');
@@ -64,7 +64,7 @@ exports.update_a_group_byname = (req, res) => {
   });
 };
 
-exports.update_a_group = (req, res) => {
+exports.update_a_group_byid = (req, res) => {
   Group.findOneAndUpdate({_id: req.params.groupId}, req.body, {new: true}, function(err, group) {
     if (err)
       res.send(err);
@@ -72,10 +72,19 @@ exports.update_a_group = (req, res) => {
   });
 };
 
-
-exports.delete_a_group = (req, res) => {
+exports.delete_a_group_byname = (req, res) => {
   Group.deleteOne({
-    _id: req.params.groupId
+    name: req.params.name
+  }, function(err, group) {
+    if (err)
+      res.send(err);
+    res.json({ message: 'Group successfully deleted' });
+  });
+};
+
+exports.delete_a_group_byid = (req, res) => {
+  Group.deleteOne({
+    _id: req.params._id
   }, function(err, group) {
     if (err)
       res.send(err);

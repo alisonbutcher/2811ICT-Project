@@ -23,17 +23,18 @@ export class GroupsService {
     return this.http.post('http://localhost:3000/api/group/', body, httpOptions);
   }
 
-  updateGroupByName(group) {
+  updateGroup(group) {
+    console.log('calling update group service' + JSON.stringify(group));
     const body = JSON.stringify(group);
     return this.http.put('http://localhost:3000/api/group/' + group.name, body, httpOptions);
   }
 
-  updateGroup(group) {
-    const body = JSON.stringify(group);
-    return this.http.put('http://localhost:3000/api/group/' + group._id, body, httpOptions);
-  }
+  // updateGroup(group) {
+  //   const body = JSON.stringify(group);
+  //   return this.http.put('http://localhost:3000/api/group/' + group._id, body, httpOptions);
+  // }
   deleteGroup(group) {
-    return this.http.delete('http://localhost:3000/api/group/' + group._id);
+    return this.http.delete('http://localhost:3000/api/group/' + group.name);
   }
 }
 

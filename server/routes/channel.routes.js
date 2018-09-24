@@ -9,10 +9,13 @@ module.exports = function(app) {
 
   app.route('/api/channel/:name')
     .put(Channel.update_a_channel_byname)
-    .get(Channel.read_a_channel);
+    .get(Channel.read_a_channel_byname)
+    .delete(Channel.delete_a_channel_byname);
 
-  app.route('/api/channel/:channelId')
-    .put(Channel.update_a_channel)
-    .delete(Channel.delete_a_channel);
+
+  app.route('/api/channel/id/:channelId')
+    .get(Channel.read_a_channel_byid)
+    .put(Channel.update_a_channel_byid)
+    .delete(Channel.delete_a_channel_byid);
 };
 

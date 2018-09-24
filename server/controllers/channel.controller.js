@@ -24,23 +24,23 @@ exports.create_a_channel = (req, res) => {
     } else {
       var new_channel = new Channel(req.body);
       new_channel.save(function (err, channel) {
-          if (err)
-              res.send(err);
-          res.json(channel);
+        if (err)
+          res.send(err);
+        res.json(channel);
       });
     }
   });
 }
 
-// exports.read_a_channel = (req, res) => {
-//   Channel.find(req.params.name, function(err, channel) {
-//     if (err)
-//       res.send(err);
-//     res.json(channel);
-//   });
-// };
+exports.read_a_channel_byid = (req, res) => {
+  Channel.find(req.params.id, function (err, channel) {
+    if (err)
+      res.send(err);
+    res.json(channel);
+  });
+};
 
-exports.read_a_channel = (req, res) => {
+exports.read_a_channel_byname = (req, res) => {
   Channel = mongoose.model('Channel');
   // Build Query
   let query = JSON.parse('{"name": "' + req.params.name + '"}');
@@ -62,6 +62,20 @@ exports.read_a_channel = (req, res) => {
   });
 }
 
+exports.update_a_channel_byid = (req, res) => {
+  Channel.findOneAndUpdate({
+      _id: req.params.channelId
+    },
+    req.body, {
+      new: true
+    },
+    function (err, channel) {
+      if (err)
+        res.send(err);
+      res.json(group);
+    });
+};
+
 exports.update_a_channel_byname = (req, res) => {
   Channel.findOneAndUpdate({
     name: req.params.name
@@ -74,21 +88,21 @@ exports.update_a_channel_byname = (req, res) => {
   });
 };
 
-exports.update_a_channel = (req, res) => {
-  Channel.findOneAndUpdate({
-    _id: req.params.channelId
-  }, req.body, {
-    new: true
-  }, function (err, channel) {
+exports.delete_a_channel_byname = (req, res) => {
+  Channel.deleteOne({
+    name: req.params.name
+  }, function (err) {
     if (err)
       res.send(err);
-    res.json(channel);
+    res.json({
+      message: 'Channel successfully deleted'
+    });
   });
 };
 
-exports.delete_a_channel = (req, res) => {
+exports.delete_a_channel_byid = (req, res) => {
   Channel.deleteOne({
-    _id: req.params.channelId
+    _id: req.params._id
   }, function (err) {
     if (err)
       res.send(err);

@@ -57,7 +57,7 @@ export class GroupChannelsComponent implements OnInit {
     this.selectedGroup.channels.push(JSON.parse(str));
     console.log(this.selectedGroup);
 
-    this.groupService.updateGroupByName(this.selectedGroup).subscribe(
+    this.groupService.updateGroup(this.selectedGroup).subscribe(
       data => {
         this.getGroups();
         return true;
@@ -71,7 +71,7 @@ export class GroupChannelsComponent implements OnInit {
   removeChannelFromGroup(channel) {
     console.log('Remove channel from group: ' + channel.channelname);
     this.selectedGroup.channels.pop(channel.channelname);
-    this.groupService.updateGroupByName(this.selectedGroup).subscribe(
+    this.groupService.updateGroup(this.selectedGroup).subscribe(
       data => {
         this.getGroups();
         return true;

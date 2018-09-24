@@ -9,10 +9,11 @@ module.exports = function(app) {
 
   app.route('/api/group/:name')
     .put(Group.update_a_group_byname)
-    .get(Group.read_a_group)
+    .get(Group.read_a_group_byname)
+    .delete(Group.delete_a_group_byname);
 
-  app.route('/api/group/:groupId')
-    .get(Group.read_a_group)
-    .put(Group.update_a_group)
-    .delete(Group.delete_a_group);
+  app.route('/api/group/id/:groupId')
+    .get(Group.read_a_group_byid)
+    .put(Group.update_a_group_byid)
+    .delete(Group.delete_a_group_byid);
 };

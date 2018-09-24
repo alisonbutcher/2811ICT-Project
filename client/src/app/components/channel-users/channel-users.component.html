@@ -1,6 +1,8 @@
 <h2>Manage Channel Users</h2>
-<div class="wrapper">
 
+{{role}}
+<!-- <div class="wrapper" *ngIf="role == 'Group Admin' || role == 'Super Admin'"> -->
+<div class="wrapper">
   <mat-card class="channels" color="primary">
     <mat-card-title>Select a Channel</mat-card-title>
     <mat-card-subtitle>Selected Channel: {{selectedChannel.name}}</mat-card-subtitle>
@@ -34,12 +36,3 @@
 
 </div>
 
-<!-- <mat-selection-list dense #shoes>
-  <mat-list-option *ngFor="let user of users">
-    {{user.name}}
-  </mat-list-option>
-</mat-selection-list> -->
-
-<!-- <p>
-  Options selected: {{user.selectedOptions.selected.length}}
-</p> -->

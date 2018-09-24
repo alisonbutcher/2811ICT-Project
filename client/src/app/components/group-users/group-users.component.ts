@@ -61,7 +61,7 @@ export class GroupUsersComponent implements OnInit {
     this.selectedGroup.users.push(JSON.parse(str));
     console.log(this.selectedGroup);
 
-    this.groupService.updateGroupByName(this.selectedGroup).subscribe(
+    this.groupService.updateGroup(this.selectedGroup).subscribe(
       data => {
         this.getGroups();
         return true;
@@ -75,7 +75,7 @@ export class GroupUsersComponent implements OnInit {
   removeUserFromGroup(user) {
     console.log('Remove user from group: ' + user.username);
     this.selectedGroup.users.pop(user.username);
-    this.groupService.updateGroupByName(this.selectedGroup).subscribe(
+    this.groupService.updateGroup(this.selectedGroup).subscribe(
       data => {
         this.getGroups();
         return true;
