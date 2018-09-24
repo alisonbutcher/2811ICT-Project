@@ -1,62 +1,34 @@
 <h2>Manage Channel Users</h2>
 <div class="wrapper">
 
-  <mat-card class="channels">
+  <mat-card class="channels" color="primary">
     <mat-card-title>Select a Channel</mat-card-title>
-    <!-- <mat-select placeholder="select a channel" dense>
-
-      <mat-option *ngFor="let c of channels" (click)="selectChannel(c)">{{ c.name }}</mat-option>
-    </mat-select> -->
-    <mat-selection-list>
-      <mat-list-option *ngFor="let c of channels" (click)="selectChannel(c)">
+    <mat-card-subtitle>Selected Channel: {{selectedChannel.name}}</mat-card-subtitle>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let c of channels" (click)="selectChannel(c)">
         {{c.name}}
-      </mat-list-option>
-    </mat-selection-list>
-  </mat-card>
-
-  <!-- <div class="current-users">
-
-    <mat-nav-list dense>
-      <mat-option mat-list-item *ngFor="let u of channelUsers"> {{ u.username }} </mat-option>
+      </mat-list-item>
     </mat-nav-list>
-  </div>
-</div> -->
-
-
-  <!-- <mat-card>
-    <mat-card-title>Current users in channel</mat-card-title>
-    <mat-selection-list>
-      <mat-list-option *ngFor="let u of channelUsers">
-        {{u.username}}
-      </mat-list-option>
-    </mat-selection-list>
-  </mat-card> -->
+  </mat-card>
 
   <mat-card>
     <mat-card-title>Current Users in Channel</mat-card-title>
+    <mat-card-subtitle>Click a user to remove from {{selectedChannel.name}}</mat-card-subtitle>
     <mat-nav-list>
       <mat-list-item *ngFor="let u of channelUsers" (click)="removeUserFromChannel(u)">
-        <!-- <button mat-button >{{user.name}}</button> -->
         {{u.username}}
       </mat-list-item>
     </mat-nav-list>
   </mat-card>
 
-  <!-- <div class="wrapper"> -->
   <mat-card class="add-user">
     <mat-card-title>Add a user</mat-card-title>
+    <mat-card-subtitle>Click a user to add to {{selectedChannel.name}}</mat-card-subtitle>
     <mat-nav-list>
       <mat-list-item *ngFor="let user of users" (click)="addUserToChannel(user)">
-        <!-- <button mat-button >{{user.name}}</button> -->
         {{user.name}}
       </mat-list-item>
     </mat-nav-list>
-    <!-- <mat-select placeholder="Select User to add"> -->
-    <!-- <mat-option *ngFor="let user of users" [value]="user.name" (click)="addUserToChannel(user)">
-        {{user.name}}
-      </mat-option><br />
-    </mat-select> -->
-    <!-- <button mat-flat-button color="primary" (click)="addUserToChannel(user)">Add to channel</button> -->
   </mat-card>
 
 

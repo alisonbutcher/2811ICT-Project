@@ -89,12 +89,12 @@ export class ChannelUsersComponent implements OnInit {
     );
   }
 
-  showSelected(channel) {
-    alert(channel.id);
-  }
+  // showSelected(channel) {
+  //   alert(channel.id);
+  // }
 
-  show(chan) {
-    alert(chan);
-  }
+  // show(chan) {
+  //   alert(chan);
+  // }
 
 }

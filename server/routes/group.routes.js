@@ -7,6 +7,10 @@ module.exports = function(app) {
     .get(Group.list_all_groups)
     .post(Group.create_a_group);
 
+  app.route('/api/group/:name')
+    .put(Group.update_a_group_byname)
+    .get(Group.read_a_group)
+
   app.route('/api/group/:groupId')
     .get(Group.read_a_group)
     .put(Group.update_a_group)
