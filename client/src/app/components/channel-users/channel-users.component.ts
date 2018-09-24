@@ -64,7 +64,7 @@ export class ChannelUsersComponent implements OnInit {
     this.selectedChannel.users.push(JSON.parse(str));
     console.log(this.selectedChannel);
 
-    this._channelsService.updateChannel(this.selectedChannel).subscribe(
+    this._channelsService.updateChannelByName(this.selectedChannel).subscribe(
       data => {
         this.getChannels();
         return true;
@@ -75,8 +75,18 @@ export class ChannelUsersComponent implements OnInit {
     );
   }
 
-  removeUsersFromChannel(channel, users) {
-
+  removeUserFromChannel(user) {
+    console.log('Remove user from channel: ' + user.username);
+    this.selectedChannel.users.pop(user.username);
+    this._channelsService.updateChannelByName(this.selectedChannel).subscribe(
+      data => {
+        this.getChannels();
+        return true;
+      },
+      error => {
+        console.error('Error saving channel');
+      }
+    );
   }
 
   showSelected(channel) {

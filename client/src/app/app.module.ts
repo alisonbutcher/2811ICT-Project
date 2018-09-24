@@ -102,7 +102,8 @@ import {
     MatListModule,
     MatIconModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule
 
 
   ],

@@ -22,12 +22,14 @@ body {
 }
 
   .page {
+    margin-top: 65px;
     display: flex;
     height: 100%;
 
   }
   
   .page__sidebar {
+
     width: 210px;
     height: 100%;
     /* background-color: rgb(252, 250, 250); */
