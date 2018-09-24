@@ -33,7 +33,9 @@ exports.create_a_channel = (req, res) => {
 }
 
 exports.read_a_channel_byid = (req, res) => {
-  Channel.find(req.params.id, function (err, channel) {
+  Channel.find(
+    req.params._id, 
+    function (err, channel) {
     if (err)
       res.send(err);
     res.json(channel);
@@ -64,7 +66,7 @@ exports.read_a_channel_byname = (req, res) => {
 
 exports.update_a_channel_byid = (req, res) => {
   Channel.findOneAndUpdate({
-      _id: req.params.channelId
+      _id: req.params._id
     },
     req.body, {
       new: true
@@ -72,7 +74,7 @@ exports.update_a_channel_byid = (req, res) => {
     function (err, channel) {
       if (err)
         res.send(err);
-      res.json(group);
+      res.json(channel);
     });
 };
 

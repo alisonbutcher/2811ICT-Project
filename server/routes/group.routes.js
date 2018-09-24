@@ -12,7 +12,7 @@ module.exports = function(app) {
     .get(Group.read_a_group_byname)
     .delete(Group.delete_a_group_byname);
 
-  app.route('/api/group/id/:groupId')
+  app.route('/api/group/id/:_id')
     .get(Group.read_a_group_byid)
     .put(Group.update_a_group_byid)
     .delete(Group.delete_a_group_byid);

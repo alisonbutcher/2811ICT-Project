@@ -82,7 +82,7 @@ addEditChannel({ _id, name, description, metaTitle }: DialogData) {
 
         } else {
 
-            this.updateChannel(result);
+            this.updateChannelById(result);
         }
     });
 }
@@ -107,9 +107,8 @@ addEditChannel({ _id, name, description, metaTitle }: DialogData) {
     );
   }
 
-  updateChannel(channel) {
-    console.log('Update Channel in component called: ' + JSON.stringify(channel));
-    this._channelsService.updateChannel(channel).subscribe(
+  updateChannelById(channel) {
+    this._channelsService.updateChannelById(channel).subscribe(
       data => {
         this.getChannels();
         return true;

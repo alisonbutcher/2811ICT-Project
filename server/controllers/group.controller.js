@@ -22,7 +22,7 @@ exports.create_a_group = (req, res) => {
 
 
 exports.read_a_group_byid = (req, res) => {
-  Group.findById(req.params.groupId, function(err, group) {
+  Group.findById(req.params._id, function(err, group) {
     if (err)
       res.send(err);
     res.json(group);
@@ -65,7 +65,8 @@ exports.update_a_group_byname = (req, res) => {
 };
 
 exports.update_a_group_byid = (req, res) => {
-  Group.findOneAndUpdate({_id: req.params.groupId}, req.body, {new: true}, function(err, group) {
+  Group.findOneAndUpdate({
+    _id: req.params._id}, req.body, {new: true}, function(err, group) {
     if (err)
       res.send(err);
     res.json(group);

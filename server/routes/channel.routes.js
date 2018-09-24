@@ -13,7 +13,7 @@ module.exports = function(app) {
     .delete(Channel.delete_a_channel_byname);
 
 
-  app.route('/api/channel/id/:channelId')
+  app.route('/api/channel/id/:_id')
     .get(Channel.read_a_channel_byid)
     .put(Channel.update_a_channel_byid)
     .delete(Channel.delete_a_channel_byid);
