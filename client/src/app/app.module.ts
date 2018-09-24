@@ -18,7 +18,6 @@ import { SessionService } from './services/session.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './components/footer/footer.component';
 import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
-import { ContentContainerComponent } from './content-container/content-container.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChannelDialogComponent } from './components/channel-dialog/channel-dialog.component';
@@ -78,7 +77,6 @@ import {
     ChatComponent,
     FooterComponent,
     UserDialogComponent,
-    ContentContainerComponent,
     HeaderComponent,
     SidebarComponent,
     ChannelDialogComponent,
