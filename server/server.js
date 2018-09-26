@@ -1,21 +1,21 @@
 const path = require('path');
 const cors = require('cors');
-const express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  User = require('./models/user.model'), 
-  Group = require('./models/group.model'),
-  Channels = require('./models/channel.model'),
-  bodyParser = require('body-parser');
-  
+const express = require('express');
+app = express();
+mongoose = require('mongoose');
+User = require('./models/user.model');
+Group = require('./models/group.model');
+Channels = require('./models/channel.model');
+bodyParser = require('body-parser');
+
+port = process.env.PORT || 3000;
 
 // Set maximum discrete number of endpoints
 app.setMaxListeners(20);
 
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/2811ICT'); 
+mongoose.connect('mongodb://localhost/2811ICT', { useNewUrlParser: true }); 
 
 // Configure Body Parser
 app.use(bodyParser.urlencoded({ extended: true }));
