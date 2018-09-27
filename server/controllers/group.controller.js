@@ -10,15 +10,27 @@ exports.list_all_groups = (req, res) => {
     });
 };
 
-
 exports.create_a_group = (req, res) => {
-    var new_group = new Group(req.body);
-    new_group.save(function (err, group) {
-        if (err)
-            res.send(err);
-        res.json(group);
+    // Build Query to check if already exists
+    let query = JSON.parse('{"name": "' + req.body.name + '"}');
+    // Perform  Query 
+    Group.find(query, 'name description users[]', function (err, group) {
+
+        // If there is data the channel name already exists
+        if (group.length > 0) {
+            res.json({
+                message: "Group already exists"
+            });
+        } else {
+            var new_group = new Group(req.body);
+            new_group.save(function (err, group) {
+                if (err)
+                    res.send(err);
+                res.json(group);
+            });
+        }
     });
-};
+}
 
 
 exports.read_a_group_byid = (req, res) => {
