@@ -22,7 +22,7 @@
         "mocha": "^5.2.0"
     },
     "scripts": {
-        "test": "mocha --timeout 10000 ./testing/integrationTests/test.js"
+        "test": "mocha --timeout 10000 ./testing/integrationTests/groups.js"
     },
     "repository": {
         "type": "git",
