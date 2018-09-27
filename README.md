@@ -111,6 +111,9 @@ It quickly became clear that while the user login details for a successful login
 
 Additionaly it was configured as an observable so that components could subscribe to it and be notified by an event whenever a session variable was changed which made it very easy to enable and disable various parts of the view depending on the login details stored in the session variables without needing to poll/check them constantly.
 
+## Testing
+All API routes have separate mocha/chai testing functions. To execute the tests enter ```npm test``` from the server directory of the project and all tests will be run sequentially. Once the tests have completed press ```Ctrl-C``` to exit from the mocha environment.
+
 ## Routes (REST API)
 parameters, returnvalues, purpose
 ### User Routes
