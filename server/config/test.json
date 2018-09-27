@@ -1,0 +1,4 @@
+{
+    "DBHost": "mongodb://localhost/2811ICT_test",
+    "ServerPort": 3002
+}
