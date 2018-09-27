@@ -34,15 +34,16 @@ exports.create_a_channel = (req, res) => {
 
 
 exports.read_a_channel_byid = (req, res) => {
-    Channel.find(
+    Channel.findById(
         req.params._id,
         function (err, channel) {
             if (err)
-                console.log("in read by id error");
-            res.send(err);
+                res.send(err);
             res.json(channel);
         });
 };
+
+
 
 exports.read_a_channel_byname = (req, res) => {
     Channel = mongoose.model('Channel');
