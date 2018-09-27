@@ -37,17 +37,18 @@ exports.create_a_user = function (req, res) {
 
 // Read a single user
 exports.read_a_user = function (req, res) {
-    User.findById(req.params.userId, function (err, user) {
+    User.findById(req.params._id, function (err, user) {
         if (err)
             res.send(err);
         res.json(user);
     });
 };
 
+
 // Update a user
 exports.update_a_user = function (req, res) {
     User.findOneAndUpdate({
-        _id: req.params.userId
+        _id: req.params._id
     }, req.body, {
         new: true
     }, function (err, user) {
@@ -62,7 +63,7 @@ exports.update_a_user = function (req, res) {
 // Delete a user
 exports.delete_a_user = function (req, res) {
     User.deleteOne({
-        _id: req.params.userId
+        _id: req.params._id
     }, function (err, user) {
         if (err)
             res.send(err);

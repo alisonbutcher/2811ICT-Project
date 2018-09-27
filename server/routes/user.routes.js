@@ -7,7 +7,7 @@ module.exports = function (app) {
         .get(User.list_all_users)
         .post(User.create_a_user);
 
-    app.route('/api/user/:userId')
+    app.route('/api/user/:_id')
         .get(User.read_a_user)
         .put(User.update_a_user)
         .delete(User.delete_a_user);

@@ -3,10 +3,10 @@ process.env.NODE_ENV = 'test';
 
 // Pull in assets from project
 const mongoose = require("mongoose");
-const Group = require('../../models/group.model');
-const Channel = require('../../models/channel.model');
-const User = require('../../models/user.model');
-const server = require('../../server');
+const Group = require('../models/group.model');
+const Channel = require('../models/channel.model');
+const User = require('../models/user.model');
+const server = require('../server');
 
 //Require the dev-dependencies
 const chai = require('chai');
@@ -19,7 +19,8 @@ chai.use(require('chai-http'));
 
 
 
-describe('Testing Channel Routes', () => {
+describe('TESTING CHANNEL ROUTES', () => {
+    
     before((done) => {
         // Clear test database  
         Channel.deleteMany({}, (err) => {

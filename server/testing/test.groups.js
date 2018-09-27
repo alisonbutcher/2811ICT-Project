@@ -1,10 +1,10 @@
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test';          // This tells server to use a different http port and database
 
 
 // Pull in assets from project
 const mongoose = require("mongoose");
-const Group = require('../../models/group.model');
-const server = require('../../server');
+const Group = require('../models/group.model');
+const server = require('../server');
 
 //Require the dev-dependencies
 const chai = require('chai');
@@ -15,7 +15,7 @@ const expect = chai.expect;
 chai.use(require('chai-http'));
 
 
-describe('Testing Group Routes', () => {
+describe('TESTING GROUP ROUTES', () => {
     before((done) => {
         // Clear test database  
         Group.deleteMany({}, (err) => {
@@ -78,38 +78,41 @@ describe('Testing Group Routes', () => {
         });
     });
 
+
+    
     describe('/GET Group by ID', () => { //TODO: This route is broken on the server side. Enable test when route fixed
         let grp;
 
-        // before((done) => { 
-        //     let c = new Group({
-        //         'name': "Group name",
-        //         'description': "Group description"
-        //     });
-        //     c.save( (err, Group) => {
-        //         if (err)
-        //             console.log(err);
-        //         chan = Group.toObject();
-        //         done();         // NOTE: If done() is not inside save we get to "it" before save returns data
-        //     });
-        // });
+        before((done) => { 
+            let c = new Group({
+                'name': "Group name",
+                'description': "Group description",
+                'users': [{'username': "a username" }],
+                'channels': [{'channelname': "a channelname"}]
+            });
+            c.save( (err, group) => {
+                if (err)
+                    console.log(err);
+                grp = group.toObject();
+                done();         // NOTE: If done() is not inside save we get to "it" before save returns data
+            });
+        });
 
-        // it('it should GET all Groups and tests there is a Group returned', (done) => {
+        it('it should GET a group by _id', (done) => {
 
-        //     console.log(chan._id);
-        //     chai.request(server)
-        //         .get('/api/Group/id/' + chan._id)
-        //         .end((err, res) => {
-        //             console.log(res.body);
-        //             res.should.have.status(200);
-        //             res.body.should.be.an('array');
-        //             expect(res.body[0]).to.contain.property("name").eql('Group name');
-        //             expect(res.body[0]).to.contain.property("description").eql("Group description");
-        //             expect(res.body[0]).to.contain.property('users');
-        //             expect(res.body[0]).to.contain.property("_id");
-        //             done();
-        //         });
-        // });
+            console.log(grp._id);
+            chai.request(server)
+                .get('/api/group/id/' + grp._id)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.an('object');
+                    res.body.should.contain.property("name").eql(grp.name);
+                    res.body.should.contain.property("description").eql(grp.description);
+                    res.body.should.contain.property("users");
+                    res.body.should.contain.property("channels");
+                    done();
+                });
+        });
     });
 
 
@@ -117,10 +120,10 @@ describe('Testing Group Routes', () => {
     describe('/POST Group', () => {
         it('it should /POST a Group', (done) => {
             let g = new Group({
-                'name': "Group name",
-                'description': "Group description",
-                'users': [ { username: "tye"} ],
-                'channels': [ { channelname: "a channel" } ]
+                'name': "Group werg34 narbme",
+                'description': "Group descrbq3iption",
+                'users': [ { username: "tyv3we"} ],
+                'channels': [ { channelname: "a chan3bnel" } ]
             });
 
             chai.request(server)
