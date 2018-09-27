@@ -98,8 +98,6 @@ describe('TESTING USER ROUTES', () => {
         });
 
         it('it should GET a user by _id', (done) => {
-
-            console.log(usr._id);
             chai.request(server)
                 .get('/api/user/' + usr._id)
                 .end((err, res) => {
@@ -283,6 +281,77 @@ describe('TESTING USER ROUTES', () => {
                     res.body.should.be.a('object');
                     res.body.should.have.property("message").eql("User successfully deleted");
                 done();
+                });
+        });
+    });
+
+
+
+    describe('/POST request for user Login', () => {
+        let usr;
+
+        before((done) => {
+            let u = new User({
+                'name': "test User name",
+                'password': "afepassword",
+                'role': "some sort of role"
+            });
+            u.save((err, user) => {
+                if (err)
+                    console.log(err);
+                usr = user.toObject();
+                done(); // NOTE: If done is not inside save we get to "it" before save returns data
+            });
+        });
+       
+       
+        it('it should return user object after verifying login details', (done) => {
+
+            chai.request(server)
+                .post('/api/user/login')
+                .send(usr)
+                .end((err, res) => {
+                    res.should.has.status(200);
+                    res.body.should.be.a('array');
+                    res.body[0].should.have.property('name').eql(usr.name);
+                    res.body[0].should.have.property('role');
+                    done();
+                });
+        });
+    });
+
+
+    describe('/POST request for user Login', () => {
+        let usr;
+
+        before((done) => {
+            let u = new User({
+                'name': "ynasdf",
+                'password': "dsagjere",
+                'role': "shum64vr"
+            });
+            u.save((err, user) => {
+                if (err)
+                    console.log(err);
+                usr = user.toObject();
+                done(); // NOTE: If done is not inside save we get to "it" before save returns data
+            });
+        });
+       
+    
+        it('it should return incorrect username or password message', (done) => {
+
+            usr.name = "sadfcW";
+            usr.password = "slkqig";
+
+            chai.request(server)
+                .post('/api/user/login')
+                .send(usr)
+                .end((err, res) => {
+                    res.should.has.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('message').eql('Username or password Incorrect');
+                    done();
                 });
         });
     });
