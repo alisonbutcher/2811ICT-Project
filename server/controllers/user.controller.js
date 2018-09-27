@@ -13,13 +13,27 @@ exports.list_all_users = function (req, res) {
 
 // Create a user
 exports.create_a_user = function (req, res) {
-    var new_user = new User(req.body);
-    new_user.save(function (err, user) {
-        if (err)
-            res.send(err);
-        res.json(user);
+    // Build Query to check if already exists
+    let query = JSON.parse('{"name": "' + req.body.name + '"}');
+    // Perform  Query 
+    User.find(query, 'name role', function (err, usr) {
+
+        // If there is data the channel name already exists
+        if (usr.length > 0) {
+            res.json({
+                message: "User already exists"
+            });
+        } else {
+            var new_user = new User(req.body);
+            new_user.save(function (err, user) {
+                if (err)
+                    res.send(err);
+                res.json(user);
+            });
+        }
     });
 };
+
 
 // Read a single user
 exports.read_a_user = function (req, res) {
