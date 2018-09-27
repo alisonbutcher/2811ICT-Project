@@ -79,7 +79,7 @@ describe('TESTING GROUP ROUTES', () => {
     });
 
 
-    
+
     describe('/GET Group by ID', () => { //TODO: This route is broken on the server side. Enable test when route fixed
         let grp;
 
@@ -99,8 +99,6 @@ describe('TESTING GROUP ROUTES', () => {
         });
 
         it('it should GET a group by _id', (done) => {
-
-            console.log(grp._id);
             chai.request(server)
                 .get('/api/group/id/' + grp._id)
                 .end((err, res) => {

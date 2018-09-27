@@ -66,7 +66,6 @@ describe('TESTING CHANNEL ROUTES', () => {
                 chan = channel.toObject();
                 done(); // NOTE: If done is not inside save we get to "it" before save returns data
             });
-            // Moved done() from here
         });
 
         it('it should GET all channels and tests there is a channel returned', (done) => {
@@ -86,35 +85,34 @@ describe('TESTING CHANNEL ROUTES', () => {
     describe('/GET channel by ID', () => { //TODO: This route is broken on the server side. Enable test when route fixed
         let chan;
 
-        // before((done) => { 
-        //     let c = new Channel({
-        //         'name': "Channel name",
-        //         'description': "Channel description"
-        //     });
-        //     c.save( (err, channel) => {
-        //         if (err)
-        //             console.log(err);
-        //         chan = channel.toObject();
-        //         done();         // NOTE: If done() is not inside save we get to "it" before save returns data
-        //     });
-        // });
+        before((done) => { 
+            let c = new Channel({
+                'name': "ChannV34e8#$ame",
+                'description': "ChannelV2yscavweription"
+            });
+            c.save( (err, channel) => {
+                if (err)
+                    console.log(err);
+                chan = channel.toObject();
+                done();         // NOTE: If done() is not inside save we get to "it" before save returns data
+            });
+        });
 
-        // it('it should GET all channels and tests there is a channel returned', (done) => {
+        it('it should GET channel by _id and tests there is a channel returned', (done) => {
 
-        //     console.log(chan._id);
-        //     chai.request(server)
-        //         .get('/api/channel/id/' + chan._id)
-        //         .end((err, res) => {
-        //             console.log(res.body);
-        //             res.should.have.status(200);
-        //             res.body.should.be.an('array');
-        //             expect(res.body[0]).to.contain.property("name").eql('Channel name');
-        //             expect(res.body[0]).to.contain.property("description").eql("Channel description");
-        //             expect(res.body[0]).to.contain.property('users');
-        //             expect(res.body[0]).to.contain.property("_id");
-        //             done();
-        //         });
-        // });
+            console.log(chan._id);
+            chai.request(server)
+                .get('/api/channel/id/' + chan._id)
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.an('object');
+                    expect(res.body).to.contain.property("name").eql(chan.name);
+                    expect(res.body).to.contain.property("description").eql(chan.description);
+                    expect(res.body).to.contain.property('users');
+                    expect(res.body).to.contain.property("_id");
+                    done();
+                });
+        });
     });
 
 
