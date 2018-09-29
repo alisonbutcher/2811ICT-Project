@@ -61,6 +61,7 @@ import {
   MatTreeModule,
   MatRadioGroup
 } from '@angular/material';
+import { ImageComponent } from './image/image.component';
 
 
 
@@ -81,6 +82,7 @@ import {
     SidebarComponent,
     ChannelDialogComponent,
     GroupDialogComponent,
+    ImageComponent,
   ],
   imports: [
     BrowserModule,
