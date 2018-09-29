@@ -16,14 +16,9 @@
     border: 1px solid #555;
   } */
 
-  mat-sidenav {
-    width: 220px;
-  }
+ 
 
-  mat-icon {
-    padding-left: 3px;
-    margin-right: 10px;
-  }
+
 
   a {
     padding-left: 40px;
@@ -40,10 +35,10 @@
     padding-top: 10px;
   }
 
-  mat-sidenav-content {
+  /* mat-sidenav-content {
     padding-top: 28px;
     padding-left: 28px;
-  }
+  } */
 
   #heading {
     text-decoration: none;
@@ -53,6 +48,7 @@
   }
   .mat-toolbar {
     overflow: hidden;
+    z-index: 999;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */

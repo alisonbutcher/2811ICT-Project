@@ -22,6 +22,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ChannelDialogComponent } from './components/channel-dialog/channel-dialog.component';
 import { GroupDialogComponent } from './components/group-dialog/group-dialog.component';
+import { ImageComponent } from './components/image/image.component';
+import { ChatListComponent } from './components/chat-list/chat-list.component';
+
 // Angular Material Components
 import {
   MatAutocompleteModule,
@@ -61,7 +64,7 @@ import {
   MatTreeModule,
   MatRadioGroup
 } from '@angular/material';
-import { ImageComponent } from './image/image.component';
+
 
 
 
@@ -83,6 +86,7 @@ import { ImageComponent } from './image/image.component';
     ChannelDialogComponent,
     GroupDialogComponent,
     ImageComponent,
+    ChatListComponent,
   ],
   imports: [
     BrowserModule,

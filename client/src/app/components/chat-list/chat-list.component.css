@@ -1,0 +1,36 @@
+.chans {
+    margin-left: 15px;
+    font-family: roboto;
+    font-size: 12px;
+}
+
+mat-panel-title {
+    font-family: roboto;
+    font-size: 12px;
+    text-align: left;
+    margin-left: 29px;
+    color: rgba(0,0,0,0.87)
+}
+
+/* .mat-accordion {
+    border-color: transparent;
+} */
+
+.mat-expansion-panel-body {
+    padding: 0;
+}
+
+mat-expansion-panel-body {
+    padding: 0;
+}
+
+mat-expansion-panel-content {
+    padding: 0;
+}
+
+.panel-link {
+    font-family: roboto;
+    font-size: 12px;
+    margin-left: 84px;
+    padding: 0;
+}

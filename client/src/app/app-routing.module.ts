@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'channel-users', component: ChannelUsersComponent },
   {path: 'group-users', component: GroupUsersComponent },
   {path: 'group-channels', component: GroupChannelsComponent },
-  {path: 'chat', component: ChatComponent }
+  {path: 'chat/:channelname', component: ChatComponent }
 
 ];
 

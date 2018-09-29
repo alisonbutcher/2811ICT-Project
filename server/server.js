@@ -2,6 +2,7 @@ const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const config = require('config');
+// const io = require('socket.io')(http);
 app = express();
 mongoose = require('mongoose');
 User = require('./models/user.model');

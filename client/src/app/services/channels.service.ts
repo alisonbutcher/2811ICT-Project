@@ -22,6 +22,10 @@ export class ChannelsService {
       return this.http.get('http://localhost:3000/api/channel-user/', channel._id);
     }
 
+    getChannelByName(channel_name) {
+      return this.http.get('http://localhost:3000/api/channel/', channel_name);
+    }
+
     getUsersNotInChannel(channel) {
       return this.http.get('http://localhost:3000/api/channel-not-users/', channel._id);
     }
