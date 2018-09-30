@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ChannelsService } from '../../services/channels.service';
 import { SocketService } from '../../services/socket.service';
-import { SessionService } from '../../services/session.service';
 
 @Component({
     selector: 'app-chat',
@@ -24,8 +23,8 @@ export class ChatComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private channelService: ChannelsService,
-        private socketServer: SocketService,
-        // private session: SessionService
+        private socketServer: SocketService
+
     ) { }
 
     ngOnInit() {
@@ -35,12 +34,6 @@ export class ChatComponent implements OnInit {
         } else {
             this.username = localStorage.getItem('name');
         }
-
-        // Subscribe to the observable sessionService to monitor session variables
-        // this.session.watchStorage().subscribe((data: string) => {
-        //     // this.username = this.session.getitem('name');
-        //     // console.log('User is: ' + localStorage.getItem('name'));
-        // });
 
         // Subscribe to the socket server observable
         this.connection = this.socketServer.getMessages().subscribe(message => {
@@ -56,20 +49,15 @@ export class ChatComponent implements OnInit {
 
         this.getChannel(this.selectedchannel);
 
-        this.connection.on('connect', () => {
-            this.connection.emit('room', this.selectedchannel);
-        });
     }
+
 
     join() {
         this.socketServer.join(this.selectedchannel);
+        this.messages = [];
     }
 
     sendMessage(message) {
-        // Build JSON Object
-        // const jsn = '{ "username": "' + this.username + '", "channelname": "' + this.selectedchannel +
-        //     '", "message": "' + this.message + '" }';
-        // this.socketServer.sendMessage(JSON.parse(jsn));
         this.socketServer.sendMessage('[' + this.username + ']: ' + this.message);
     }
 
@@ -83,10 +71,5 @@ export class ChatComponent implements OnInit {
             () => console.log('get selected channel')
         );
     }
-
-    getChannelHistory() {
-
-    }
-
 
 }

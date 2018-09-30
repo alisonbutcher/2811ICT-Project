@@ -17,7 +17,7 @@ export class SessionService {
     }
 
     getitem(key: string) {
-        console.log('session service getitem: ' + localStorage.getItem(key));
+        // console.log('session service getitem: ' + localStorage.getItem(key));
         return localStorage.getItem(key);
     }
 

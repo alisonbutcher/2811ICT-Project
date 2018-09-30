@@ -13,18 +13,18 @@ module.exports = function(app, io){
         socket.on('room', (room) => {
             socket.join(room);
             rm = room;
-            // console.log('joined room ' + room);
+            console.log('joined room ' + room);
         })
         
         // Disconnect
         socket.on('disconnect', () => {
-            // console.log('user disconnected');
+            console.log('user disconnected');
         });
 
         // Room specific messages
         socket.on('add-message', (message) => {
             io.sockets.in(rm).emit('message', {type:'message', text: message});
-            // console.log('Room: ' + rm + ', ' + message);
+            console.log('Room: ' + rm + ', ' + message);
         });
     });
 }

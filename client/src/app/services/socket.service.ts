@@ -7,17 +7,27 @@ import * as io from 'socket.io-client';
 })
 export class SocketService {
     private url = 'http://localhost:3000';
-    private socket;
+    private socket = null;
+    private room;
 
     constructor() { }
 
 
     join(room) {
-        this.socket.disconnect();
-        this.socket = io(this.url);
-        this.socket.on('connect', () => {
+        // console.log('joining room: ' + room);
+        // if (this.socket != null) {
+        //     this.socket.disconnect();
+        // } else {
+
+        // }
+        // this.socket = io(this.url);
+
+        // this.socket.on('connect', () => {
+            // // this.socket.leave(this.room);
+            // this.socket.join(room);
             this.socket.emit('room', room);
-        });
+            this.room = room;
+        // });
     }
 
     sendMessage(message) {
@@ -28,9 +38,11 @@ export class SocketService {
     getMessages() {
         // console.log('get message');
         this.socket = io(this.url);
+        // this.join(this.room);
+        // this.socket.connect();
         const observable = new Observable(observer => {
             this.socket.on('message', (data) => {
-                // console.log('received message from Websocket server');
+                console.log('received message from Websocket server');
                 observer.next(data);
             });
             return () => {

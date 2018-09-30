@@ -47,11 +47,11 @@ export class LoginComponent implements OnInit {
 
                         // Routing based on access level
                         if (this.userObject[0].role.toString() === 'Chat User') {
-                            this.router.navigateByUrl('/chat');
+                            this.router.navigateByUrl('/');
                         } else if (this.userObject[0].role.toString() === 'Group Admin') {
                             this.router.navigateByUrl('/group');
                         } else if (this.userObject[0].role.toString() === 'Super Admin') {
-                            this.router.navigateByUrl('/chat/no_channel_selected');
+                            this.router.navigateByUrl('/user/');
                         }
                     }
                 } else {
