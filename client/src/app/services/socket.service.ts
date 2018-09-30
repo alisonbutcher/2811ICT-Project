@@ -12,17 +12,25 @@ export class SocketService {
     constructor() { }
 
 
+    join(room) {
+        this.socket.disconnect();
+        this.socket = io(this.url);
+        this.socket.on('connect', () => {
+            this.socket.emit('room', room);
+        });
+    }
+
     sendMessage(message) {
-        console.log('Service: send Message');
+        // console.log('Service: send Message');
         this.socket.emit('add-message', message);
     }
 
     getMessages() {
-        console.log('get message');
+        // console.log('get message');
         this.socket = io(this.url);
         const observable = new Observable(observer => {
             this.socket.on('message', (data) => {
-                console.log('received message from Websocket server');
+                // console.log('received message from Websocket server');
                 observer.next(data);
             });
             return () => {

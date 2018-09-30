@@ -25,25 +25,22 @@ export class ChatComponent implements OnInit {
         private router: Router,
         private channelService: ChannelsService,
         private socketServer: SocketService,
-        private session: SessionService
+        // private session: SessionService
     ) { }
 
     ngOnInit() {
-        // if (sessionService.)
 
-        // if (!sessionStorage.getItem('username')) {
-        //   console.log('Not valid login');
-        //   this.router.navigateByUrl('home');
-        // } else {
-        // this.username = sessionStorage.getItem('username');
-        // console.log("Chat session started for user: " + this.username);
-        // }
+        if (!localStorage.getItem('name')) {
+            this.router.navigateByUrl('/login');
+        } else {
+            this.username = localStorage.getItem('name');
+        }
 
         // Subscribe to the observable sessionService to monitor session variables
-        this.session.watchStorage().subscribe((data: string) => {
-            this.role = this.session.getitem('role');
-            this.username = this.session.getitem('name');
-        });
+        // this.session.watchStorage().subscribe((data: string) => {
+        //     // this.username = this.session.getitem('name');
+        //     // console.log('User is: ' + localStorage.getItem('name'));
+        // });
 
         // Subscribe to the socket server observable
         this.connection = this.socketServer.getMessages().subscribe(message => {
@@ -54,15 +51,26 @@ export class ChatComponent implements OnInit {
         // subscribe to observable for url params
         this.route.paramMap.subscribe(params => {
             this.selectedchannel = params.get('channelname');
-
+            this.join();
         });
 
         this.getChannel(this.selectedchannel);
+
+        this.connection.on('connect', () => {
+            this.connection.emit('room', this.selectedchannel);
+        });
+    }
+
+    join() {
+        this.socketServer.join(this.selectedchannel);
     }
 
     sendMessage(message) {
-        this.socketServer.sendMessage('[' + this.username + ']:' + this.message);
-        console.log('Message sent:  ' + message);
+        // Build JSON Object
+        // const jsn = '{ "username": "' + this.username + '", "channelname": "' + this.selectedchannel +
+        //     '", "message": "' + this.message + '" }';
+        // this.socketServer.sendMessage(JSON.parse(jsn));
+        this.socketServer.sendMessage('[' + this.username + ']: ' + this.message);
     }
 
     getChannel(channel_name) {

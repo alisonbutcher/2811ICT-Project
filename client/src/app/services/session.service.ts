@@ -17,11 +17,11 @@ export class SessionService {
     }
 
     getitem(key: string) {
+        console.log('session service getitem: ' + localStorage.getItem(key));
         return localStorage.getItem(key);
     }
 
     setItem(key: string, data: any) {
-        console.log('SessionService: ' + key + ':' + data);
         localStorage.setItem(key, data);
         this.storageSub.next(true);
     }
