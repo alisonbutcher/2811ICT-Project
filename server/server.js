@@ -8,6 +8,7 @@ mongoose = require('mongoose');
 User = require('./models/user.model');
 Group = require('./models/group.model');
 Channels = require('./models/channel.model');
+Chat = require('./models/chat.model');
 bodyParser = require('body-parser');
 
 port = config.ServerPort;
@@ -48,6 +49,9 @@ groups(app);
 // Channels Routes
 var channels = require('./routes/channel.routes');
 channels(app);
+
+var chat = require('./routes/chat.routes');
+chat(app);
 
 
 // Static Directory for Angular Client Side app

@@ -29,7 +29,7 @@ export class ChatListComponent implements OnInit {
       data => { this.groups = data; },
       err => console.error(err),
       () => {
-        console.log('done loading groups')
+        console.log('done loading groups');
         console.log(this.groups);
       }
     );
