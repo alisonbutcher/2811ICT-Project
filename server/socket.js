@@ -10,8 +10,11 @@ module.exports = function(app, io){
         // console.log('user connected');
 
         // Separate chat room selection (channel)
-        socket.on('room', (room) => {
+        socket.on('changeRoom', (room) => {
+            socket.leave(socket.room);
             socket.join(room);
+            socket.emit('updateChat', {type:'message', text: 'Welcome to ' + room});
+            socket.room = room;
             rm = room;
             console.log('joined room ' + room);
         })
@@ -22,9 +25,9 @@ module.exports = function(app, io){
         });
 
         // Room specific messages
-        socket.on('add-message', (message) => {
-            io.sockets.in(rm).emit('message', {type:'message', text: message});
-            console.log('Room: ' + rm + ', ' + message);
+        socket.on('sendMessage', (message) => {
+            io.sockets.in(socket.room).emit('updateChat', {type:'message', text: message});
+            console.log('Room: ' + socket.room + ', ' + message);
         });
     });
 }
