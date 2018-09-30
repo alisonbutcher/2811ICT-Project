@@ -1,35 +1,35 @@
 <h2>Manage Group Users</h2>
 <div class="wrapper">
 
-  <mat-card class="channels" color="primary">
-    <mat-card-title>Select a Group</mat-card-title>
-    <mat-card-subtitle>Selected Group: {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let c of groups" (click)="selectGroup(c)">
-        {{c.name}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card class="channels" color="primary">
+        <mat-card-title>Select a Group</mat-card-title>
+        <mat-card-subtitle>Selected Group: {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let c of groups" (click)="selectGroup(c)">
+                {{c.name}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
-  <mat-card>
-    <mat-card-title>Current Users in Group</mat-card-title>
-    <mat-card-subtitle>Click a user to remove from {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let u of groupUsers" (click)="removeUserFromGroup(u)">
-        {{u.username}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card>
+        <mat-card-title>Current Users in Group</mat-card-title>
+        <mat-card-subtitle>Click a user to remove from {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let u of groupUsers" (click)="removeUserFromGroup(u)">
+                {{u.username}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
-  <mat-card class="add-user">
-    <mat-card-title>Add a user</mat-card-title>
-    <mat-card-subtitle>Click a user to add to {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let user of users" (click)="addUserToGroup(user)">
-        {{user.name}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card class="add-user">
+        <mat-card-title>Add a user</mat-card-title>
+        <mat-card-subtitle>Click a user to add to {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let user of users" (click)="addUserToGroup(user)">
+                {{user.name}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
 
 </div>

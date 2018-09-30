@@ -3,16 +3,16 @@
         <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
       </a></span> -->
     <span><a id="heading" href="http://localhost:3000">2811ICT Chat</a></span>
-  
+
     <!-- This fills the remaining space of the current row -->
     <span class="toolbar-fill-remaining-space"></span>
-  
+
     <span>
-      <button *ngIf="role != ''" mat-button (click)="logout()">
-        <mat-icon>lock</mat-icon>Logout
-      </button>
-      <button *ngIf="role == ''" mat-button routerLink="/login">
-        <mat-icon>lock_open</mat-icon>Login
-      </button>
+        <button *ngIf="role != ''" mat-button (click)="logout()">
+            <mat-icon>lock</mat-icon>Logout
+        </button>
+        <button *ngIf="role == ''" mat-button routerLink="/login">
+            <mat-icon>lock_open</mat-icon>Login
+        </button>
     </span>
-  </mat-toolbar>
+</mat-toolbar>

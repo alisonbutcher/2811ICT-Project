@@ -8,125 +8,125 @@ import { GroupDialogComponent } from '../group-dialog/group-dialog.component';
 
 
 export interface DialogData {
-  _id: string;
-  name: string;
-  description: string;
-  metaTitle: string;
+    _id: string;
+    name: string;
+    description: string;
+    metaTitle: string;
 }
 
 @Component({
-  selector: 'app-groups',
-  templateUrl: './groups.component.html',
-  styleUrls: ['./groups.component.css'],
-  preserveWhitespaces: true
+    selector: 'app-groups',
+    templateUrl: './groups.component.html',
+    styleUrls: ['./groups.component.css'],
+    preserveWhitespaces: true
 })
 
 export class GroupsComponent implements OnInit {
-  events: string[] = [];
-  opened: boolean = true;
-  panelOpenState = false;
-  role = 0;
-  group;
+    events: string[] = [];
+    opened: boolean = true;
+    panelOpenState = false;
+    role = 0;
+    group;
 
-  @Input()
-  dialogData: DialogData[];
+    @Input()
+    dialogData: DialogData[];
 
-  // Which columns are visible in table
-  displayedColumns: string[] = ['name', 'description', 'actions'];
+    // Which columns are visible in table
+    displayedColumns: string[] = ['name', 'description', 'actions'];
 
-  private groups;
-  private title;
+    private groups;
+    private title;
 
-  constructor(private _groupsService: GroupsService, private dialog: MatDialog, public session: SessionService) { }
+    constructor(private _groupsService: GroupsService, private dialog: MatDialog, public session: SessionService) { }
 
-  ngOnInit() {
-    this.getGroups();
-  }
-
-  addGroup() {
-    const dialogData = {
-      _id: '',
-      name: '',
-      description: '',
-      metaTitle: 'Add Group'
-    };
-
-    this.addEditGroup(dialogData);
-  }
-
-  addEditGroup({ _id, name, description, metaTitle }: DialogData) {
-    if (_id !== '') {
-      metaTitle = 'Update Group';
+    ngOnInit() {
+        this.getGroups();
     }
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
 
-    dialogConfig.data = {
-      _id, name, description, metaTitle
-    };
+    addGroup() {
+        const dialogData = {
+            _id: '',
+            name: '',
+            description: '',
+            metaTitle: 'Add Group'
+        };
 
-    dialogConfig.width = '360px';
+        this.addEditGroup(dialogData);
+    }
 
-    const dialogRef = this.dialog.open(GroupDialogComponent, dialogConfig);
+    addEditGroup({ _id, name, description, metaTitle }: DialogData) {
+        if (_id !== '') {
+            metaTitle = 'Update Group';
+        }
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.autoFocus = true;
 
-    dialogRef.afterClosed().subscribe(result => {
+        dialogConfig.data = {
+            _id, name, description, metaTitle
+        };
 
-      // If id empty its a new channel
-      if (_id === '') {
+        dialogConfig.width = '360px';
 
-        // Remove _id field for create
-        delete result['_id'];
+        const dialogRef = this.dialog.open(GroupDialogComponent, dialogConfig);
 
-        this.createGroup(result);
+        dialogRef.afterClosed().subscribe(result => {
 
-      } else {
+            // If id empty its a new channel
+            if (_id === '') {
 
-        this.updateGroup(result);
-      }
-    });
-  }
+                // Remove _id field for create
+                delete result['_id'];
 
-  getGroups() {
-    this._groupsService.getGroups().subscribe(
-      data => { this.groups = data; },
-      err => console.error(err),
-      () => console.log('done loading groups')
-    );
-  }
-  createGroup(group) {
-    this._groupsService.createGroup(group).subscribe(
-      data => {
-        this.getGroups();
-        return true;
-      },
-      error => {
-        console.error(error);
-      }
-    );
-  }
-  updateGroup(group) {
-    console.log('calling update group' + JSON.stringify(group));
-    this._groupsService.updateGroupById(group).subscribe(
-      data => {
-        this.getGroups();
-        return true;
-      },
-      error => {
-        console.error('Error saving group');
-      }
-    );
-  }
+                this.createGroup(result);
 
-  deleteGroup(group) {
-    this._groupsService.deleteGroup(group).subscribe(
-      data => {
-        this.getGroups();
-        return true;
-      },
-      error => {
-        console.error('Error deleting group');
-      }
-    );
-  }
+            } else {
+
+                this.updateGroup(result);
+            }
+        });
+    }
+
+    getGroups() {
+        this._groupsService.getGroups().subscribe(
+            data => { this.groups = data; },
+            err => console.error(err),
+            () => console.log('done loading groups')
+        );
+    }
+    createGroup(group) {
+        this._groupsService.createGroup(group).subscribe(
+            data => {
+                this.getGroups();
+                return true;
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    }
+    updateGroup(group) {
+        console.log('calling update group' + JSON.stringify(group));
+        this._groupsService.updateGroupById(group).subscribe(
+            data => {
+                this.getGroups();
+                return true;
+            },
+            error => {
+                console.error('Error saving group');
+            }
+        );
+    }
+
+    deleteGroup(group) {
+        this._groupsService.deleteGroup(group).subscribe(
+            data => {
+                this.getGroups();
+                return true;
+            },
+            error => {
+                console.error('Error deleting group');
+            }
+        );
+    }
 }
 

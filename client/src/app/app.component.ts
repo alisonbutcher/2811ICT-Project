@@ -6,23 +6,23 @@ import { SessionService } from './services/session.service';
 const serverPath = 'http://localhost:3000';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  providers: [ ]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    providers: []
 })
 
 
 export class AppComponent {
-  title = 'client';
+    title = 'client';
 
-  // public session: Subscription;
+    // public session: Subscription;
 
-  // constructor(private _sessionService: SessionService) {
-  //   this.session = this._sessionService.watchStorage().subscribe((data: string) => {
-  //     console.log("App Component ts: ");
-  //   });
-  // }
+    // constructor(private _sessionService: SessionService) {
+    //   this.session = this._sessionService.watchStorage().subscribe((data: string) => {
+    //     console.log("App Component ts: ");
+    //   });
+    // }
 
-  constructor(public session: SessionService) {}
+    constructor(public session: SessionService) { }
 }

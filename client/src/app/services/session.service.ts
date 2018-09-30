@@ -3,36 +3,36 @@ import { Observable, of, Subject } from 'rxjs';
 
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 
 export class SessionService {
 
-  constructor() { }
+    constructor() { }
 
-  private storageSub = new Subject<boolean>();
+    private storageSub = new Subject<boolean>();
 
-  watchStorage(): Observable<any> {
-    return this.storageSub.asObservable();
-  }
+    watchStorage(): Observable<any> {
+        return this.storageSub.asObservable();
+    }
 
-  getitem(key: string) {
-    return localStorage.getItem(key);
-  }
+    getitem(key: string) {
+        return localStorage.getItem(key);
+    }
 
-  setItem(key: string, data: any) {
-    console.log('SessionService: ' + key + ':' + data);
-    localStorage.setItem(key, data);
-    this.storageSub.next(true);
-  }
+    setItem(key: string, data: any) {
+        console.log('SessionService: ' + key + ':' + data);
+        localStorage.setItem(key, data);
+        this.storageSub.next(true);
+    }
 
-  removeItem(key) {
-    localStorage.removeItem(key);
-    this.storageSub.next(true);
-  }
+    removeItem(key) {
+        localStorage.removeItem(key);
+        this.storageSub.next(true);
+    }
 
-  removeAllItems() {
-    localStorage.clear();
-    this.storageSub.next(true);
-  }
+    removeAllItems() {
+        localStorage.clear();
+        this.storageSub.next(true);
+    }
 }

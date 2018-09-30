@@ -1,17 +1,19 @@
 <div id="login">
 
-  <h3>Please Login:</h3>
+    <h3>Please Login:</h3>
 
-  <form (submit)="loginUser($event)">
+    <form (submit)="loginUser($event)">
 
-      <mat-icon>person</mat-icon><mat-form-field>
-      <input matInput placeholder="enter username" [(ngModel)]="name" name="username" id="username">
-    </mat-form-field>
-    <br />
-    <mat-icon>security</mat-icon><mat-form-field>
-      <input matInput type="password" placeholder="password" [(ngModel)]="password" name="password" id="password">
-    </mat-form-field>
-    <br />
-    <button mat-flat-button color="primary" type="submit">Submit</button>
+        <mat-icon>person</mat-icon>
+        <mat-form-field>
+            <input matInput placeholder="enter username" [(ngModel)]="name" name="username" id="username">
+        </mat-form-field>
+        <br />
+        <mat-icon>security</mat-icon>
+        <mat-form-field>
+            <input matInput type="password" placeholder="password" [(ngModel)]="password" name="password" id="password">
+        </mat-form-field>
+        <br />
+        <button mat-flat-button color="primary" type="submit">Submit</button>
 
-  </form>
+    </form>

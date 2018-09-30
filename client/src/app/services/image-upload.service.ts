@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class ImageUploadService {
 
-  constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-  imageUpload(fd) {
-    return this.http.post<any>('/api/upload', fd);
-  }
+    imageUpload(fd) {
+        return this.http.post<any>('/api/upload', fd);
+    }
 }

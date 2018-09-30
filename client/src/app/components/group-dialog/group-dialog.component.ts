@@ -3,47 +3,47 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export interface DialogData {
-  _id: string;
-  name: string;
-  description: string;
-  metaTitle: string;
+    _id: string;
+    name: string;
+    description: string;
+    metaTitle: string;
 }
 
 @Component({
-  selector: 'app-group-dialog',
-  templateUrl: './group-dialog.component.html',
-  styleUrls: ['./group-dialog.component.css'],
-  preserveWhitespaces: true
+    selector: 'app-group-dialog',
+    templateUrl: './group-dialog.component.html',
+    styleUrls: ['./group-dialog.component.css'],
+    preserveWhitespaces: true
 })
 export class GroupDialogComponent implements OnInit {
 
-  private form: FormGroup;
-  private title: string;
+    private form: FormGroup;
+    private title: string;
 
-  constructor(
-    private fb: FormBuilder,
-    private dialogRef: MatDialogRef<GroupDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) { _id, name, description,
-      metaTitle }: DialogData) {
+    constructor(
+        private fb: FormBuilder,
+        private dialogRef: MatDialogRef<GroupDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) { _id, name, description,
+            metaTitle }: DialogData) {
 
-    this.form = fb.group({
-      _id: [_id],
-      name: [name],
-      description: [description]
-    });
+        this.form = fb.group({
+            _id: [_id],
+            name: [name],
+            description: [description]
+        });
 
-    this.title = metaTitle;
-  }
+        this.title = metaTitle;
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  save() {
-    this.dialogRef.close(this.form.value);
-  }
+    save() {
+        this.dialogRef.close(this.form.value);
+    }
 
-  close() {
-    this.dialogRef.close();
-  }
+    close() {
+        this.dialogRef.close();
+    }
 
 }

@@ -1,23 +1,24 @@
-
-<button mat-icon-button class="dlgClose" tabindex="-1" color="black" (click)="close()"><mat-icon>close</mat-icon></button>
+<button mat-icon-button class="dlgClose" tabindex="-1" color="black" (click)="close()">
+    <mat-icon>close</mat-icon>
+</button>
 
 <h2 mat-dialog-title>{{title}}</h2>
 
 <mat-dialog-content [formGroup]="form">
 
-  <mat-form-field>
-    <input matInput placeholder="Channel Name" formControlName="name">
-  </mat-form-field>
-  <br />
+    <mat-form-field>
+        <input matInput placeholder="Channel Name" formControlName="name">
+    </mat-form-field>
+    <br />
 
-  <mat-form-field>
-    <input matInput placeholder="Description" formControlName="description">
-  </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Description" formControlName="description">
+    </mat-form-field>
 
-  <br />
+    <br />
 
-  <br />
+    <br />
 
-  <button class="dlgSave" mat-flat-button color="primary" (click)="save()">Save</button>
-  <!-- <button mat-flat-button color="warn" (click)="close()">Close</button> -->
+    <button class="dlgSave" mat-flat-button color="primary" (click)="save()">Save</button>
+    <!-- <button mat-flat-button color="warn" (click)="close()">Close</button> -->
 </mat-dialog-content>

@@ -19,11 +19,11 @@ export class HeaderComponent implements OnInit {
         // Subscribe to the observable sessionService to monitor session variables
         this.session.watchStorage().subscribe((data: string) => {
 
-            if (this.session.getitem('role') != null)  {
+            if (this.session.getitem('role') != null) {
                 this.role = this.session.getitem('role');
             }
 
-            if (this.session.getitem('name') != null ) {
+            if (this.session.getitem('name') != null) {
                 this.user = this.session.getitem('name');
             }
             console.log('Hello ' + this.user + ', your access level is: ' + this.role);

@@ -45,10 +45,10 @@ export class UserComponent implements OnInit {
     ngOnInit() {
         this.getUsers();
 
-            // Subscribe to the observable sessionService to monitor session variables
+        // Subscribe to the observable sessionService to monitor session variables
         this.session.watchStorage().subscribe((data: string) => {
-        this.role = Number(this.session.getitem('accessLevel'));
-      });
+            this.role = Number(this.session.getitem('accessLevel'));
+        });
     }
 
     addUser() {

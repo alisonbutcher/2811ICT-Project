@@ -1,35 +1,35 @@
 <h2>Manage Group Channels</h2>
 <div class="wrapper">
 
-  <mat-card class="channels" color="primary">
-    <mat-card-title>Select a Group</mat-card-title>
-    <mat-card-subtitle>Selected Group: {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let c of groups" (click)="selectGroup(c)">
-        {{c.name}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card class="channels" color="primary">
+        <mat-card-title>Select a Group</mat-card-title>
+        <mat-card-subtitle>Selected Group: {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let c of groups" (click)="selectGroup(c)">
+                {{c.name}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
-  <mat-card>
-    <mat-card-title>Current Channels in Group</mat-card-title>
-    <mat-card-subtitle>Click a channel to remove from {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let u of groupChannels" (click)="removeChannelFromGroup(u)">
-        {{u.channelname}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card>
+        <mat-card-title>Current Channels in Group</mat-card-title>
+        <mat-card-subtitle>Click a channel to remove from {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let u of groupChannels" (click)="removeChannelFromGroup(u)">
+                {{u.channelname}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
-  <mat-card class="add-user">
-    <mat-card-title>Add a Channel</mat-card-title>
-    <mat-card-subtitle>Click a channel to add to {{selectedGroup.name}}</mat-card-subtitle>
-    <mat-nav-list>
-      <mat-list-item *ngFor="let channel of channels" (click)="addChannelToGroup(channel)">
-        {{channel.name}}
-      </mat-list-item>
-    </mat-nav-list>
-  </mat-card>
+    <mat-card class="add-user">
+        <mat-card-title>Add a Channel</mat-card-title>
+        <mat-card-subtitle>Click a channel to add to {{selectedGroup.name}}</mat-card-subtitle>
+        <mat-nav-list>
+            <mat-list-item *ngFor="let channel of channels" (click)="addChannelToGroup(channel)">
+                {{channel.name}}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-card>
 
 
 </div>

@@ -1,9 +1,12 @@
 const path = require('path');
 const cors = require('cors');
 const express = require('express');
+const app = express();
 const config = require('config');
-// const io = require('socket.io')(http);
-app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
+
 mongoose = require('mongoose');
 User = require('./models/user.model');
 Group = require('./models/group.model');
@@ -12,6 +15,9 @@ Chat = require('./models/chat.model');
 bodyParser = require('body-parser');
 
 port = config.ServerPort;
+
+// Websockets
+require('./socket.js')(app,io);
 
 // Set maximum discrete number of endpoints
 app.setMaxListeners(20);
