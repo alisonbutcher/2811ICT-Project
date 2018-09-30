@@ -5,19 +5,13 @@ const app = express();
 const config = require('config');
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-
-
-mongoose = require('mongoose');
-User = require('./models/user.model');
-Group = require('./models/group.model');
-Channels = require('./models/channel.model');
-Chat = require('./models/chat.model');
-bodyParser = require('body-parser');
-
-port = config.ServerPort;
-
-// Websockets
-require('./socket.js')(app,io);
+const mongoose = require('mongoose');
+const User = require('./models/user.model');
+const Group = require('./models/group.model');
+const Channels = require('./models/channel.model');
+const Chat = require('./models/chat.model');
+const bodyParser = require('body-parser');
+const port = config.ServerPort;
 
 // Set maximum discrete number of endpoints
 app.setMaxListeners(20);
@@ -66,8 +60,12 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/dist/client/index.html'))
 });
 
+// Websockets
+require('./socket.js')(app,io);
 
 // Start HTTP Server
-require('./listen')(app, port);
+require('./listen')(http, port);
+
+
 
 module.exports = app // used by unit and integration testing

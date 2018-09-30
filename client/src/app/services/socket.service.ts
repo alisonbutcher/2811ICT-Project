@@ -13,7 +13,7 @@ export class SocketService {
 
 
     sendMessage(message) {
-        console.log('send Message');
+        console.log('Service: send Message');
         this.socket.emit('add-message', message);
     }
 

@@ -60,6 +60,11 @@ export class ChatComponent implements OnInit {
         this.getChannel(this.selectedchannel);
     }
 
+    sendMessage(message) {
+        this.socketServer.sendMessage('[' + this.username + ']:' + this.message);
+        console.log('Message sent:  ' + message);
+    }
+
     getChannel(channel_name) {
         this.channelService.getChannelByName(channel_name).subscribe(
             data => {

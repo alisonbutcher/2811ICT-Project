@@ -1,0 +1,14 @@
+mat-list {
+    height: 320px;
+    overflow-y: auto;
+}
+
+mat-form-field {
+    width: 800px;
+    /* padding-top: 30px; */
+}
+
+.send {
+    margin-top: 20px;
+    width: 840px;
+}

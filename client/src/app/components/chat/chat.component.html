@@ -6,6 +6,15 @@
             {{c.username}}
         </li>
     </ul> -->
-
-    
+    <mat-list>
+        <mat-list-item dense *ngFor="let message of messages">
+            {{ message.text }}
+        </mat-list-item>
+    </mat-list>
+</mat-card>
+<mat-card class="send">
+    <mat-form-field>
+        <input  matInput [(ngModel)]="message" type="text" id="message" name="message">
+    </mat-form-field>
+    <button mat-icon-button color="primary" (click)="sendMessage(message)"><mat-icon>send</mat-icon></button>
 </mat-card>
