@@ -1,20 +1,17 @@
 <h2>{{selectedchannel}} Chat Page</h2>
-<!-- <p>User is: {{username}}</p> -->
 <mat-card>
-    <!-- <ul>
-        <li *ngFor="let c of channel">
-            {{c.username}}
-        </li>
-    </ul> -->
-    <mat-list>
-        <mat-list-item dense *ngFor="let message of messages">
-            <span color="primary" class="username">[{{ message.username }}]</span>{{ message.msg }}
+    <div #chatContent class="scroll">
+    <mat-list dense >
+        <mat-list-item #msgList *ngFor="let message of messages; let last = last">
+            <span class="username">[{{ message.username }}]</span>{{ message.msg }}
+            {{last ? scrollToBottom() : ''}}
         </mat-list-item>
     </mat-list>
-<!-- </mat-card> -->
-<!-- <mat-card class="send"> -->
+</div>
     <mat-form-field>
         <input  matInput [(ngModel)]="message" type="text" id="message" name="message">
     </mat-form-field>
+
     <button mat-icon-button color="primary" (click)="sendMessage(message)"><mat-icon>send</mat-icon></button>
+
 </mat-card>

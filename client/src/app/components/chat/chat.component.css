@@ -1,6 +1,11 @@
 mat-list {
     height: 320px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    /* overflow-y: scroll; */
+}
+
+.scroll {
+    overflow-y: scroll;
 }
 
 mat-form-field {

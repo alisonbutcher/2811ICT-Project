@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ViewChildren, QueryList, ElementRef, } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { ChannelsService } from '../../services/channels.service';
@@ -10,7 +10,13 @@ import { SocketService } from '../../services/socket.service';
     styleUrls: ['./chat.component.css'],
     preserveWhitespaces: true
 })
-export class ChatComponent implements OnInit {
+
+
+export class ChatComponent implements OnInit, AfterViewInit {
+
+    @ViewChildren('msgList') msgList: QueryList<any>;
+    @ViewChild('chatContent') chatContent: ElementRef;
+
     private selectedchannel;
     private members;
     private channel;
@@ -28,19 +34,29 @@ export class ChatComponent implements OnInit {
 
     ) { }
 
+    ngAfterViewInit() {
+        // Make sure msg list scrolls to the bottom
+        this.msgList.changes.subscribe(this.scrollToBottom);
+    }
+
+
     ngOnInit() {
 
+
+        // Local Storage is user logged in
         if (!localStorage.getItem('name')) {
             this.router.navigateByUrl('/login');
         } else {
             this.username = localStorage.getItem('name');
         }
 
+
         // Subscribe to the socket server observable
         this.connection = this.socketServer.getMessages().subscribe(message => {
             this.messages.push(message);
             this.message = '';
         });
+
 
         // subscribe to observable for url params
         this.route.paramMap.subscribe(params => {
@@ -50,6 +66,12 @@ export class ChatComponent implements OnInit {
 
         this.getChannel(this.selectedchannel);
 
+    }
+
+
+    scrollToBottom = () => {
+        console.log('scroll called');
+        this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
     }
 
 
@@ -66,7 +88,6 @@ export class ChatComponent implements OnInit {
             this.username + '", "msg": "' + message + '" }');
 
         this.socketServer.sendMessage(msg);
-        console.log(this.messages);
     }
 
 
@@ -74,10 +95,9 @@ export class ChatComponent implements OnInit {
         this.channelService.getChannelByName(channel_name).subscribe(
             data => {
                 this.channel = data;
-                console.log(JSON.stringify(this.channel));
             },
             err => console.log(err),
-            () => {}
+            () => { }
         );
     }
 
