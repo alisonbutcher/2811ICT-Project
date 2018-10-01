@@ -1,9 +1,18 @@
 table {
     width: 100%;
     padding-right: 20px;
+    margin-bottom: 90px;
+
 }
 
 .mat-button {
     font-size: 4px;
     border-color: black;
+}
+
+
+.scont {
+    /* height: 80%; */
+    flex-grow: 1;
+    overflow-y: auto;
 }

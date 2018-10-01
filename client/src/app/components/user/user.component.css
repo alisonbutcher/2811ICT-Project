@@ -8,22 +8,14 @@ table {
     border-color: black;
 }
 
-/* .page {
-  display: flex
-}
-
-.page__sidebar {
-  width: 210px;
-  height: 100%;
-  background-color: rgb(250, 241, 241);
-  border-right: black;
-  border-width: 1px;
+table {
+    width: 100%;
+    padding-right: 20px;
+    margin-bottom: 90px;
 }
 
 
-.page__content {
-  flex: 1;
-  padding: 20px;
-  border-left-color: black;
-  border-left-width: 1px;
-} */
+.scont {
+    flex-grow: 1;
+    overflow-y: auto;
+}

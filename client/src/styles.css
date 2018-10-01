@@ -9,6 +9,14 @@
 html,
 body {
     height: 100%;
+    overflow-y: hidden;
+}
+
+h2 {
+    margin-top: 0;
+    padding-top: 0;
+    font-family: roboto;
+    font-size: 18px;
 }
 
 body {
@@ -19,27 +27,37 @@ body {
 
 
 .toolbar-fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
+    /* This fills the remaining space, by using flexbox. overflow
        Every toolbar row uses a flexbox row layout. */
     flex: 1 1 auto;
 }
 
-body {
+.content {
+    display: flex;
+    flex-direction: column;
     height: 100%;
 }
 
+.header {
+    height: 0;
+}
+
+
 .page {
+    flex-grow: 1;
     margin-top: 65px;
     display: flex;
     height: 100%;
-
 }
 
-.page__sidebar {
+/* .header {
+    height: 64px;
+    background-color: black;
+} */
 
-    width: 210px;
+.page__sidebar {
+    width: 280px;
     height: 100%;
-    /* background-color: rgb(252, 250, 250); */
     background-color: white;
     border-right: black;
     border-width: 1px;
@@ -52,6 +70,7 @@ body {
     padding: 28px;
     border-left-color: black;
     border-left-width: 1px;
+    overflow-y: auto;
 }
 
 .add-item-button {
