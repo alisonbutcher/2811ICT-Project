@@ -50,9 +50,6 @@ groups(app);
 var channels = require('./routes/channel.routes');
 channels(app);
 
-var chat = require('./routes/chat.routes');
-chat(app);
-
 
 // Static Directory for Angular Client Side app
 app.use(express.static(path.join(__dirname, '../client/dist/client')));
@@ -60,12 +57,14 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, '../client/dist/client/index.html'))
 });
 
+
 // Websockets
 require('./socket.js')(app,io);
+
 
 // Start HTTP Server
 require('./listen')(http, port);
 
 
-
-module.exports = app // used by unit and integration testing
+// used by unit and integration testing
+module.exports = app 

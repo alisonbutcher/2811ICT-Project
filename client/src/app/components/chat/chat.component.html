@@ -8,7 +8,7 @@
     </ul> -->
     <mat-list>
         <mat-list-item dense *ngFor="let message of messages">
-            {{ message.text }}
+            <span color="primary" class="username">[{{ message.username }}]</span>{{ message.msg }}
         </mat-list-item>
     </mat-list>
 <!-- </mat-card> -->

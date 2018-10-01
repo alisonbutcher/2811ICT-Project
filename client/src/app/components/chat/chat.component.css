@@ -12,3 +12,8 @@ mat-form-field {
     margin-top: 20px;
     width: 840px;
 }
+
+.username {
+    padding-right: 5px;
+    color: darkblue;
+}

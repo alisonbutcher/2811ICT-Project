@@ -7,7 +7,8 @@ import { SocketService } from '../../services/socket.service';
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.css']
+    styleUrls: ['./chat.component.css'],
+    preserveWhitespaces: true
 })
 export class ChatComponent implements OnInit {
     private selectedchannel;
@@ -15,7 +16,7 @@ export class ChatComponent implements OnInit {
     private channel;
     private username;
     private role;
-    private messages = [];
+    private messages;
     private message;
     private connection;
 
@@ -57,9 +58,17 @@ export class ChatComponent implements OnInit {
         this.messages = [];
     }
 
+
     sendMessage(message) {
-        this.socketServer.sendMessage('[' + this.username + ']: ' + this.message);
+
+        // Build message into JSON
+        const msg = JSON.parse('{ "channelname": "' + this.selectedchannel + '", "username": "' +
+            this.username + '", "msg": "' + message + '" }');
+
+        this.socketServer.sendMessage(msg);
+        console.log(this.messages);
     }
+
 
     getChannel(channel_name) {
         this.channelService.getChannelByName(channel_name).subscribe(
@@ -68,7 +77,7 @@ export class ChatComponent implements OnInit {
                 console.log(JSON.stringify(this.channel));
             },
             err => console.log(err),
-            () => console.log('get selected channel')
+            () => {}
         );
     }
 
