@@ -9,19 +9,14 @@
     margin-top: 0;
 }
 
-/* .example-events {
-    width: 300px;
-    height: 200px;
-    overflow: auto;
-    border: 1px solid #555;
-  } */
-
-
-
-
 
 a {
     padding-left: 40px;
+}
+
+p {
+    font-size: 14px;
+    padding-right: 25px;
 }
 
 #hamburger {

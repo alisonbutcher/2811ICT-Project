@@ -76,3 +76,16 @@ body {
 .add-item-button {
     margin-bottom: 20px;
 }
+
+.mat-expansion-panel-header {
+    border-bottom-color: transparent;
+    border-top-color: transparent;
+    box-shadow: none;
+}
+
+.mat-expansion-panel {
+    box-shadow: none;
+    border-width: 0;
+    border-color: transparent;
+
+}

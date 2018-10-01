@@ -26,14 +26,13 @@ export class HeaderComponent implements OnInit {
             if (this.session.getitem('name') != null) {
                 this.user = this.session.getitem('name');
             }
-            console.log('Hello ' + this.user + ', your access level is: ' + this.role);
         });
     }
 
     logout() {
         this.session.removeAllItems();
         this.session.setItem('role', '');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
     }
 
 }

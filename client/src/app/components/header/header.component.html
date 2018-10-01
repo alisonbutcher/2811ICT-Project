@@ -1,14 +1,14 @@
 <mat-toolbar color="primary">
-    <!-- <span><a id="hamburger">
-        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-      </a></span> -->
+
     <span><a id="heading" href="http://localhost:3000">2811ICT Chat</a></span>
 
     <!-- This fills the remaining space of the current row -->
     <span class="toolbar-fill-remaining-space"></span>
-
+    <p *ngIf="role != ''">Welcome {{user}}</p>
     <span>
+            
         <button *ngIf="role != ''" mat-button (click)="logout()">
+
             <mat-icon>lock</mat-icon>Logout
         </button>
         <button *ngIf="role == ''" mat-button routerLink="/login">

@@ -70,7 +70,6 @@ export class ChatComponent implements OnInit, AfterViewInit {
 
 
     scrollToBottom = () => {
-        console.log('scroll called');
         this.chatContent.nativeElement.scrollTop = this.chatContent.nativeElement.scrollHeight;
     }
 

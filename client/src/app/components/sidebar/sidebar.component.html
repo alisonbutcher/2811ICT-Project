@@ -1,4 +1,4 @@
-<mat-nav-list dense>
+<mat-nav-list *ngIf="role != ''" dense>
 
     <!-- <div *ngIf="role >= 2"> -->
     <div *ngIf="role == 'Group Admin' || role == 'Super Admin'">

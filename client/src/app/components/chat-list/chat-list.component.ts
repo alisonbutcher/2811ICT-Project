@@ -20,18 +20,13 @@ export class ChatListComponent implements OnInit {
     ngOnInit() {
         this.getGroups();
         this.getChannels();
-        console.log(this.groups);
-        console.log(JSON.stringify(this.channels));
     }
 
     getGroups() {
         this.groupService.getGroups().subscribe(
             data => { this.groups = data; },
             err => console.error(err),
-            () => {
-                console.log('done loading groups');
-                console.log(this.groups);
-            }
+            () => {}
         );
     }
 
@@ -41,7 +36,7 @@ export class ChatListComponent implements OnInit {
                 this.channels = data;
             },
             err => console.error(err),
-            () => console.log('done loading channels')
+            () => {}
         );
     }
 

@@ -1,16 +1,14 @@
-<mat-accordion *ngFor="let g of groups">
+<mat-accordion dense *ngFor="let g of groups">
     <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
+        <mat-expansion-panel-header >
+            <mat-panel-title >
                 {{g.name}}
             </mat-panel-title>
         </mat-expansion-panel-header>
 
         <mat-nav-list>
-            <mat-list-item *ngFor="let c of g.channels">
-                <a (click)="goToChatRoom(c.channelname)">{{c.channelname}}</a>
-                <!--             
-               <a [routerLink]="['/chat', c.channelname]">{{c.channelname}}</a> -->
+            <mat-list-item *ngFor="let c of g.channels" (click)="goToChatRoom(c.channelname)">
+                <span>{{c.channelname}}</span>
             </mat-list-item>
         </mat-nav-list>
     </mat-expansion-panel>
