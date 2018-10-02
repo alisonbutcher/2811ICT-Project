@@ -24,7 +24,9 @@ export class ChatListComponent implements OnInit {
 
     getGroups() {
         this.groupService.getGroups().subscribe(
-            data => { this.groups = data; },
+            data => {
+                this.groups = data;
+            },
             err => console.error(err),
             () => {}
         );
